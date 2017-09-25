@@ -1,0 +1,28 @@
+<style>
+    .note-list-area {
+        margin: auto;
+        width: 900px;
+        margin-top: 30px;
+        min-height: 500px;
+        padding: 25px 20px;
+    }
+
+    .note-list-area .notice-item {
+        line-height: 40px;
+        height: 40px;
+        border-bottom-width: 1px;
+        border-bottom-style: dotted;
+        border-bottom-color: #BBB;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .note-list-area .notice-item span {
+        float: right;
+    }
+</style>
+<div class="note-list-area">
+    <div class="notice-item" ng-repeat="notice in notice_list" ng-click="goArticle(notice.articleId)">
+        {{notice.title}}<span>{{notice.addTime}}</span>
+    </div>
+</div>

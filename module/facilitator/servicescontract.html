@@ -1,0 +1,213 @@
+<style type="text/css">
+    .form-group .control-label {
+        width: auto;
+    }
+</style>
+<div class="page-container">
+    <div ng-include="'tpls/sidebar-facilitator.html'"></div>
+    <div class="page-content-wrapper">
+        <ul class="list-inline pull-right">
+            <li>
+                <a class="btn btn-primary btn-sm" href="" title="刷新数据" role="button" ng-click="bind()"><i class="icon-refresh"></i></a>
+            </li>
+        </ul>
+        <div class="page-content">
+            <div class="form-body">
+                  <div class="form-group">
+                      <table class="table table-striped">
+                          <thead>
+                              <tr>
+                                  <th>编号</th>
+                                  <th>服务名称</th>
+                                  <th>联系人</th>
+                                  <th>联系电话</th>
+                                  <th>服务分类</th>
+                                  <th>预算</th>
+                                  <th>发布单位</th>
+                                  <th>发布时间</th>
+                                  <th>操作</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr ng-repeat="item in list">
+                                  <td>{{item.servicesCode}}</td>
+                                  <td>{{item.servicesName}}</td>
+                                  <td>{{item.servicesMan}}</td>
+                                  <td>{{item.servicesPhone}}</td>
+                                  <td>{{item.categoryName}}</td>
+                                  <td>{{item.servicesMax}}</td>
+                                  <td>{{item.servicesOrgName}}</td>
+                                  <td>{{item.servicesCreateTime}}</td>
+                                  <td><a href="" ng-click="download(item.servicesID)">合同下载|</a><a href="" ng-click="open(item)">查看</a></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <script type="text/ng-template" id="myModalContent.html">
+        <form name="myForm" class="form-horizontal form-row-seperated" autocomplete="off">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="vm.cancel()"><span>&times;</span></button>
+                <h4 class="modal-title">查看服务信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-body">
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <label class="control-label col-sm-4">服务编号</label>
+                            <div class="col-sm-8">
+                                <label class="control-label">{{vm.entity.servicesCode}}</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <label class="control-label col-sm-3">服务名称</label>
+                            <div class="col-sm-9">
+                                <label class="control-label">{{vm.entity.servicesName}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-7">
+                            <label class="control-label col-sm-4">服务分类</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" name="categoryName" ng-model="vm.entity.categoryName">
+                            </div>
+                        </div>
+                        <div class="col-sm-5 hide">
+                            <label class="control-label col-sm-3">是否竞标</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" ng-true-value="1" ng-false-value="0" disabled="disabled" type="checkbox" contenteditable="false" readonly="readonly" name="servicesMode" ng-model="vm.entity.servicesMode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <label class="control-label col-sm-4">开始日期</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="vm.entity.servicesBegin" />
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <label class="control-label col-sm-3">结束日期</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="vm.entity.servicesEnd" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <label class="control-label col-sm-4">联系人员</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="servicesMan" name="servicesMan" ng-model="vm.entity.servicesMan">
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <label class="control-label col-sm-3">联系电话</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" name="servicesPhone" ng-model="vm.entity.servicesPhone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <label class="control-label col-sm-4">预算(元)</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" name="servicesMax" ng-model="vm.entity.servicesMax">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="control-label col-sm-7">工期(天)</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="categoryName" ng-model="vm.entity.servicesDay">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label col-sm-4">质保(月)</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" name="servicesMax" ng-model="vm.entity.servicesEnsure">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="{{vm.entity.servicesStatus!='8'&&vm.entity.servicesMode=='0'}}">
+                        <label class="control-label col-sm-2">自主服务商</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" ng-model="vm.entity.servicesSupplierName">
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="{{vm.entity.servicesStatus=='8'}}">
+                        <label class="control-label col-sm-2">中标服务商</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" ng-model="vm.entity.servicesSupplierName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label col-sm-6">中标价(元)</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" name="servicesMax" ng-model="vm.entity.servicesMax1">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label col-sm-7">中标工期(天)</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="categoryName" ng-model="vm.entity.servicesDay1">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label col-sm-7">中标质保(月)</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="servicesMax" ng-model="vm.entity.servicesEnsure1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group hide">
+                        <label class="control-label col-sm-2">工期要求</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" type="text" name="servicesTimeDesc" ng-model="vm.entity.servicesTimeDesc"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vm.entity.servicesCategoryType==2">
+                        <label class="control-label col-sm-2">评标规则</label>
+                        <div class="col-sm-3">
+                            <p class="input-group">
+                                价格<input class="form-control" disabled="disabled" ng-true-value="1" ng-false-value="0" type="checkbox" ng-model="vm.entity.servicesPriceCompare">
+                            </p>
+                        </div>
+                        <div class="col-sm-3">
+                            <p class="input-group">
+                                工期<input class="form-control" disabled="disabled" ng-true-value="1" ng-false-value="0" type="checkbox" ng-model="vm.entity.servicesDayCompare">
+                            </p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="input-group">
+                                质保<input class="form-control" disabled="disabled" ng-true-value="1" ng-false-value="0" type="checkbox" ng-model="vm.entity.servicesEnsureCompare">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group hide">
+                        <label class="control-label col-sm-2">评标说明</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="5" type="text" name="servicesCompareDesc" ng-model="vm.entity.servicesCompareDesc"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">详细说明</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" rows="5" ng-model="vm.entity.servicesDesc"></textarea>
+                        </div>
+                    </div>
+                    <alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" ng-bind-html="alert.msg" close="alert.close($index)" dismiss-on-timeout="2000"></alert>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-disabled="vm.button" ng-click="vm.cancel()">关闭</button>                
+            </div>
+        </form>
+    </script>
+
+</div>
+

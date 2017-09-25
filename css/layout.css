@@ -1,0 +1,96 @@
+/*body{background-color:#3d3d3d !important;color:#000000;font-family:"微软雅黑";margin:0 !important;padding:50px 0 0 !important;overflow-x:hidden;}*/
+div, p, ul, ol, dl, dt, dd, form{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6{margin:0;padding:0;}
+em, i{font-style:normal;font-weight:normal;}
+img{border:0;}
+
+.form-group{margin-left: 0 !important; margin-right: 0 !important;}
+.form-group .control-label{width:50px;}
+.navbar-collapse{max-height:100% !important;}
+.dropdown-menu{font-size:12px;}
+
+.modal.simple-login .modal-dialog{min-width:300px;}
+.modal.loading .modal-dialog{max-width:124px;}
+.modal.loading .modal-content{background:#000000;opacity:0.8;filter:alpha(opacity=80);}
+.modal.loading .modal-body{padding:10px;}
+.modal.loading .modal-body img{width:100%;}
+
+.load-msg{line-height:40px;text-align:center;position:relative;overflow:hidden;}
+.load-msg .no-more:before, .load-msg .load-more:before, .load-msg .no-more:after, .load-msg .load-more:after{border-top:1px solid #cccccc;content:"";display:block;position:absolute;top:20px;width:50%;}
+.load-msg .no-more:before, .load-msg .load-more:before{right:-70px;}
+.load-msg .no-more:after, .load-msg .load-more:after{left:-70px;}
+
+.page-header{}
+.page-header .navbar-brand.visible-xs{z-index:1;position:absolute;top:0;left:0;}
+.page-header .navbar-text.visible-xs{line-height:20px;position:relative;}
+.page-header .navbar-toggle{z-index:1;position:absolute;top:0;right:0;}
+.page-header.navbar{background-image:none;border:0 none;filter:none;margin:0;padding:0;width:100%;}
+.page-header.navbar .top-menu{}
+.page-header.navbar .top-menu .profile{margin-right:10px;}
+.page-header .top-menu input[type="text"]{background:#444444;border:none;color:#999999;}
+.page-header .top-menu .navbar-form{position:relative;}
+.page-header .top-menu button[type="submit"]{position:absolute;top:15%;right:20px;background:none;border:none;}
+.page-header .top-menu .icon-search{color:#999999;}
+
+.page-container{margin:0;padding:0;position:relative;}
+
+.page-sidebar.navbar-collapse{padding:0;}
+.page-sidebar{background-color:#292929;}
+.page-sidebar, .page-sidebar.navbar-collapse.in{margin:10px;}
+
+ul.page-sidebar-menu{list-style:outside none none;margin:0;padding:0;}
+ul.page-sidebar-menu li{border:0 none;display:block;margin:0;padding:0;}
+ul.page-sidebar-menu li a{border-top:1px solid #5c5c5c !important;color:#ffffff;}
+ul.page-sidebar-menu li a{border:0 none;display:block;font-size:14px;font-weight:300;margin:0;padding:10px 15px;position:relative;text-decoration:none;}
+ul.page-sidebar-menu li.start a{border-top-color:transparent !important;}
+ul.page-sidebar-menu li.open a, ul.page-sidebar-menu li a:hover, ul.page-sidebar-menu li:hover a{background:#1e1e1e none repeat scroll 0 0;}
+ul.page-sidebar-menu li a i{color:#969696;}
+ul.page-sidebar-menu li a i{font-size:16px;margin-right:5px;text-shadow:none;}
+ul.page-sidebar-menu li.active a .arrow:before, ul.page-sidebar-menu li.active a .arrow.open:before{color:#ffffff !important;}
+ul.page-sidebar-menu li a .arrow.open:before{color:#8a8a8a !important;}
+ul.page-sidebar-menu li a .arrow:before, ul.page-sidebar-menu li a .arrow.open:before{color:#7d7d7d !important;}
+ul.page-sidebar-menu li a .arrow.open:before{content:"\f107";display:inline;float:right;font-family:'FontAwesome';font-size:16px;font-weight:300;height:auto;margin-right:3px;margin-top:1px;text-shadow:none;}
+ul.page-sidebar-menu li a .arrow:before, ul.page-sidebar-menu li a .arrow.open:before{color:#7d7d7d !important;}
+.page-sidebar ul li a .arrow:before{content:"\f104";display:inline;float:right;font-family:'FontAwesome';font-size:16px;font-weight:300;height:auto;margin-right:5px;margin-top:1px;text-shadow:none;}
+ul.page-sidebar-menu li ul.sub-menu{clear:both;list-style:outside none none;margin:8px 0;padding:0;}
+ul.page-sidebar-menu li ul.sub-menu li{background:rgba(0,0,0,0) none repeat scroll 0 0;margin-bottom:0;margin-left:0;margin-right:0;margin-top:1px !important;padding:0;}
+ul.page-sidebar-menu li ul.sub-menu li a{border-top:0 none !important;}
+ul.page-sidebar-menu li ul.sub-menu li a{color:#bdbdbd;}
+ul.page-sidebar-menu li ul.sub-menu li a{background:rgba(0,0,0,0) none repeat scroll 0 0;display:block;font-size:14px;font-weight:300;margin:0;padding-bottom:5px;padding-left:35px !important;padding-right:0;padding-top:5px;text-decoration:none;}
+ul.page-sidebar-menu  li ul.sub-menu li.active a, ul.page-sidebar-menu li ul.sub-menu li a:hover{background:#575757 none repeat scroll 0 0 !important;color:#ffffff !important;}
+ul.page-sidebar-menu li ul.sub-menu li a:hover{background:#575757 none repeat scroll 0 0 !important;}
+
+.page-content-wrapper {}
+.page-content-wrapper .page-content{overflow:hidden;min-height:550px;}
+.page-content{background-color:#ffffff;}
+.page-content .page-breadcrumb li i.icon-angle-right{font-size:14px;margin:0 5px;opacity:0.4;position:relative;}
+.page-content .page-breadcrumb li i.icon-angle-right{color:#999999;}
+.page-breadcrumb{margin:0;margin-bottom:10px;}
+.page-breadcrumb li{padding:0;}
+
+.page-content .navbar-collapse{padding:0;}
+
+.page-footer .link{margin:0;padding:0;text-align:center;}
+.page-footer .l-text, .page-footer .r-text{padding:0;color:#ffffff;height:60px;line-height:60px;}
+.page-footer .l-text{background:#000000;}
+.page-footer .r-text{background:#f0ad4e;z-index:1;}
+.page-footer .l-text a, .page-footer .r-text a{color:#ffffff;display:block;text-decoration:none;}
+.page-footer .focus-icon{font-size:20px;line-height:60px;}
+.page-footer .icon-heart-empty, .page-footer .icon-heart{padding-left:30%;}
+.page-footer .icon-shopping-cart{font-size:22px;position:relative;padding-right:30%;}
+.page-footer .badge{position:absolute;top:-7px;left:12px;z-index:1;}
+
+@media (min-width:768px) {
+	.form-group .control-label{float:left;}
+	.form-group .control-input{margin-left:60px;}
+	.page-header .top-menu button[type="submit"]{top:0;}
+
+	.page-sidebar, .page-sidebar.navbar-collapse.in{margin:0;background-color:#3d3d3d;}
+	.page-sidebar, .page-sidebar.navbar-collapse.in{width:200px;float:left;margin-right:-100%;position:relative;}
+	ul.page-sidebar-menu li.open a, ul.page-sidebar-menu li a:hover, ul.page-sidebar-menu li:hover a{background:#303030 none repeat scroll 0 0;}
+	ul.page-sidebar-menu li.on>a{background:#e02222 none repeat scroll 0 0;border-top-color:transparent;}
+}
+
+.must{
+    background-color: rgb(250, 255, 189);
+}

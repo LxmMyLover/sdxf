@@ -1,0 +1,93 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'"></div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<form name="myForm" ng-submit="save()" class="form-horizontal" autocomplete="off">
+				<div class="form-body">
+					<div class="form-group" ng-class="{'has-error':myForm.name.$error.name}">
+						<label class="control-label">姓名</label>
+						<div class="control-input">
+							<input name="name" class="form-control" type="text" ng-model="users.userName" ng-name required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">生日</label>
+						<div class="control-input">
+						    <p class="input-group">
+								<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="users.birthday" is-open="popup.opened" ng-required="true" close-text="关闭" clear-text="清空" current-text="今天"  />
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+								</span>
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">性别</label>
+						<div class="control-input">
+							<label class="radio-inline">
+								<input type="radio" name="sex" value="0" ng-model="users.sex"> 保密
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="sex" value="1" ng-model="users.sex"> 男
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="sex" value="2" ng-model="users.sex"> 女
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group" ng-class="{'has-error':myForm.email.$error.email}">
+						<label class="control-label">E-mail</label>
+						<div class="control-input">
+							<input name="email" class="form-control" type="text" ng-model="users.email" ng-email required>
+							<span class="help-block" ng-show="myForm.email.$error.email">邮箱格式不正确</span>
+						</div>
+					</div>
+					<div class="form-group hide">
+						<label class="control-label">MSN</label>
+						<div class="control-input">
+							<input name="msn" class="form-control" type="text" ng-model="users.msn">
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.qq.$error.qq}">
+						<label class="control-label">QQ</label>
+						<div class="control-input">
+							<input name="qq" class="form-control" type="text" ng-model="users.qq" ng-qq>
+							<span class="help-block" ng-show="myForm.qq.$error.qq">qq号不能以0开头，只能是数字，5~15位</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.officePhone.$error.tel}">
+						<label class="control-label">办公电话</label>
+						<div class="control-input">
+							<input name="officePhone" class="form-control" type="text" ng-model="users.officePhone" ng-tel>
+							<span class="help-block" ng-show="myForm.officePhone.$error.tel">区号+号码，区号以0开头，3位或4位，号码由7位或8位数字组成</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.homePhone.$error.tel}">
+						<label class="control-label">家庭电话</label>
+						<div class="control-input">
+							<input name="homePhone" class="form-control" type="text" ng-model="users.homePhone" ng-tel>
+							<span class="help-block" ng-show="myForm.homePhone.$error.tel">区号+号码，区号以0开头，3位或4位，号码由7位或8位数字组成</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.mobilePhone.$error.mobile}">
+						<label class="control-label">手机</label>
+						<div class="control-input">
+							<input name="mobilePhone" class="form-control" type="text" ng-model="users.mobilePhone" ng-mobile>
+							<span class="help-block" ng-show="myForm.mobilePhone.$error.mobile">手机号由13,15,17,18和14开头，共11位</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-input">
+							<button type="reset" class="btn btn-default">重置</button>
+							<button type="submit" class="btn btn-success" ng-disabled="myForm.$invalid" autocomplete="off">
+								<i class="icon-ok"></i>
+								保存
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
