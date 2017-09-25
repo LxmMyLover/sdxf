@@ -1,0 +1,14 @@
+﻿.cart .page-content td,
+.cart .page-content th {padding:10px;}
+.cart .page-content td img{width:120px;}
+.cart .bb-dc{border-bottom:1px solid #dcdcdc;}
+
+.cart .ui-del{display:block;padding-bottom:16px;}
+.cart .form-inline .form-control{width:46px;vertical-align:middle;display:inline-block;text-align:center;}
+.cart .alert{margin:10px;}
+
+.cart .page-content{padding-bottom:60px;}
+
+.cart .page-footer .priceinfo{min-height:60px;height:100%;padding:10px;}
+.cart .page-footer .priceinfo p{line-height:30px;text-align:left;white-space:nowrap;}
+.cart .page-footer .clearing{}

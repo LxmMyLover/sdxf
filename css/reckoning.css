@@ -1,0 +1,65 @@
+﻿.reckoning .form-horizontal{margin:0;padding:10px 10px 60px;}
+.reckoning .form-group .control-label{width:100px;}
+.reckoning .form-group .control-input .navbar-nav{float:none;border-bottom:1px #e0e0e0 solid;margin-left:0;margin-right:0;}
+.reckoning .form-group .help-block.has-error{color:#a94442;}
+
+.reckoning .consignee-info .btn-eidt .navbar-text{position:relative;float:none;margin-left:0;margin-top:15px;}
+.reckoning .consignee-info .btn-eidt .arrow{position:absolute;right:0;top:2px;}
+.reckoning .consignee-info .btn-eidt .arrow:before{content:"\f105";font-family:'FontAwesome';font-size:40px;font-weight:300;}
+.reckoning .consignee-info .btn-eidt .arrow.open:before{content:"\f107";font-family:'FontAwesome';font-size:40px;font-weight:300;}
+.reckoning .consignee-info .edit-info{padding:10px 0;}
+.reckoning .consignee-info .edit-info .form-control{margin-bottom:10px;}
+.reckoning .consignee-info .edit-info .form-control.has-error{border-color:#a94442;box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset;}
+.reckoning .consignee-info .edit-info .form-control.has-error:focus{border-color:#843534;box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;}
+
+.reckoning .region ul:after{content:" ";clear:both;display:block;}
+.reckoning .region ul li{float:left;width:33.3333%;}
+.reckoning .region .sel-city {
+	border-radius:0;
+	-ms-border-radius:0;
+	-webkit-border-radius:0;
+	-o-border-radius:0;
+	-moz-border-radius:0;
+}
+.reckoning .region .sel-province {
+	border-bottom-right-radius:0;
+	-ms-border-bottom-right-radius:0;
+	-webkit-border-bottom-right-radius:0;
+	-o-border-bottom-right-radius:0;
+	-moz-border-bottom-right-radius:0;
+
+	border-top-right-radius:0;
+	-ms-border-top-right-radius:0;
+	-webkit-border-top-right-radius:0;
+	-o-border-top-right-radius:0;
+	-moz-border-top-right-radius:0;
+
+	border-right:none;
+}
+.reckoning .region .sel-district {
+	border-bottom-left-radius:0;
+	-ms-border-bottom-left-radius:0;
+	-webkit-border-bottom-left-radius:0;
+	-o-border-bottom-left-radius:0;
+	-moz-border-bottom-left-radius:0;
+
+	border-top-left-radius:0;
+	-ms-border-top-left-radius:0;
+	-webkit-border-top-left-radius:0;
+	-o-border-top-left-radius:0;
+	-moz-border-top-left-radius:0;
+
+	border-left:none;
+}
+
+.reckoning .goods-name a{padding-left:0 !important;}
+.reckoning .goods-name a:hover{background:none !important;}
+.reckoning .goods-attr p{margin:15px 0;}
+.reckoning .goods-price{margin-right:0;font-size: 20px;}
+
+@media (min-width:768px) {
+	.reckoning .form-group .control-input{margin-left:120px;}
+	.reckoning .consignee-info .btn-eidt .navbar-text{margin-left:5px;margin-top:5px;}
+	.reckoning .goods-name a{padding:15px !important;}
+	.reckoning .goods-attr p{margin:5px 15px;}
+}

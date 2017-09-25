@@ -1,0 +1,55 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'"></div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<div tabset>
+				<div tab select="select1()" heading="当前">
+					<ul class="list-group current row">
+						<li class="list-item" ng-repeat="item in currentList">
+							<div class="couponinfo col-xs-8">
+								<h3 class="coupontitle navbar-right">{{item.typeMoney | currency:'￥'}}</h3>
+								<div class="couponcontent navbar-left">
+									<ul class="nav">
+										<li>{{item.typeName}}</li>
+										<li>期限:{{item.useEndDate | date:'yyyy-MM-dd'}}</li>
+										<li>订单满{{item.minGoodsAmount | number:2}}元（不包含运费）</li>
+									</ul>
+								</div>
+							</div>
+							<div class="couponitem_btn col-xs-4">
+								<p class="text-center">未使用</p>
+							</div>
+						</li>
+					</ul>
+					<ul class="load-msg">
+						<p class="no-more hide" ng-class="{'hide':currentNoMore}">没有更多了</p>
+						<p class="load-more hide" ng-class="{'hide':currentLoadMore}">正在加载中...</p>
+					</ul>
+				</div>
+				<div tab select="select2()" heading="历史">
+					<ul class="list-group history row">
+						<li class="list-item" ng-repeat="item in historyList">
+							<div class="couponinfo col-xs-8">
+								<h3 class="coupontitle navbar-right">{{item.typeMoney | currency:'￥'}}</h3>
+								<div class="couponcontent navbar-left">
+									<ul class="nav">
+										<li>{{item.typeName}}</li>
+										<li>期限:{{item.useEndDate | date:'yyyy-MM-dd'}}</li>
+										<li>订单满{{item.minGoodsAmount | number:2}}元（不包含运费）</li>
+									</ul>
+								</div>
+							</div>
+							<div class="couponitem_btn col-xs-4">
+								<p class="text-center">已过期</p>
+							</div>
+						</li>
+					</ul>
+					<ul class="load-msg">
+						<p class="no-more hide" ng-class="{'hide':historyNoMore}">没有更多了</p>
+						<p class="load-more hide" ng-class="{'hide':historyLoadMore}">正在加载中...</p>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

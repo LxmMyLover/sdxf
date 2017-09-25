@@ -1,0 +1,59 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'"></div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<div tabset>
+				<div tab select="select1()" heading="待审核">
+					<table class="comment-list" width="100%" border="0" align="center">
+						<tbody ng-repeat="item in currentList">
+							<tr>
+								<td width="80%" valign="top"><a ng-href="#/goods/{{item.idValue}}">{{item.goodsName}}</a></td>
+								<td width="20%" align="right" ng-bind="item.addTime | date:'yy-MM-dd HH:mm'">00-00-00 00:00</td>
+							</tr>
+							<tr class="bb-dc">
+								<td colspan="2">
+									<dl class="dl-horizontal">
+										<dt><strong>评论</strong></dt>
+										<dd>{{item.content}}</dd>
+										<dd ng-show="item.picture"><img ng-src="{{item.picture}}"></dd>
+										<dt class="hide" ng-class="{'hide':!item.content}"><strong>回复</strong></dt>
+										<dd class="text-muted hide" ng-class="{'hide':!item.content}">{{item.content}}</dd>
+									</dl>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="load-msg">
+						<p class="no-more hide" ng-class="{'hide':currentNoMore}">没有更多了</p>
+						<p class="load-more hide" ng-class="{'hide':currentLoadMore}">正在加载中...</p>
+					</ul>
+				</div>
+				<div tab select="select2()" heading="已审核">
+					<table class="comment-list" width="100%" border="0" align="center">
+						<tbody ng-repeat="item in historyList">
+							<tr>
+								<td width="80%" valign="top"><a ng-href="#/goods/{{item.idValue}}">{{item.goodsName}}</a></td>
+								<td width="20%" align="right" ng-bind="item.addTime | date:'yy-MM-dd HH:mm'">00-00-00 00:00</td>
+							</tr>
+							<tr class="bb-dc">
+								<td colspan="2">
+									<dl class="dl-horizontal">
+										<dt><strong>评论</strong></dt>
+										<dd>{{item.content}}</dd>
+										<dd ng-show="item.picture"><img ng-src="{{item.picture}}"></dd>
+										<dt class="hide" ng-class="{'hide':!item.content}"><strong>回复</strong></dt>
+										<dd class="text-muted hide" ng-class="{'hide':!item.content}">{{item.content}}</dd>
+									</dl>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="load-msg">
+						<p class="no-more hide" ng-class="{'hide':historyNoMore}">没有更多了</p>
+						<p class="load-more hide" ng-class="{'hide':historyLoadMore}">正在加载中...</p>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
