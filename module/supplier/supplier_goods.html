@@ -1,0 +1,510 @@
+<style type="text/css">
+    .form-body {
+        padding-top: 10px;
+    }
+
+    .form-group .control-label {
+        width: auto;
+    }
+
+    .page-content-wrapper .page-content {
+        margin-left: 200px;
+    }
+    .page-content-wrapper .page-content .table-responsive {
+      min-height: 100px;
+    }
+    .table-responsive .table>tbody>tr>td{
+      max-width: 120px;
+    }
+</style>
+
+<div class="page-container">
+    <div ng-include="'tpls/sidebar-supplier.html'"></div>
+    <div class="page-content-wrapper">
+        <!-- <ul class="list-inline pull-right">
+            <li>
+                <a class="btn btn-primary btn-sm" href="" role="button" ng-click="bind()">刷新数据<i class="icon-refresh"></i></a>
+            </li>
+        </ul> -->
+        <div class="page-content">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="pull-left">商品列表</h3>
+                    <ul class="list-inline pull-right">
+                        <li>
+                            <a class="btn btn-primary btn-sm" href="" role="button" ng-click="open()">添加商品 <i class="icon-plus"></i></a>
+                        </li>
+                        <li>
+                            <!-- <div class="btn-group" dropdown>
+                                <button class="btn btn-success btn-sm" type="button" id="dropdownMenu1" dropdown-toggle>
+                                  工具<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                    <li ng-repeat="item in tools"><a href="" ng-click="batchChanged(item)">{{item}}</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="" ng-click="isCollapsed=!isCollapsed">商品筛选</a></li>
+                                </ul>
+                            </div> -->
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="panel-body navbar-collapse collapse" ng-init="isCollapsed=true" collapse="isCollapsed">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown" dropdown is-open="isopen1">
+                            <a class="dropdown-toggle" ng-class="{'open':isopen1}" dropdown-toggle href="">
+                    {{category.cur1.catName}}
+                    <span class="caret"></span>
+                  </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="item in clist"><a ng-click="category.cur1=item" href="">{{item.catName}}</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown" dropdown is-open="isopen2">
+                            <a class="dropdown-toggle" ng-class="{'open':isopen2}" dropdown-toggle href="">
+                    {{brand.cur.brandName}}
+                    <span class="caret"></span>
+                  </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="item in blist"><a ng-click="brand.cur=item" href="">{{item.brandName}}</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- <li class="dropdown" dropdown is-open="isopen3">
+                            <a class="dropdown-toggle" ng-class="{'open':isopen3}" dropdown-toggle href="">
+                    {{suppliers.cur.suppliersName}}
+                    <span class="caret"></span>
+                  </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="item in slist"><a ng-click="suppliers.cur=item" href="">{{item.suppliersName}}</a></li>
+                            </ul>
+                        </li> -->
+
+                        <!-- <li class="dropdown" dropdown is-open="isopen4">
+                            <a class="dropdown-toggle" ng-class="{'open':isopen4}" dropdown-toggle href="">
+                    {{intro.cur.text}}
+                    <span class="caret"></span>
+                  </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="item in intros"><a href="" ng-click="intro.cur=item">{{item.text}}</a></li>
+                            </ul>
+                        </li> -->
+
+                        <!-- <li class="dropdown" dropdown is-open="isopen5">
+                            <a class="dropdown-toggle" ng-class="{'open':isopen5}" dropdown-toggle href="">
+                    {{onsale.cur.text}}
+                    <span class="caret"></span>
+                  </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="item in onsales"><a href="" ng-click="onsale.cur=item">{{item.text}}</a></li>
+                            </ul>
+                        </li> -->
+
+
+                        <li class="dropdown" dropdown is-open="isopen6">
+                            <a class="dropdown-toggle" ng-class="{'open':isopen6}" dropdown-toggle href="">
+                    {{filter.cur.text}}
+                    <span class="caret"></span>
+                  </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="item in filters"><a href="" ng-click="filter.cur=item">{{item.text}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" ng-submit="search()">
+                        <input type="text" class="form-control input-sm" ng-model="keywords">
+                        <button type="submit" class="btn btn-primary btn-sm">搜索</button>
+                    </form>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped" ng-show="glist.length>0">
+                        <thead>
+                            <tr>
+                                <!-- <th><input type="checkbox" ng-model="all" ng-click="checkAll()"> 编号</th> -->
+                                <th>商品名称</th>
+                                <th>货号</th>
+                                <th>价格</th>
+                                <!-- <th>上架</th> -->
+                                <!-- <th>精品</th>
+                                <th>新品</th>
+                                <th>热销</th>
+                                <th>排序</th> -->
+                                <th>品牌</th>
+                                <th>库存</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in glist">
+                                <!-- <td scope="row"><input type="checkbox" ng-true-value="{{item.goodsId}}" ng-false-value="0" ng-model="checks[$index]" /> {{item.goodsId}}</td> -->
+                                <td>{{item.goodsName}}</td>
+                                <td>{{item.goodsSn}}</td>
+                                <td>{{item.shopPrice | currency:''}}元</td>
+                                <!-- <td><a href="" ng-click="toggleSale(item)"><span class="{{item.isOnSale ? 'icon-ok' : 'icon-remove'}}"></span></a></td> -->
+                                <!-- <td><a href="" ng-click="toggleBest(item)"><span class="{{item.isBest ? 'icon-ok' : 'icon-remove'}}"></span></a></td>
+                                <td><a href="" ng-click="toggleNew(item)"><span class="{{item.isNew ? 'icon-ok' : 'icon-remove'}}"></span></a></td>
+                                <td><a href="" ng-click="toggleHot(item)"><span class="{{item.isHot ? 'icon-ok' : 'icon-remove'}}"></span></a></td> -->
+                                <td>{{item.brandName}}</td>
+                                <td>{{item.goodsNumber}}</td>
+                                <td>
+                                  <a href="/#/goods/{{item.goodsId}}">查看</a>
+                                  <a data-toggle="modal" data-target="#myModal" href="" ng-click="open(item)">修改</a>
+                                  <!-- <a ng-click="remove(item.goodsId)" href="">回收站</a> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center;margin-top: 50px;font-size: 26px;color: #aaa;" ng-show="glist.length<=0">
+                      暂无商品信息
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- <form class="form-inline col-sm-5" ng-submit="catChanged()">
+                            <div class="btn-group" dropdown>
+                                <button class="btn btn-default btn-sm" type="button" id="dropdownMenu1" dropdown-toggle>
+                    {{category.cur2.catName}}
+                    <span class="caret"></span>
+                    </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li ng-repeat="item in clist2"><a ng-click="category.cur2=item" href="">{{item.catName}}</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary btn-sm">保存</button>
+                            </div>
+                        </form> -->
+
+                        <div class="text-right" style="border-top: 1px solid #ccc;padding-right: 20px;">
+                            <pagination first-text="首页" previous-text="上一页" next-text="下一页" last-text="末页" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize" items-per-page="itemsPerPage" class="pagination-sm" boundary-links="true" boundary-link-numbers="true"></pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <script type="text/ng-template" id="myModalContent.html">
+                <form name="myForm" ng-submit="vm.save()" class="form-horizontal form-row-seperated" autocomplete="off">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="vm.cancel()"><span>&times;</span></button>
+                        <h4 class="modal-title">{{vm.entity.goodsId ? '修改':'添加'}}商品信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <tabset>
+                            <tab heading="通用信息">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品名称</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="goodsName" ng-model="vm.entity.goodsName" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品货号</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" ng-model="vm.entity.goodsSn">
+                                            <span class="help-block">如果您不输入商品货号，系统将自动生成一个唯一的货号</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品分类</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" name="catId" ng-model="vm.entity.catId" ng-options="item.catId as item.catName for item in vm.clist" ng-min="0"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品品牌</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" ng-model="vm.entity.brandId" ng-options="item.brandId as item.brandName for item in vm.blist"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">生产厂商</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="producer" ng-model="vm.entity.producer" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品产地</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="originPlace" ng-model="vm.entity.originPlace" required>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label class="control-label col-sm-3">选择供货商</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" ng-model="vm.entity.suppliersId" ng-options="item.suppliersId as item.suppliersName for item in vm.slist"></select>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group" ng-class="{'has-error':myForm.shopPrice.$error.currency}">
+                                        <label class="control-label col-sm-3">商品价格</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" name="shopPrice" ng-model="vm.entity.shopPrice" ng-blur="vm.priceSetted()" ng-currency required>
+                                                <span class="input-group-btn hide">
+                                                  <button type="button" class="btn btn-primary" ng-click="vm.marketPriceSetted()">按市场价计算</button>
+                                                </span>
+                                            </div>
+                                            <span class="help-block" ng-show="myForm.shopPrice.$error.currency">本店售价必须是数字</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品缩略图</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" nv-file-select="" accept="image/jpeg,image/gif,image/png,image/x-ms-bmp" uploader="vm.uploader[0]" ng-click="vm.uploader[0].clearQueue()" />
+                                            <span class="help-block">图片应小于300k，允许上传的格式为jpg、gif、png、bmp</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-class="{'hide':!vm.entity.goodsThumb}">
+                                        <label class="control-label col-sm-3"></label>
+                                        <div class="col-sm-9">
+                                            <image ng-src="{{vm.entity.goodsThumb | rootPath}}" width="100px">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-class="{'hide':!vm.uploader[0].queue.length}">
+                                        <label class="control-label col-sm-3"></label>
+                                        <div class="col-sm-9">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th ng-show="vm.uploader[0].isHTML5">Size</th>
+                                                        <th ng-show="vm.uploader[0].isHTML5">Progress</th>
+                                                        <th>Status</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in vm.uploader[0].queue">
+                                                        <td ng-show="vm.uploader[0].isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                                        <td ng-show="vm.uploader[0].isHTML5">
+                                                            <div class="progress" style="margin-bottom: 0;">
+                                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                                        </td>
+                                                        <td nowrap>
+                                                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                                    </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error':myForm.thumbUrl.$invalid}">
+                                        <label class="control-label col-sm-3">缩略图外部URL</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="thumbUrl" placeholder="http://" ng-model="vm.thumbUrl" ng-url>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab>
+                            <tab heading="详细描述">
+                                <div class="form-body">
+                                    <div class="panel">
+                                        <ueditor class="ueditor" style="height:450px;width:100%;" config="vm._simpleConfig" ng-model="vm.entity.goodsDesc"></ueditor>
+                                    </div>
+                                </div>
+                            </tab>
+                            <tab heading="其他信息">
+                                <div class="form-body">
+                                    <!-- <div class="form-group" ng-class="{'has-error':myForm.goodsWeight.$error.digits}">
+                                        <label class="control-label col-sm-3">商品重量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="goodsWeight" ng-model="vm.entity.goodsWeight" ng-digits required>
+                                            <span class="help-block">单位：克</span>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group" ng-class="{'has-error':myForm.goodsNumber.$error.digits}">
+                                        <label class="control-label col-sm-3">商品库存数量</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="goodsNumber" ng-model="vm.entity.goodsNumber" ng-digits required>
+                                            <span class="help-block" ng-show="myForm.goodsNumber.$error.digits">商品库存必须是整数</span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group" ng-class="{'has-error':myForm.warnNumber.$error.digits}">
+                                        <label class="control-label col-sm-3">库存警告数量</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="warnNumber" ng-model="vm.entity.warnNumber" ng-digits required>
+                                            <span class="help-block" ng-show="myForm.warnNumber.$error.digits">库存警告必须是整数</span>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="form-group">
+                                        <label class="control-label col-sm-3">加入推荐</label>
+                                        <div class="col-sm-9">
+                                            <label class="checkbox-inline">
+                            <input type="checkbox" ng-model="vm.entity.isBest" ng-true-value="1" ng-false-value="0">精品
+                          </label>
+                                            <label class="checkbox-inline">
+                            <input type="checkbox" ng-model="vm.entity.isNew" ng-true-value="1" ng-false-value="0">新品
+                          </label>
+                                            <label class="checkbox-inline">
+                            <input type="checkbox" ng-model="vm.entity.isHot" ng-true-value="1" ng-false-value="0">热销
+                          </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">上架</label>
+                                        <div class="col-sm-9">
+                                            <label class="checkbox-inline">
+                            <input type="checkbox" ng-model="vm.entity.isOnSale" ng-true-value="1" ng-false-value="0">打勾表示允许销售，否则不允许销售
+                          </label>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="form-group hide">
+                                        <label class="control-label col-sm-3">是否免运费</label>
+                                        <div class="col-sm-9">
+                                            <label class="checkbox-inline">
+                            <input type="checkbox" ng-model="vm.entity.isShipping" ng-true-value="1" ng-false-value="0">打勾表示此商品不会产生运费花销，否则按照正常运费计算
+                          </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error':myForm.sortOrder.$error.digits}">
+                                        <label class="control-label col-sm-3">排序&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" name="sortOrder" ng-model="vm.entity.sortOrder" ng-digits required>
+                                            <span class="help-block" ng-show="myForm.sortOrder.$error.digits">排序必须是数值</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">关键字&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="text" ng-model="vm.entity.keywords">
+                                            <span class="help-block">多个关键词，用逗号隔开</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">描述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" rows="3" ng-model="vm.entity.description"></textarea>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" rows="3" ng-model="vm.entity.goodsBrief"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商家备注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" rows="3" ng-model="vm.entity.sellerNote"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab>
+                            <!-- <tab heading="商品属性">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">商品类型</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" ng-model="vm.entity.goodsType" ng-options="item.catId as item.catName for item in vm.tlist" ng-change="vm.getAttr()">
+                          </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-repeat="item in vm.alist">
+                                        <label class="control-label col-sm-3">{{item.attrName}}</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" ng-if="!item.attrType" ng-model="vm.sel[$index]" ng-options="item2.goodsAttrId as item2.attrValue for item2 in item.goodsAttr"></select>
+
+                                            <label class="checkbox-inline" ng-if="item.attrType">
+                            <input type="checkbox" ng-model="vm.all[$index]" ng-click="vm.checkAll($index,item.goodsAttr)"> 全选
+                          </label>
+                                            <label class="checkbox-inline" ng-if="item.attrType" ng-repeat="item2 in item.goodsAttr">
+                            <input type="checkbox" ng-true-value="{{item2.goodsAttrId}}" ng-false-value="0" ng-model="vm.checks[item2.goodsAttrId]"> {{item2.attrValue}}
+                          </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab> -->
+                            <tab heading="商品相册">
+                                <div class="form-body">
+                                    <div class="gallery row">
+                                        <div class="col-xs-6 col-sm-4" ng-repeat="item in vm.galist">
+                                            <div class="thumbnail">
+                                                <p class="text-center"><a href="" ng-click="vm.removeGallery($index)">[ - ]</a></p>
+                                                <a ng-href="{{item.imgOriginal | rootPath}}" target="_blank"><img ng-src="{{item.imgOriginal | rootPath}}"></a>
+                                                <div class="caption">
+                                                    <p><input class="form-control" placeholder="图片描述" type="text" ng-model="item.imgDesc" ng-change="vm.updateDesc($index)"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-4" ng-repeat="item in vm.galleryCache">
+                                            <div class="thumbnail">
+                                                <p class="text-center"><a href="" ng-click="vm.removeGalleryCache($index)">[ - ]</a></p>
+                                                <a ng-href="{{item.thumbUrl | rootPath}}" target="_blank"><img ng-src="{{item.thumbUrl | rootPath}}"></a>
+                                                <div class="caption">
+                                                    <p><input class="form-control" placeholder="图片描述" type="text" ng-model="item.imgDesc"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-4" ng-repeat="item in vm.uploader[1].queue">
+                                            <div class="thumbnail">
+                                                <p class="text-center"><a href="" ng-click="item.remove()">[ - ]</a></p>
+                                                <div class="jumbotron">
+                                                    <div class="file-upload">
+                                                        <strong class="show" ng-if="vm.uploader[1].isHTML5">{{item.progress}}%</strong>
+                                                        <span ng-show="!item.progress">(待上传)</span>
+                                                        <span ng-show="item.isUploading">(上传中...)</span>
+                                                        <span ng-show="item.isSuccess">(上传成功)</span>
+                                                        <span ng-show="item.isCancel">(上传取消)</span>
+                                                        <span ng-show="item.isError">(上传失败)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p><input class="form-control" placeholder="图片描述" type="text" ng-model="vm.imgDesc[$index]"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-6 col-sm-4">
+                                            <div class="thumbnail">
+                                                <div class="caption">
+                                                    <p>
+                                                        <div class="jumbotron">
+                                                            <div class="file-upload" uploader="vm.uploader[1]" nv-file-over="">
+                                                                <strong>Drop image</strong>
+                                                                <br> (or click)
+                                                            </div>
+                                                            <input type="file" multiple="multiple" accept="image/jpeg,image/gif,image/png,image/x-ms-bmp" nv-file-select="" uploader="vm.uploader[1]" style="position: relative;width: 100%;">
+                                                        </div>
+                                                    </p>
+                                                    <p ng-class="{'has-error':myForm.url.$error.url}"><input class="form-control" placeholder="或者外部链接" type="text" name="url" ng-model="vm.fileUrl" ng-url></p>
+                                                    <p class="text-right"><button class="btn btn-primary" type="button" ng-click="vm.fileUpload()" ng-disabled="!vm.uploader[1].getNotUploadedItems().length && !vm.fileUrl || myForm.url.$error.url">上传</button> <button class="btn btn-default"
+                                                          type="button" ng-click="vm.uploader[1].clearQueue()" ng-disabled="!vm.uploader[1].queue.length">重置</button></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab>
+                        </tabset>
+                        <alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" ng-bind-html="alert.msg" close="alert.close($index)" dismiss-on-timeout="2000"></alert>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="vm.cancel()">取消</button>
+                        <button type="submit" id="myButton" class="btn btn-success" ng-disabled="myForm.$invalid || vm.button">
+                  <i class="icon-ok"></i>
+                  保存
+                </button>
+                    </div>
+                </form>
+            </script>
+
+        </div>
+    </div>
+
+</div>

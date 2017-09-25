@@ -1,0 +1,39 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'"></div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<form name="myForm" ng-submit="save()" class="form-horizontal" autocomplete="off">
+				<div class="form-body">
+					<div class="form-group">
+						<label class="control-label">新密码</label>
+						<div class="control-input">
+							<input name="newPassword" class="form-control" type="password" ng-model="newPassword" required>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.confirmPassword.$error.equal}">
+						<label class="control-label">确认密码</label>
+						<div class="control-input">
+							<input name="confirmPassword" class="form-control" type="password" ng-model="confirmPassword" ng-equal="newPassword" required>
+							<span class="help-block" ng-show="myForm.confirmPassword.$error.equal">新密码与确认密码不相同</span>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label class="control-label">旧密码</label>
+						<div class="control-input">	
+							<input name="oldPassword" class="form-control" type="password" ng-model="oldPassword" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-input">	
+							<button type="reset" class="btn btn-default">重置</button>
+							<button type="submit" class="btn btn-success" ng-disabled="myForm.$invalid" autocomplete="off">
+								<i class="icon-ok"></i>
+								保存
+							</button>
+						</div>
+					</div>					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

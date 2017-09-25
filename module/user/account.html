@@ -1,0 +1,36 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'"></div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<table class="page-header" width="100%" border="0" align="center">
+				<tr>
+					<td>
+						您的帐号余额：<span class="text-danger" ng-bind="users.userMoney | currency:'￥'">￥0.00</span><br>
+						冻结金额：<span class="text-danger" ng-bind="users.frozenMoney | currency:'￥'">￥0.00</span><br>
+						可用金额：<span class="text-danger" ng-bind="(users.userMoney-users.frozenMoney) | currency:'￥'">￥0.00</span>
+					</td>
+					<td align="right" valign="top"><a class="btn btn-default" href="">余额提现</a></td>
+				</tr>
+				<tr>
+				  <td colspan="2"><span class="text-muted">注：活动类现金余额不能提现，只供本站购物使用</span></td>
+			  	</tr>
+			</table>
+		
+			<table class="account-list" width="100%" border="0" align="center">
+				<tbody ng-repeat="item in list">
+					<tr>
+						<td><span class="text-danger"><i ng-bind="item.userMoney | number:2">0.00</i> 元</span></td>
+						<td align="right" ng-bind="item.changeTime | date:'yy-MM-dd HH:mm'">00-00-00 00:00</td>
+					</tr>
+					<tr class="bb-dc">
+						<td colspan="2"><span class="text-muted" ng-bind="item.changeDesc"></span></td>
+			      	</tr>
+		      	</tbody>
+			</table>
+			<ul class="load-msg">
+				<p class="no-more hide" ng-class="{'hide':noMore}">没有更多了</p>
+				<p class="load-more hide" ng-class="{'hide':loadMore}">正在加载更多...</p>
+			</ul>
+		</div>
+	</div>
+</div>

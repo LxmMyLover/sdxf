@@ -1,0 +1,54 @@
+<style type="text/css">
+    .form-group .control-label {
+        width: auto;
+    }
+
+    .page-content-wrapper .page-content {
+        margin-left: 200px;
+    }
+</style>
+<div class="page-container">
+    <div ng-include="'tpls/sidebar-supplier.html'"></div>
+    <div class="page-content-wrapper">
+        <ul class="list-inline pull-right">
+            <li>
+                <a class="btn btn-primary btn-sm" href="" role="button" ng-click="bind()">刷新数据<i class="icon-refresh"></i></a>
+            </li>
+        </ul>
+        <div class="page-content">
+            <div class="form-body">
+                <div class="form-group">
+                    <table class="table table-striped" ng-show="list.length>0">
+                        <thead>
+                            <tr>
+                                <th>订单编号</th>
+                                <th>联系人</th>
+                                <th>联系电话</th>
+                                <th>地址</th>
+                                <th>下单时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in list">
+                                <td>{{item.orderSn}}</td>
+                                <td>{{item.consignee}}</td>
+                                <td>{{item.mobile}}</td>
+                                <td>{{item.provinceName}}，{{item.cityName}}，{{item.address}}</td>
+                                <td>{{item.addTime}}</td>
+                                <td>
+                                  <a href="" ng-click="download(item.orderSn)">合同下载</a>
+                                  <!-- <a href="" ng-click="open(item)">|查看</a> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center;margin-top: 50px;font-size: 26px;color: #aaa;" ng-show="list.length<=0">
+                      暂无合同信息
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

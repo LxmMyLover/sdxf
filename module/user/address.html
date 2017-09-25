@@ -1,0 +1,75 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'"></div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<form name="myForm" ng-submit="save()" class="form-horizontal" autocomplete="off">
+				<div class="form-body">
+					<div class="form-group">
+						<label class="control-label">收货人</label>
+						<div class="control-input">
+							<input name="consignee" class="form-control" type="text" ng-model="userAddress.consignee" required>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.mobile.$error.mobile}">
+						<label class="control-label">手机</label>
+						<div class="control-input">
+							<input name="mobile" class="form-control" type="text" ng-model="userAddress.mobile" ng-mobile required>
+							<span class="help-block" ng-show="myForm.mobile.$error.mobile">手机号由13,15,17,18和14开头，共11位</span>
+						</div>
+					</div>				
+					<div class="form-group" ng-class="{'has-error':myForm.tel.$error.tel}">
+						<label class="control-label">电话</label>
+						<div class="control-input">	
+							<input name="tel" class="form-control" type="text" ng-model="userAddress.tel" ng-tel>
+							<span class="help-block" ng-show="myForm.tel.$error.tel">区号+号码，区号以0开头，3位或4位，号码由7位或8位数字组成</span>
+						</div>
+					</div>
+					<div class="form-group" ng-if="selectReady">
+						<label class="control-label">省/市/区/县</label>
+						<div class="control-input">	
+							<div class="region">
+								<ul class="list-unstyled">
+										<li>
+											<select name="country" empty-text="国家" ng-model="userAddress.country.regionId" class="sel-province form-control hide">
+											</select>
+										</li>
+										<li>
+											<select multi-level-select class="sel-province form-control" source="getProvinces" name="province" ng-model="userAddress.province.regionId" empty="省" required></select>
+										</li>
+										<li>
+											<select multi-level-select class="sel-city form-control" source="getCities" name="city" ng-model="userAddress.city.regionId" empty="市" dependents="province" required></select>
+										</li>
+										<li>
+											<select multi-level-select class="sel-district form-control" source="getDistricts" name="district" ng-model="userAddress.district.regionId" empty="区" dependents="city"></select>
+										</li>
+									</ul>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">联系地址</label>
+						<div class="control-input">	
+							<input name="address" class="form-control" type="text" ng-model="userAddress.address" required>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.zip.$error.zip}">
+						<label class="control-label">邮编</label>
+						<div class="control-input">		
+							<input name="zip" class="form-control" type="text" ng-model="userAddress.zipCode" ng-zip>
+							<span class="help-block" ng-show="myForm.zip.$error.zip">邮编开头不能为0，共6位</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-input">	
+							<button type="reset" class="btn btn-default">重置</button>
+							<button type="submit" class="btn btn-success" ng-disabled="myForm.$invalid" autocomplete="off">
+								<i class="icon-ok"></i>
+								保存
+							</button>
+						</div>
+					</div>					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

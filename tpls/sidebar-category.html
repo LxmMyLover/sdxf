@@ -1,0 +1,9 @@
+<li class="open" ng-class="{'active':$eval(heading).catId==$parent.parentId}">
+	<a href="" ng-click="toggleOpen()">
+		<span class="title" ng-bind="$eval(heading).catName"></span>
+		<span class="arrow" ng-class="{'open':!isOpen}"></span>
+	</a>
+	<div collapse="!isOpen">
+		<ul class="sub-menu" ng-transclude></ul>
+	</div>
+</li>

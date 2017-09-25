@@ -1,0 +1,47 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'" style="min-width:200px;"></div>
+	<div class="page-content-wrapper" style="float:left;">
+		<div class="page-content" style="margin-left:200px;">
+			<table class="member-list" width="100%" border="0" align="center">
+				<tbody>
+					<tr>
+						<td class="page-header">
+							<h4>
+								<span>你好 <small ng-bind="users.userName">正在加载中...</small> 欢迎进入会员中心！</span>
+								<span ng-click="logout()" style="right: 0;float: right;cursor: pointer;">退出系统</span>
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<ul class="list-unstyled">
+								<li>您截止至今日已成功购物 <span ng-bind="successShopping">0</span> 次，累计消费 <span ng-bind="totalAmount | currency:'￥'">￥0.00</span> 元</li>
+							</ul>
+							<ul class="list-unstyled">
+								<li>您的近期订单数：<a href="#/order" ng-bind="orderCurrentCount">0</a></li>
+								<li>您的历史订单数：<a href="#/order" ng-bind="orderHistoryCount">0</a></li>
+							</ul>
+							<!-- <ul class="list-unstyled hide">
+								<li>您的余额：<a href="#/account" ng-bind="users.userMoney | currency:'￥'">￥0.00</a> 元</li>
+								<li>您的红包：共计 <a href="#/wallet" ng-bind="userBonusCount">0</a> 个，价值 <a href="#/wallet" ng-bind="userBonusMoney | currency:'￥'">￥0.00</a> 元</li>
+							</ul>
+							<ul class="list-unstyled hide">
+								<li>您的消费积分：<a href="#/score" ng-bind="users.payPoints">0</a> 积分</li>
+								<li>您的等级积分：<a href="#/score" ng-bind="users.rankPoints">0</a> 积分</li>
+							</ul> -->
+							<ul class="list-unstyled">
+								<li>您的评论数：<a href="#/comment" ng-bind="commentHideCount">0</a>（未审核），<a href="#/comment" ng-bind="commentShowCount">0</a>（已审核）</li>
+							</ul>
+							<ul class="list-unstyled">
+								<li>您的收藏数：<a href="#/collection" ng-bind="collectionCount">0</a></li>
+							</ul>
+							<!-- <ul class="list-unstyled hide">
+								<li>您的等级：<span ng-bind="rankName">正在加载中...</span> <a href="">会员等级说明</a></li>
+							</ul> -->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

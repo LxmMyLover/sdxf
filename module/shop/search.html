@@ -1,0 +1,66 @@
+<div class="page-container">
+	<div class="page-sidebar-wrapper">
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- <ul class="page-sidebar-menu">
+				<li class="start">
+					<a ng-href="#/category/{{entity.catId}}">
+						<span class="title" ng-bind="entity.catName"></span>
+					</a>
+				</li>
+                <accordion close-others="false">
+					<accordion-group heading="{catId:{{item.catId}},catName:'{{item.catName}}'}" template-url="tpls/sidebar-category.html" ng-repeat="item in menu">
+      					<li ng-class="{'active':item2.catId==catId}" ng-repeat="item2 in item.children"><a ng-href="#/category/{{item2.catId}}">{{item2.catName}}</a></li>
+   					</accordion-group>
+				</accordion>
+			</ul> -->
+		</div>
+	</div>
+
+	<div class="js-page-content-wrapper page-content-wrapper" ng-class="{'of-h':isFilter}" ng-style="filterY">
+		<div class="page-content" style="margin-left:0;">
+			<ol class="page-breadcrumb list-inline hidden-xs">
+				<li><a href=""><h4 class="icon-home"></h4></a><i class="icon-angle-right"></i></li>
+				<li class="active">商品搜索：{{keywords}}</li>
+			</ol>
+			<!-- <div class="page-product page-product-top navbar navbar-default">
+				<div class="container-fluid">
+					<ul class="sort nav navbar-nav">
+						<li class="col-xs-3 text-center"><a href="">综合 <i class="caret"></i></a></li>
+						<li class="col-xs-3 text-center"><a href="">销量</a></li>
+						<li class="col-xs-3 text-center"><a href="">价格 <i class="icon-sort"></i></a></li>
+						<li class="col-xs-3 text-center visible-xs"><a href="" ng-click="filter()">筛选 <i class="icon-filter"></i></a></li>
+					</ul>
+					<ul class="page nav navbar-nav navbar-right hidden-xs">
+						<botton type="botton" class="btn btn-warning navbar-btn" ng-click="best()"><i class="icon-thumbs-up"></i> 店长推荐</botton>
+						<botton type="botton" class="btn btn-default navbar-btn" ng-click="hot()">最热</botton>
+						<botton type="botton" class="btn btn-default navbar-btn" ng-click="new()">最新</botton>
+					</ul>
+				</div>
+			</div> -->
+			<div class="page-product page-product-list row">
+				<div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="item in product">
+					<div class="thumbnail">
+						<a ng-href="#/goods/{{item.goodsId}}" title="{{item.goodsName}}">
+							<img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">
+							<div class="caption">
+								<h3>{{item.goodsName}}</h3>
+								<p>
+									<span class="symbol">¥</span>
+									<span class="price" ng-bind="item.shopPrice|number:2">0.00</span>
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="nothing-here" ng-show="product.length<=0">
+					<div class="nothing-title">没有找到符合条件的商品</div>
+					<img src="./images/nothing.png" style="margin:20px auto;">
+				</div>
+			</div>
+			<ul class="load-msg">
+				<p class="no-more" ng-show="noMore">没有更多了</p>
+				<p class="load-more" ng-show="loadMore">正在加载中...</p>
+			</ul>
+		</div>
+	</div>
+</div>

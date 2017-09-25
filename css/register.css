@@ -1,0 +1,7 @@
+﻿.register .page-content{padding:20px;}
+
+.register .form-group .control-label{width:60px;}
+
+@media (min-width:768px) {
+  .register .form-group .control-input{margin-left:80px;}
+}
