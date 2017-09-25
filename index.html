@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-sacle=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<title>山东省公安消防总队网上商城</title>
+	<meta name="keywords" content="山东省公安消防总队网上商城">
+	<meta name="description" content="山东省公安消防总队网上商城">
+	<link href="favicon.ico" type="image/x-icon"  rel="shortcut icon" />
+	<!-- <link rel="shortcut  icon" type="image/x-icon" href="favicon.ico" media="screen"  /> -->
+	<link href="animated_favicon.gif" type="image/gif" rel="icon" />
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="libs/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/layout.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/category.css">
+	<link rel="stylesheet" type="text/css" href="css/goods.css">
+	<link rel="stylesheet" type="text/css" href="css/cart.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="css/register.css">
+	<link rel="stylesheet" type="text/css" href="css/reckoning.css">
+	<link rel="stylesheet" type="text/css" href="css/member.css">
+</head>
+
+<body ng-controller="IndexCtrl" style="overflow-x:hidden;background-color: #f6f6f6;">
+
+	<div class="clearfix"></div>
+	<div class="shop-index">
+		<!--<div class="title">-->
+			<!--&lt;!&ndash;名字&ndash;&gt;-->
+			<!--<div class="left-title">-->
+				<!--<span>欢迎来到{{navText}}</span>-->
+			<!--</div>-->
+			<!--&lt;!&ndash;登录 购物车&ndash;&gt;-->
+			<!--<div class="right-title">-->
+				<!--<span ng-show="isShopUser" ng-click="goCart()"><img src="./images/car.png"> ( {{goodsNumber}} ) </span>-->
+				<!--<span ng-repeat="item in user" ng-click="item.click()">{{item.text}}</span>-->
+
+			<!--</div>-->
+		<!--</div>-->
+		<!--logo图-->
+		<div class="logo-title">
+			<div class="badge-logo" ng-click="goIndex()"></div>
+			<!--<div class="attention">-->
+				<!--<a href="#"></a>-->
+				<!--微信公众号-->
+			<!--</div>-->
+			<!-- 警徽 -->
+			<!--<div class="badge-logo" ng-click="goIndex()"></div>-->
+			<!-- 搜索框 -->
+			<!--<div class="title-search" ng-show="isShopUser">-->
+				<!--<div class="search-input">-->
+					<!--<input type="text" class="goods-search" ng-model="keywords" ng-keyup="search_keyup($event)">-->
+				<!--</div>-->
+				<!--<div class="search-goods" ng-click="search()">搜索</div>-->
+			<!--</div>-->
+		</div>
+		<style>
+			.content-nav {
+				display: block;
+				height: 36px;
+				width: 100%;
+				padding-left: 200px;
+				background: #aa5500;
+			}
+			.nav-items {
+				float: left;
+				list-style: none;
+			}
+			.nav-items a {
+				display: inline-block;
+				width: 120px;
+				height:36px;
+				font-size: 18px;
+				color: #fff;
+				line-height: 36px;
+				text-align: center;
+				background: #aa5500;
+				text-decoration: none;
+			}
+			.nav-items a:hover {
+				color: #000;
+				background: #994400;
+			}
+		</style>
+		<!--导航条-->
+		<ul class="content-nav">
+			<li class="nav-items">
+				<a href="#">首页</a>
+			</li>
+			<li class="nav-items">
+				<a href="#/articlelist">通知公告</a>
+			</li>
+			<li class="nav-items">
+				<!--<a href="" ng-click="goHot()">协议供货</a>-->
+				<a href="">协议供货</a>
+			</li>
+			<li class="nav-items">
+				<a href="#/article/10">入围查询</a>
+			</li>
+			<li class="nav-items">
+				<a href="#">定点采购</a>
+			</li>
+			<li class="nav-items">
+				<a href="#">反馈意见</a>
+			</li>
+		</ul>
+		<!--可视区内容在module的shop的default-->
+		<div ng-view class="{{skinClassName}}"></div>
+	</div>
+	<!--footer-->
+	<div class="copyright">
+		<div>技术支持:山东迅特信息技术有限公司 &nbsp;&nbsp;QQ群:416228521 &nbsp;&nbsp;咨询电话:0531-82392361</div>
+		<div class="">Copyright © 2017 山东省公安消防总队</div>
+		<div class="">主办：山东省公安消防总队 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ICP备案编号：鲁 ICP 备</div>
+	</div>
+    <!--右侧边栏-->
+    <div id="login_sea" ng-cloak>
+        <span class="car login_left" ng-show="isShopUser" ng-click="goCart()" style="text-decoration: none;cursor: pointer;">
+			<img style="width:45%;height:45%;margin-right: -5px;" src="./images/car.png">
+			<i style="font-size: 12px;width: 18px;background: red; border-radius: 50%;padding: 2px;line-height: .8;vertical-align: top;text-decoration: none;">{{goodsNumber}}</i>
+		</span>
+        <a class="login_log login_left" href="" style="text-decoration: none" ng-click="user[0].click()">
+            <i class="glyphicon glyphicon-user" style="color: #fff;font-size: 18px;"></i>
+        </a>
+        <div class="title login_left" style=";border:0;">
+            <div ng-mouseenter="noShow=true" ng-mouseleave="noShow=false" class="left_btn">
+				<i class="glyphicon glyphicon-indent-right" style="color: #fff;font-size: 18px;"></i>
+			</div>
+            <div class="gh_name" ng-show="noShow" ng-cloak style="width:260px;height:42px;border-radius: 4px;"><span>欢迎来到{{navText}}</span></div>
+        </div>
+    </div>
+	<!--[if lt IE 9]>
+  <script src="libs/html5shiv.min.js"></script>
+  <script src="libs/respond.min.js"></script>
+  <script src="libs/es5-sham.min.js"></script>
+  <script src="libs/es5-shim.min.js"></script>
+<![endif]-->
+	<script data-baseurl="./" data-main="main.js" src="libs/require.min.js" id="main"></script>
+</body>
+
+</html>
