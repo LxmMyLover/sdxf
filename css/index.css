@@ -113,6 +113,7 @@
   height:90px;
   float: left;
   margin:20px 90px;
+  cursor: pointer;
   /*background:url(../images/title-logo.png) no-repeat center bottom;*/
   /*background-size: 80% 80%;*/
 }
