@@ -169,7 +169,7 @@
   /*left: 550px;*/
   float: right;
   margin-right:15px;
-  height: 42px;
+  height: 40px;
   width: 552px;
   background: #f10215;
   border: 1px solid #f10215;
@@ -190,7 +190,7 @@
 .index-content .modal-con .title-search input {
   font-size: 16px;
   line-height: 40px;
-  height: 40px;
+  height: 38px;
   /*background: #e5e1e1;*/
   padding: 0 0 0 25px;
   width: 100%;
@@ -207,7 +207,7 @@
 .index-content .modal-con .title-search .search-goods {
   position: relative;
   float: right;
-  height: 42px;
+  height: 38px;
   width: 120px;
   font-size: 22px;
   /*border-left: 1px solid #000;*/
