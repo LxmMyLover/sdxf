@@ -63,7 +63,7 @@
         </div>
         <div class="content-left-text">
             <ul>
-                <li class="content-left-text-items" ng-repeat="notice in news_list track by $index" ng-click="goArticle(notice.articleId)" ng-show="$index>0&&$index<8">
+                <li class="content-left-text-items" ng-repeat="notice in news_list track by $index"  ng-click="goArticle(notice.articleId)" ng-show="$index>=0&&$index<5">
 
                     <a href=""><i>·</i> {{notice.title}}</a>
                 </li>

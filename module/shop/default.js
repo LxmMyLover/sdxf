@@ -2,7 +2,7 @@ define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
 
   //angular会自动根据controller函数的参数名，导入相应的服务
   return {
-    controller: ['$scope','$rootScope', '$routeParams', '$http', '$location','$anchorScroll', function($scope, $rootScope, $routeParams, $http, $location, $anchorScroll) {
+    controller: ['$scope','$rootScope', '$routeParams', '$http', '$location','$anchorScroll','$filter', function($scope, $rootScope, $routeParams, $http, $location, $anchorScroll, $filter) {
       $scope.$parent.isShopUser = true;
       $scope.$parent.setTitle();
 
