@@ -66,14 +66,14 @@
 					<!--<a ng-href="#/goods/{{item.goodsId}}" title="{{item.goodsName}}">-->
 						<img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">
 						<div class="page-product-content">
-							<p>产品名称 : {{item.goodsName}}</p>
+							<p style="font-size: 18px;font-weight: 900">产品名称 : {{item.goodsName}}</p>
 							<p>品牌 : {{item.brandName}}</p>
 							<p>产地 : {{item.originPlace}}</p>
 							<p>供货商 : {{item.producer}}</p>
 							<p>
 								价格 :
 								<span class="symbol" style="color:red;">¥</span>
-								<span class="price" style="color:red;font-size: 36px;" ng-bind="item.shopPrice|number:2">0.00</span>
+								<span class="price" style="color:red;font-size: 32px;" ng-bind="item.shopPrice|number:2">0.00</span>
 								<a ng-href="#/goods/{{item.goodsId}}" title="{{item.goodsName}}">查看</a>
 							</p>
 						</div>
