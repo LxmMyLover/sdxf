@@ -437,9 +437,7 @@
 
       };
 
-
     }]);
-
     angular.bootstrap(document, ['webapp']);
   });
 
