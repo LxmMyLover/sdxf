@@ -3,9 +3,9 @@
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<div class="">
-	<div class="left-nav" ng-include="'tpls/sidebar-menu.html'">
-	</div>
+<!--<div class="">-->
+	<!--&lt;!&ndash;<div class="left-nav" ng-include="'tpls/sidebar-menu.html'">&ndash;&gt;-->
+	<!--</div>-->
 	<div class="page-content">
 		<!-- 顶部菜单导航 -->
 		<ol class="page-breadcrumb list-inline hidden-xs">
@@ -13,36 +13,36 @@
 			<li ng-repeat="item in breadcrumb"><a ng-href="#/category/{{item.catId}}">{{item.catName}}</a><i class="icon-angle-right"></i></li>
 		</ol>
 
-		<div class="page-filter" ng-style="filterX">
-			<div class="form-filter-top form-filter-border container-fluid visible-xs">
-				<a class="navbar-brand positive" href="" ng-click="close()"><span class="glyphicon glyphicon-menu-left"></span></a>
-				<p class="navbar-text text-center visible-xs">筛选</p>
-			</div>
+		<!--<div class="page-filter" ng-style="filterX">-->
+			<!--<div class="form-filter-top form-filter-border container-fluid visible-xs">-->
+				<!--<a class="navbar-brand positive" href="" ng-click="close()"><span class="glyphicon glyphicon-menu-left"></span></a>-->
+				<!--<p class="navbar-text text-center visible-xs">筛选</p>-->
+			<!--</div>-->
 
-			<div class="form-body">
-				<!--<div class="form-group">-->
-					<!--<label class="control-label">品牌</label>-->
+			<!--<div class="form-body">-->
+				<!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+					<!--&lt;!&ndash;<label class="control-label">品牌</label>&ndash;&gt;-->
+					<!--&lt;!&ndash;<div class="control-input" data-toggle="buttons">&ndash;&gt;-->
+						<!--&lt;!&ndash;<label class="btn btn-default hidden-xs active" ng-class="{'active':params.brandId==default_brandId}" ng-model="default_brandId" ng-click="conform('brand',default_brandId)" uib-btn-radio="0">全部</label>&ndash;&gt;-->
+						<!--&lt;!&ndash;<label class="btn btn-default" ng-class="{'active':params.brandId==item.brandId}" ng-repeat="item in brand" ng-model="item.brandId" ng-click="conform('brand',item.brandId)" uib-btn-radio="{{item.brandId}}">{{item.brandName}}</label>&ndash;&gt;-->
+					<!--&lt;!&ndash;</div>&ndash;&gt;-->
+				<!--&lt;!&ndash;</div>&ndash;&gt;-->
+				<!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+					<!--&lt;!&ndash;<label class="control-label">价格</label>&ndash;&gt;-->
+					<!--&lt;!&ndash;<div class="control-input" data-toggle="buttons">&ndash;&gt;-->
+						<!--&lt;!&ndash;<label class="btn btn-default hidden-xs active" ng-class="{'active':params.min==0&&params.max==0}" ng-model="grade[0]" ng-click="conform()" uib-btn-radio="{min:0,max:0}">全部</label>&ndash;&gt;-->
+						<!--&lt;!&ndash;<label class="btn btn-default" ng-class="{'active':params.min==item.min&&params.max==item.max}" ng-repeat="item in price" ng-model="grade[0]" ng-click="conform('price',item)" uib-btn-radio="item">{{item.min}}-{{item.max}}元</label>&ndash;&gt;-->
+					<!--&lt;!&ndash;</div>&ndash;&gt;-->
+				<!--&lt;!&ndash;</div>&ndash;&gt;-->
+				<!--<div class="form-group" ng-repeat="item in attribute" ng-init="outerIndex=$index;">-->
+					<!--<label class="control-label">{{item.attrName}}</label>-->
 					<!--<div class="control-input" data-toggle="buttons">-->
-						<!--<label class="btn btn-default hidden-xs active" ng-class="{'active':params.brandId==default_brandId}" ng-model="default_brandId" ng-click="conform('brand',default_brandId)" uib-btn-radio="0">全部</label>-->
-						<!--<label class="btn btn-default" ng-class="{'active':params.brandId==item.brandId}" ng-repeat="item in brand" ng-model="item.brandId" ng-click="conform('brand',item.brandId)" uib-btn-radio="{{item.brandId}}">{{item.brandName}}</label>-->
+						<!--<label class="btn btn-default hidden-xs active" ng-class="{'active':!params.aids[outerIndex]}" ng-model="params.aids[outerIndex]" ng-click="conform()" uib-btn-radio="0">全部</label>-->
+						<!--<label class="btn btn-default" ng-class="{'active':params.aids[outerIndex]==item2.goodsAttrId}" ng-repeat="item2 in item.goodsAttr" ng-model="params.aids[outerIndex]" ng-click="conform()" uib-btn-radio="{{item2.goodsAttrId}}">{{item2.attrValue}}</label>-->
 					<!--</div>-->
 				<!--</div>-->
-				<!--<div class="form-group">-->
-					<!--<label class="control-label">价格</label>-->
-					<!--<div class="control-input" data-toggle="buttons">-->
-						<!--<label class="btn btn-default hidden-xs active" ng-class="{'active':params.min==0&&params.max==0}" ng-model="grade[0]" ng-click="conform()" uib-btn-radio="{min:0,max:0}">全部</label>-->
-						<!--<label class="btn btn-default" ng-class="{'active':params.min==item.min&&params.max==item.max}" ng-repeat="item in price" ng-model="grade[0]" ng-click="conform('price',item)" uib-btn-radio="item">{{item.min}}-{{item.max}}元</label>-->
-					<!--</div>-->
-				<!--</div>-->
-				<div class="form-group" ng-repeat="item in attribute" ng-init="outerIndex=$index;">
-					<label class="control-label">{{item.attrName}}</label>
-					<div class="control-input" data-toggle="buttons">
-						<label class="btn btn-default hidden-xs active" ng-class="{'active':!params.aids[outerIndex]}" ng-model="params.aids[outerIndex]" ng-click="conform()" uib-btn-radio="0">全部</label>
-						<label class="btn btn-default" ng-class="{'active':params.aids[outerIndex]==item2.goodsAttrId}" ng-repeat="item2 in item.goodsAttr" ng-model="params.aids[outerIndex]" ng-click="conform()" uib-btn-radio="{{item2.goodsAttrId}}">{{item2.attrValue}}</label>
-					</div>
-				</div>
-			</div>
-		</div>
+			<!--</div>-->
+		<!--</div>-->
 
 
 		<!-- <div class="page-product page-product-top navbar navbar-default">
@@ -61,18 +61,32 @@
 			</div> -->
 
 		<div class="page-product page-product-list row">
-			<div class="col-xs-6 col-sm-4" ng-repeat="item in product">
+			<div class="col-xs-12 col-sm-12" ng-repeat="item in product">
 				<div class="thumbnail">
-					<a ng-href="#/goods/{{item.goodsId}}" title="{{item.goodsName}}">
-							<img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">
-							<div class="caption">
-								<h3>{{item.goodsName}}</h3>
-								<p>
-									<span class="symbol">¥</span>
-									<span class="price" ng-bind="item.shopPrice|number:2">0.00</span>
-								</p>
-							</div>
-						</a>
+					<!--<a ng-href="#/goods/{{item.goodsId}}" title="{{item.goodsName}}">-->
+						<img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">
+						<div class="page-product-content">
+							<p>产品名称 : {{item.goodsName}}</p>
+							<p>品牌 : {{item.brandName}}</p>
+							<p>产地 : {{item.originPlace}}</p>
+							<p>供货商 : {{item.producer}}</p>
+							<p>
+								价格 :
+								<span class="symbol" style="color:red;">¥</span>
+								<span class="price" style="color:red;font-size: 36px;" ng-bind="item.shopPrice|number:2">0.00</span>
+								<a ng-href="#/goods/{{item.goodsId}}" title="{{item.goodsName}}">查看</a>
+							</p>
+						</div>
+							<!--<img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">-->
+							<!--<div class="caption">-->
+								<!--<h3>{{item.goodsName}}</h3>-->
+								<!--<p>-->
+									<!--<span class="symbol">¥</span>-->
+									<!--<span class="price" ng-bind="item.shopPrice|number:2">0.00</span>-->
+								<!--</p>-->
+							<!--</div>-->
+						<div class="clearfix"></div>
+						<!--</a>-->
 				</div>
 			</div>
 		</div>
