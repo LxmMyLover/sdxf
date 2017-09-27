@@ -271,7 +271,7 @@
 
         //设置导航条文字
         angular.forEach(navText, function(value, key) {
-          if (value[path] != undefined) {
+          if (value[path] != undskinClassNameefined) {
             module = key;
             $rootScope.navText = value[path];
           }

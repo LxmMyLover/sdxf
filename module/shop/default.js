@@ -50,6 +50,7 @@ define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
         }
 
         $scope.menu = convert(response.all || []);
+        $rootScope.menus = $scope.menu
         // 商品分类 图片等
         $scope.hotGoods = [];
         var send = function(obj) {
@@ -65,7 +66,6 @@ define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
                 }
                 obj++;
                 send(obj);
-
                 $scope.goCatName = function(){
                     $location.hash($scope.menu[obj].catName);
                     $anchorScroll();
@@ -74,8 +74,8 @@ define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
               });
           }
         }
-        console.log($scope.hotGoods)
         send(0);
+
       });
 
       // 搜索框搜索功能移至
@@ -122,13 +122,9 @@ define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
       //   content: ""
       // }]
 
-      //  商品展示标题部分背景色
+      //  协议供货菜单背景色
       //   sklssb===谁看了谁傻逼 (张建武 武哥指示)
-        $scope.sklssb = ["#4488a6","#ca3559","#734d8b","#518a79"]
-        //商品展示标题部分 按钮背景颜色
-        // $scope.sklssbBtn = ["#659eb2"," #cf5b72","#8c6da0","#6b9a8b"]
-        // hot-great-classify的图片路径
-        $scope.ZDiao = ["/images/101.jpg","/images/102.jpg"]
+        $scope.sklssb = ["#00a0e9","#22ac38","#f39800"]
 
 
       $scope.goArticleList = function() {

@@ -109,5 +109,72 @@
     </div>
 
     <!--导航菜单-->
-
+    <!--<div class="category-item-list" ng-include="'tpls/sidebar-menu.html'"></div>-->
+    <style>
+        .category-item-list{
+            margin-top:25px;
+        }
+        .category-item-list .box{
+            width:100%;
+            min-height:200px;
+            background:#d3e1ec;
+        }
+        .category-item-list .box .category-item-list-name{
+            width:200px;
+            height:100%;
+            float: left;
+        }
+        .category-item-list .box .category-item-list-name span{
+            display: block;
+            width:100%;
+            height:200px;
+            line-height: 200px;
+            font-size: 28px;
+            color:#000;
+            text-align: center;
+        }
+        .category-item-list .box .category-item-list-name span i{
+            font-size: 32px;
+            margin-right:5px;
+            color:#1999db;
+        }
+        .category-item-list .box ul{
+            width:935px;
+            height:190px;
+            margin-top:5px;
+            float: left;
+            background:#fff;
+            list-style: none;
+            overflow: hidden;
+        }
+        .category-item-list .box ul li{
+            width:300px;
+            height:50px;
+            float: left;
+            margin:7px 5px;
+            background:#ccc;
+        }
+        .category-item-list .box ul li a{
+            display: block;
+            width:100%;
+            height:100%;
+            text-align: center;
+            line-height: 50px;
+            color:#fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    </style>
+    <div class="category-item-list">
+        <div id="xygh" class="box">
+            <div class="category-item-list-name">
+                <span><i class="glyphicon glyphicon-th-list"></i>协议供货</span>
+            </div>
+            <ul>
+                <li ng-repeat="item in menu track by $index" ng-style="{background:sklssb[$index%3]}" ng-class="{'active':breadcrumblist.indexOf(item.catId)>=0,'on':item.catId==entity.catId}">
+                    <a href="#/menuList/{{item.catId}}">{{item.catName}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
