@@ -1,0 +1,45 @@
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<style>
+    .box{
+        width:100%;
+        min-height:150px;
+    }
+    .box .box-title{
+        width:100%;
+        height:40px;
+        background:#b4ebf6;
+        font-size: 18px;
+        line-height: 40px;
+    }
+    .box .box-title i{
+        margin:0 10px;
+        color:#b51c1c;
+    }
+</style>
+<div class="box" ng-repeat="item in menu" ng-show="item.catId == url">
+    <div class="box-title"><i class="glyphicon glyphicon-align-justify"></i>{{item.catName}}</div>
+    <div class=""></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
