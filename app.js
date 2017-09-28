@@ -82,7 +82,10 @@ define(['angular', 'require', 'ZeroClipboard', 'angular-route', 'angular-animate
         path: 'module/shop/register.js',
         controller: 'RegisterCtrl'
       },
-
+      '/menuList/:id': {
+          path: 'module/shop/menuList.js',
+          controller: 'MenuListCtrl'
+      },
       /***************** 用户中心 ***************************************/
 
       '/member': {

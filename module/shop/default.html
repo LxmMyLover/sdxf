@@ -50,6 +50,7 @@
             color:#000;
         }
     </style>
+    <!--左侧： 登录 二维码 公告列表-->
     <div class="content-left">
         <div class="content-login-box">
             <img src="../images/title-logo.png" style="width:91%;padding:5px 40px;" alt="">
@@ -63,47 +64,13 @@
         </div>
         <div class="content-left-text">
             <ul>
-                <li class="content-left-text-items" ng-repeat="notice in news_list track by $index" ng-click="goArticle(notice.articleId)" ng-show="$index>0&&$index<8">
-
+                <li class="content-left-text-items" ng-repeat="notice in news_list track by $index"  ng-click="goArticle(notice.articleId)" ng-show="$index>=0&&$index<5">
                     <a href=""><i>·</i> {{notice.title}}</a>
                 </li>
-                <!--<li class="content-left-text-items">-->
-
-                <!--<a href=""><i>·</i> 中单 老白</a>-->
-                <!--</li>-->
-                <!--<li class="content-left-text-items">-->
-
-                <!--<a href=""><i>·</i> 打野 张几把武</a>-->
-                <!--</li>-->
-                <!--<li class="content-left-text-items">-->
-
-                <!--<a href=""><i>·</i> AD 马兆波</a>-->
-                <!--</li>-->
-                <!--<li class="content-left-text-items">-->
-                <!--<a href=""><i>·</i> 辅助 牛得意</a>-->
-                <!--</li>-->
             </ul>
         </div>
     </div>
-    <!--三级菜单-->
-    <!--<div class="content-left">-->
-    <!--<div class="goods-category">-->
-    <!--<div class="category-title">商品分类</div>-->
-
-    <!--&lt;!&ndash; <div class="category-item-list">-->
-    <!--<div class="category-item" ng-repeat="item in category_list" ng-click="goCategory($event,item.catId)">-->
-    <!--{{item.catName}}-->
-    <!--</div>-->
-    <!--</div> &ndash;&gt;-->
-    <!--&lt;!&ndash;菜单栏在tpls/sidebar-menu.html里面&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="category-item-list" ng-include="'tpls/sidebar-menu.html'"></div>&ndash;&gt;-->
-    <!--</div>-->
-    <!--&lt;!&ndash;&lt;!&ndash; 联系我们 &ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="contactus" style="background: url(./images/contracts.png) no-repeat;">&ndash;&gt;-->
-
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--</div>-->
-    <!--轮播 导航 公告-->
+    <!--轮播  公告-->
     <div class="content-right">
         <!-- 消防图片 轮播 -->
         <div class="main-image">
@@ -126,106 +93,10 @@
             </div>
         </div>
     </div>
+    <!--清除浮动-->
     <div class="clearfix"></div>
 
-    <!--<style>-->
-    <!--#protocol{-->
-    <!--width:100%;-->
-    <!--border:1px solid #ff0;-->
-    <!--float: left;-->
-    <!--}-->
-    <!--#protocol .con{-->
-    <!--height:500px;-->
-    <!--}-->
-    <!--</style>-->
-    <!--<div id="protocol">-->
-    <!--<div class="con">1111111</div>-->
-    <!--</div>-->
-    <!--<div class="main-left">-->
-    <!--&lt;!&ndash; <div class="main-menu">-->
-    <!--<div class="menu-item">首&nbsp;页</div>-->
-    <!--<div class="menu-item">消防采购</div>-->
-    <!--<div class="menu-item">售&nbsp;后</div>-->
-    <!--<div class="menu-item" ng-click="goSupplier()">供应商入口</div>-->
-    <!--</div> &ndash;&gt;-->
 
-    <!--&lt;!&ndash; 新闻动态 &ndash;&gt;-->
-    <!--<div class="main-news">-->
-    <!--<div class="news-title" ng-click="goArticleList()">公告列表-->
-    <!--<h4 class="icon-sort-down" style="float:right;padding-right:10px;"></h4> </div>-->
-    <!--<div class="news-content">-->
-    <!--<div class="notice-item" ng-repeat="notice in news_list track by $index" ng-click="goArticle(notice.articleId)" ng-show="$index>0&&$index<8">-->
-    <!--{{notice.title}}-->
-    <!--</div>-->
-    <!--&lt;!&ndash; <div class="news-item" style="background: url(./images/news1.png) no-repeat;"></div>-->
-    <!--<div class="news-item" style="background: url(./images/news2.png) no-repeat;"></div> &ndash;&gt;-->
-    <!--</div>-->
-    <!--</div>-->
-
-    <!--</div>-->
-    <!--&lt;!&ndash; 公告 &ndash;&gt;-->
-    <!--<div class="main-right">-->
-
-    <!--</div>-->
-
-    <!--&lt;!&ndash; 消防图片 &ndash;&gt;-->
-    <!--<div class="content-bottom">-->
-    <!--</div>-->
-    <!--</div>-->
-
-
-    <!--banner一下 内容区-->
-    <!--<style media="screen">-->
-    <!--.hot-goods-item1 img,-->
-    <!--.hot-goods-item2 img,-->
-    <!--.hot-goods-item4 img {-->
-    <!--cursor: pointer;-->
-    <!--position: relative;-->
-    <!--width: 100%;-->
-    <!--top: 50%;-->
-    <!--transform: translate3d(0, -50%, 0);-->
-    <!--}-->
-
-
-    <!--.hot-goods-item3 img,-->
-    <!--.hot-goods-item5 img,-->
-    <!--.hot-goods-item6 img {-->
-    <!--cursor: pointer;-->
-    <!--margin: auto;-->
-    <!--height: 100%;-->
-    <!--}-->
-
-    <!--.hot-goods-right span.nothing {-->
-    <!--position: relative;-->
-    <!--width: 100%;-->
-    <!--top: 45%;-->
-    <!--line-height: 20px;-->
-    <!--color: #ccc;-->
-    <!--}-->
-
-    <!--.hot-goods-category .goods-name {-->
-    <!--position: absolute;-->
-    <!--text-shadow: 0 1px #fff, 1px 0 #fff, -1px 0 #fff, 0 -1px #fff;-->
-    <!--}-->
-
-    <!--.hot-goods-item1 .goods-name {-->
-    <!--width: 180px;-->
-    <!--text-align: center;-->
-    <!--margin-top: 180px;-->
-    <!--font-size: 20px;-->
-    <!--}-->
-
-    <!--.hot-goods-item2 .goods-name,-->
-    <!--.hot-goods-item3 .goods-name,-->
-    <!--.hot-goods-item4 .goods-name,-->
-    <!--.hot-goods-item5 .goods-name,-->
-    <!--.hot-goods-item6 .goods-name {-->
-    <!--font-size: 18px;-->
-    <!--margin-top: 10px;-->
-    <!--margin-left: 20px;-->
-    <!--z-index: 9;-->
-    <!--}-->
-    <!--</style>-->
     <!--搜索框-->
     <div class="modal-con">
         <div class="GG"></div>
@@ -235,327 +106,75 @@
             </div>
             <div class="search-goods" ng-click="search()">搜索</div>
         </div>
-        <!--<span ng-show="isShopUser" ng-click="goCart()"><img style="width:50%;height:50%;" src="./images/car.png"> ( {{goodsNumber}} ) </span>-->
     </div>
 
-    <!--<style>-->
-    <!--.hot-great {-->
-    <!--width: 100%;-->
-    <!--margin-bottom: 10px;-->
-    <!--}-->
-    <!--.hot-great-box {-->
-    <!--float: left;-->
-    <!--width: 560px;-->
-    <!--margin:0 5px;-->
-    <!--margin-top:10px;-->
-    <!--}-->
-    <!--/*上面横条*/-->
-    <!--.hot-great-title {-->
-    <!--width: 100%;-->
-    <!--height: 58px;-->
-    <!--padding: 16px 25px 16px;-->
-    <!--/*background: #8a6d3b;*/-->
-    <!--color: #fff;-->
-    <!--}-->
-    <!--.hot-great-title span {-->
-    <!--font-size: 20px;-->
-    <!--font-weight: bold;-->
-    <!--}-->
-    <!--.hot-great-title-btn {-->
-    <!--float: right;-->
-    <!--}-->
-    <!--.hot-great-title-btn a {-->
-    <!--display: inline-block;-->
-    <!--text-decoration: none;-->
-    <!--color: #fff;-->
-    <!--padding: 0 6px;-->
-    <!--margin-left: 10px;-->
-    <!--line-height: 22px;-->
-    <!--border: 1px solid #aaa;-->
-    <!--/*background: #9d9d9d;*/-->
-    <!--}-->
-    <!--.hot-great-title-btn a:hover {-->
-    <!--border: 1px solid #fff;-->
-    <!--}-->
-    <!--/*上部分*/-->
-    <!--.hot-great-top {-->
-    <!--width: 100%;-->
-    <!--height: 216px;-->
-    <!--}-->
-    <!--/*大图*/-->
-    <!--.hot-great-classify {-->
-    <!--width: 183px;-->
-    <!--height: 260px;-->
-    <!--float: left;-->
-    <!--margin-right: 10px;-->
-    <!--overflow: hidden;-->
-    <!--}-->
-    <!--.hot-great-classify a {-->
-    <!--display: inline-block;-->
-    <!--width: 174px;-->
-    <!--height: 260px;-->
-    <!-- -webkit-transition: all .2s;-->
-    <!-- -moz-transition: all .2s;-->
-    <!-- -ms-transition: all .2s;-->
-    <!-- -o-transition: all .2s;-->
-    <!--transition: all .2s;-->
-    <!--}-->
-    <!--.hot-great-classify a:hover {-->
-    <!--margin-left: -10px;-->
-    <!--}-->
-    <!--/*大图右边四个小图*/-->
-    <!--.hot-great-four {-->
-    <!--float: left;-->
-    <!--width: 366px;-->
-    <!--height: 260px;-->
-    <!--position: relative;-->
-    <!--}-->
-    <!--/*分割线*/-->
-    <!--.hot-great-four-h {-->
-    <!--position: absolute;-->
-    <!--top:0;-->
-    <!--left:183px;-->
-    <!--width: 1px;-->
-    <!--height: 100%;-->
-    <!--background: #e6e6e6;-->
-    <!--}-->
-    <!--.hot-great-four-v {-->
-    <!--position: absolute;-->
-    <!--top: 130px;-->
-    <!--left: 0;-->
-    <!--width: 100%;-->
-    <!--height: 1px;-->
-    <!--background: #e6e6e6;-->
-    <!--}-->
-    <!--.hot-great-four a {-->
-    <!--position: relative;-->
-    <!--width: 183px;-->
-    <!--height: 130px;-->
-    <!--float: left;-->
-    <!--}-->
-    <!--/*右边小图*/-->
-    <!--.hot-great-four-title {-->
-    <!--position: absolute;-->
-    <!--top: 35px;-->
-    <!--left: 10px;-->
-    <!--font-weight: bold;-->
-    <!--width:60px;-->
-    <!--height:60px;-->
-    <!--display: -webkit-box;-->
-    <!-- -webkit-box-orient: vertical;-->
-    <!-- -webkit-line-clamp: 3;-->
-    <!--overflow: hidden;-->
-
-    <!--/*color: #00a2d4;*/-->
-    <!--}-->
-    <!--.hot-great-four-text {-->
-    <!--position: absolute;-->
-    <!--top: 40px;-->
-    <!--left: 10px;-->
-    <!--}-->
-    <!--.hot-great-four img {-->
-    <!--position: absolute;-->
-    <!--top: 10px;-->
-    <!--right: 10px;-->
-    <!--width: 100px;-->
-    <!--height: 100px;-->
-    <!-- -webkit-transition: all .2s;-->
-    <!-- -moz-transition: all .2s;-->
-    <!-- -ms-transition: all .2s;-->
-    <!-- -o-transition: all .2s;-->
-    <!--transition: all .2s;-->
-    <!--}-->
-    <!--.hot-great-four img:hover {-->
-    <!--right: 20px;-->
-    <!--}-->
-    <!--/*下面三个小图*/-->
-    <!--.hot-great-three a {-->
-    <!--display: inline-block;-->
-    <!--float: left;-->
-    <!--width: 176px;-->
-    <!--height: 130px;-->
-    <!--margin-right: 10px;-->
-    <!--overflow: hidden;-->
-    <!--position: relative;-->
-    <!--}-->
-    <!--.hot-great-three-title {-->
-    <!--position: absolute;-->
-    <!--top: 35px;-->
-    <!--left: 10px;-->
-    <!--font-weight: bold;-->
-    <!--width:60px;-->
-    <!--height:60px;-->
-    <!--display: -webkit-box;-->
-    <!-- -webkit-box-orient: vertical;-->
-    <!-- -webkit-line-clamp: 3;-->
-    <!--overflow: hidden;-->
-    <!--}-->
-    <!--.hot-great-three img {-->
-    <!--position: absolute;-->
-    <!--top: 10px;-->
-    <!--right: 10px;-->
-    <!--width: 100px;-->
-    <!--height: 100px;-->
-    <!-- -webkit-transition: all .2s;-->
-    <!-- -moz-transition: all .2s;-->
-    <!-- -ms-transition: all .2s;-->
-    <!-- -o-transition: all .2s;-->
-    <!--transition: all .2s;-->
-    <!--}-->
-    <!--.hot-great-three a:hover img{-->
-    <!--margin-left: -10px;-->
-    <!--}-->
-    <!--</style>-->
-
-    <!--<div class="hot-great" id="hot">-->
-    <!--<div class="hot-great-box" ng-repeat="item in hotGoods">-->
-    <!--<div class="hot-great-title" ng-style="{background:sklssb[$index%4]}">-->
-    <!--<span>{{item.catName}}</span>-->
-    <!--&lt;!&ndash;<div class="hot-great-title-btn">&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--</div>-->
-    <!--<div class="hot-great-top">-->
-    <!--<div class="hot-great-classify">-->
-    <!--<a href="#/category/{{item.catId}}" ng-style="{color:sklssb[$index%4]}"><img ng-src="{{ZDiao[$index%2]}}" alt="分类"></a>-->
-    <!--</div>-->
-    <!--<div class="hot-great-four">-->
-    <!--<span class="hot-great-four-v"></span>-->
-    <!--<span class="hot-great-four-h"></span>-->
-    <!--<a href="" ng-click="viewGoods(item.list[0].goodsId)" ng-style="{color:sklssb[$index%4]}">-->
-    <!--<p class="hot-great-four-title">{{item.list[0].goodsName}}</p>-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--<img src="{{item.list[0].goodsThumb}}" alt="{{item.list[0].goodsName}}">-->
-    <!--</a>-->
-    <!--<a href="" ng-click="viewGoods(item.list[1].goodsId)" ng-style="{color:sklssb[$index%4]}">-->
-    <!--<p class="hot-great-four-title">{{item.list[1].goodsName}}</p>-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--<img src="{{item.list[1].goodsThumb}}" alt="{{item.list[1].goodsName}}">-->
-    <!--</a>-->
-    <!--<a href="" ng-click="viewGoods(item.list[2].goodsId)" ng-style="{color:sklssb[$index%4]}">-->
-    <!--<p class="hot-great-four-title">{{item.list[2].goodsName}}</p>-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--<img src="{{item.list[2].goodsThumb}}" alt="{{item.list[2].goodsName}}">-->
-    <!--</a>-->
-    <!--<a href="" ng-click="viewGoods(item.list[3].goodsId)" ng-style="{color:sklssb[$index%4]}">-->
-    <!--<p class="hot-great-four-title">{{item.list[3].goodsName}}</p>-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--<img src="{{item.list[3].goodsThumb}}" alt="{{item.list[3].goodsName}}">-->
-    <!--</a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="hot-great-three clearfix">-->
-    <!--<a href="" ng-click="viewGoods(item.list[4].goodsId)" ng-style="{color:sklssb[$index%4]}">-->
-    <!--<p class="hot-great-three-title">{{item.list[4].goodsName}}</p>-->
-    <!--<img src="{{item.list[4].goodsThumb}}" alt="{{item.list[4].goodsName}}">-->
-    <!--</a>-->
-    <!--<a href="" ng-click="viewGoods(item.list[5].goodsId)" ng-style="{color:sklssb[$index%4]}">-->
-    <!--<p class="hot-great-three-title">{{item.list[5].goodsName}}</p>-->
-    <!--<img src="{{item.list[5].goodsThumb}}" alt="{{item.list[5].goodsName}}">-->
-    <!--</a>-->
-    <!--<a href="" ng-click="viewGoods(item.list[6].goodsId)" ng-style="{color:sklssb[$index%4]}">-->
-    <!--<p class="hot-great-three-title">{{item.list[5].goodsName}}</p>-->
-    <!--<img src="{{item.list[6].goodsThumb}}" alt="{{item.list[6].goodsName}}">-->
-    <!--</a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;<div class="hot-great-box">&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="hot-great-title">&ndash;&gt;-->
-    <!--&lt;!&ndash;<span>家电馆</span>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="hot-great-title-btn">&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">双十一</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="hot-great-top">&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="hot-great-classify">&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href=""><img src="" alt="分类"></a>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="hot-great-four">&ndash;&gt;-->
-    <!--&lt;!&ndash;<span class="hot-great-four-v"></span>&ndash;&gt;-->
-    <!--&lt;!&ndash;<span class="hot-great-four-h"></span>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-title">111</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<img src="" alt="分类">&ndash;&gt;-->
-    <!--&lt;!&ndash;</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-title">111</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<img src="" alt="分类">&ndash;&gt;-->
-    <!--&lt;!&ndash;</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-title">111</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<img src="" alt="分类">&ndash;&gt;-->
-    <!--&lt;!&ndash;</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="">&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-title">111</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p class="hot-great-four-text">2222</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<img src="" alt="分类">&ndash;&gt;-->
-    <!--&lt;!&ndash;</a>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<div class="hot-great-three clearfix">&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href=""><img src="" alt="分类"></a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href=""><img src="" alt="分类"></a>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href=""><img src="" alt="分类"></a>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--<div class="clearfix"></div>-->
-    <!--</div>-->
-
-    <!--<div class="hot-goods">-->
-    <!--<div class="hot-goods-category" ng-repeat="item in hotGoods">-->
-    <!--<div id={{item.catName}} class="hot-goods-category-name">-->
-    <!--<div class="category-name">{{item.catName}}</div>-->
-    <!--</div>-->
-    <!--<div class="hot-goods-left">-->
-    <!--<div class="hot-goods-item1" title="{{item.list[0].goodsName}}" ng-click="viewGoods(item.list[0].goodsId)">-->
-    <!--<img src="{{item.list[0].goodsThumb}}" alt="{{item.list[0].goodsName}}">-->
-    <!--<div class="goods-name">{{item.list[0].goodsName}}</div>-->
-    <!--</div>-->
-    <!--<div class="hot-goods-item2" title="{{item.list[1].goodsName}}" ng-click="viewGoods(item.list[1].goodsId)">-->
-    <!--<div class="goods-name">{{item.list[1].goodsName}}</div>-->
-    <!--<img src="{{item.list[1].goodsThumb}}" alt="{{item.list[1].goo dsName}}">-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="hot-goods-right">-->
-    <!--<div style="border:1px solid #ccc;">-->
-    <!--<div class="hot-goods-item3" title="{{item.list[2].goodsName}}" {{item.list[1].goodsThumb}}>-->
-    <!--<div class="goods-name">{{item.list[2].goodsName}}</div>-->
-    <!--<img src="{{item.list[2].goodsThumb}}" ng-show="item.list.length>2" alt="{{item.list[2].goodsName}}">-->
-    <!--<span class="nothing" ng-show="item.list.length<=2">暂无商品</span>-->
-    <!--</div>-->
-    <!--<div class="hot-goods-item4" title="{{item.list[3].goodsName}}" ng-click="viewGoods(item.list[3].goodsId)">-->
-    <!--<div class="goods-name">{{item.list[3].goodsName}}</div>-->
-    <!--<img src="{{item.list[3].goodsThumb}}" ng-show="item.list.length>3" alt="{{item.list[3].goodsName}}">-->
-    <!--<span class="nothing" ng-show="item.list.length<=3">暂无商品</span>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div style="border:1px solid #ccc;border-top: none;">-->
-    <!--<div class="hot-goods-item5" title="{{item.list[4].goodsName}}" ng-click="viewGoods(item.list[4].goodsId)" style="border-left:none;">-->
-    <!--<div class="goods-name">{{item.list[4].goodsName}}</div>-->
-    <!--<img src="{{item.list[4].goodsThumb}}" ng-show="item.list.length>4" alt="{{item.list[4].goodsName}}">-->
-    <!--<span class="nothing" ng-show="item.list.length<=4">暂无商品</span>-->
-    <!--</div>-->
-    <!--<div class="hot-goods-item5" title="{{item.list[5].goodsName}}" ng-click="viewGoods(item.list[5].goodsId)">-->
-    <!--<div class="goods-name">{{item.list[5].goodsName}}</div>-->
-    <!--<img src="{{item.list[5].goodsThumb}}" ng-show="item.list.length>5" alt="{{item.list[5].goodsName}}">-->
-    <!--<span class="nothing" ng-show="item.list.length<=5">暂无商品</span>-->
-    <!--</div>-->
-    <!--<div class="hot-goods-item6" title="{{item.list[6].goodsName}}" ng-click="viewGoods(item.list[6].goodsId)">-->
-    <!--<div class="goods-name">{{item.list[6].goodsName}}</div>-->
-    <!--<img src="{{item.list[6].goodsThumb}}" ng-show="item.list.length>6" alt="{{item.list[6].goodsName}}">-->
-    <!--<span class="nothing" ng-show="item.list.length<=6">暂无商品</span>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <!--导航菜单-->
+    <!--<div class="category-item-list" ng-include="'tpls/sidebar-menu.html'"></div>-->
+    <style>
+        .category-item-list{
+            margin-top:25px;
+        }
+        .category-item-list .box{
+            width:100%;
+            min-height:200px;
+            background:#d3e1ec;
+        }
+        .category-item-list .box .category-item-list-name{
+            width:200px;
+            height:100%;
+            float: left;
+        }
+        .category-item-list .box .category-item-list-name span{
+            display: block;
+            width:100%;
+            height:200px;
+            line-height: 200px;
+            font-size: 28px;
+            color:#000;
+            text-align: center;
+        }
+        .category-item-list .box .category-item-list-name span i{
+            font-size: 32px;
+            margin-right:5px;
+            color:#1999db;
+        }
+        .category-item-list .box ul{
+            width:935px;
+            height:190px;
+            margin-top:5px;
+            float: left;
+            background:#fff;
+            list-style: none;
+            overflow: hidden;
+        }
+        .category-item-list .box ul li{
+            width:300px;
+            height:50px;
+            float: left;
+            margin:7px 5px;
+            background:#ccc;
+        }
+        .category-item-list .box ul li a{
+            display: block;
+            width:100%;
+            height:100%;
+            text-align: center;
+            line-height: 50px;
+            color:#fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    </style>
+    <div class="category-item-list">
+        <div id="xygh" class="box">
+            <div class="category-item-list-name">
+                <span><i class="glyphicon glyphicon-th-list"></i>协议供货</span>
+            </div>
+            <ul>
+                <li ng-repeat="item in menu track by $index" ng-style="{background:sklssb[$index%3]}" ng-class="{'active':breadcrumblist.indexOf(item.catId)>=0,'on':item.catId==entity.catId}">
+                    <a href="#/menuList/{{item.catId}}">{{item.catName}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
