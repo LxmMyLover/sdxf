@@ -50,6 +50,7 @@ define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
         }
 
         $scope.menu = convert(response.all || []);
+        //定义全局 接收三级菜单名称
         $rootScope.menus = $scope.menu
         // 商品分类 图片等
         $scope.hotGoods = [];
