@@ -30,19 +30,6 @@
 
 	<div class="clearfix"></div>
 	<div class="shop-index">
-
-		<!--<div class="title">-->
-			<!--&lt;!&ndash;名字&ndash;&gt;-->
-			<!--<div class="left-title">-->
-				<!--<span>欢迎来到{{navText}}</span>-->
-			<!--</div>-->
-			<!--&lt;!&ndash;登录 购物车&ndash;&gt;-->
-			<!--<div class="right-title">-->
-				<!--<span ng-show="isShopUser" ng-click="goCart()"><img src="./images/car.png"> ( {{goodsNumber}} ) </span>-->
-				<!--<span ng-repeat="item in user" ng-click="item.click()">{{item.text}}</span>-->
-
-			<!--</div>-->
-		<!--</div>-->
 		<!--logo图-->
 		<div class="logo-title">
 			<div class="badge-logo" ng-click="goIndex()"></div>
@@ -131,7 +118,6 @@
             var goUp = document.getElementsByClassName("goUp")[0];
             window.onscroll =  function(){
                 var top = document.documentElement.scrollTop || document.body.scrollTop;
-                console.log(top)
                 if(top > 50){
                     goUp.style.display = "";
                 }
