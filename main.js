@@ -103,11 +103,35 @@
 
   require(['angular', 'app', 'service', 'directive', 'filter', 'factory', 'placeholder', 'jqueryzoom', 'ng.ueditor', 'slider', 'swiper', 'simplemodal'], function(angular, app) {
 
-    app.controller('IndexCtrl', ['$scope', '$rootScope', '$compile', '$http', '$cookieStore', '$location', '$timeout', 'publicSrv', 'alertSrv', function($scope, $rootScope, $compile, $http, $cookieStore, $location, $timeout, publicSrv, alertSrv) {
+    app.factory('locals',['$window',function($window){
+        return{        //存储单个属性
+            set :function(key,value){
+                window.localStorage[key]=value;
+            },        //读取单个属性
+            get:function(key,defaultValue){
+                return  window.localStorage[key] || defaultValue;
+            },        //存储对象，以JSON格式存储
+            setObject:function(key,value){
+                window.localStorage[key]=JSON.stringify(value);
+            },        //读取对象
+            getObject: function (key) {
+                return JSON.parse(window.localStorage[key] || '{}');
+            }
+
+        }
+    }]);
+    app.controller('IndexCtrl', ['$scope', '$rootScope', '$compile', '$http', '$cookieStore', '$location', '$timeout', 'publicSrv', 'alertSrv','$anchorScroll', 'locals', function($scope, $rootScope, $compile, $http, $cookieStore, $location, $timeout, publicSrv, alertSrv, $anchorScroll,locals) {
       $scope.isShopUser = false;
       var content = '',
         navText = {},
         css = {};
+
+
+        // //协议供货的锚点跳转
+        // $scope.goHot = function(){
+        //     $location.hash('xygh');
+        //     $anchorScroll()
+        // }
 
 
       var defaultItem = [{
@@ -124,6 +148,7 @@
         //   text: '注册'
         // }
       ];
+
 
       var loginItem = [{
         click: function() {
@@ -436,6 +461,71 @@
         };
 
       };
+        //左侧菜单
+        $http.post('webapi/shop/category.ashx?act=getTotal').success(function(response) {
+
+            var convert = function(list) {
+                var result = [];
+                for (var i = 0; i < list.length; i++) {
+                    var ri = list[i];
+                    for (var j = 0; j < list.length; j++) {
+                        for (var k = 0; k < list.length; k++) {
+                            if (list[k].parentId == list[j].catId) {
+                                break;
+                            }
+                        }
+                    }
+
+                    if (ri.parentId != null && ri.parentId != 'null') {
+                        for (var j = 0; j < list.length; j++) {
+                            var rj = list[j];
+                            if (rj.catId == ri.parentId) {
+                                rj.children = !rj.children ? [] : rj.children;
+                                rj.children.push(ri);
+                                break;
+                            }
+                        }
+                    }
+
+                    if (ri.parentId == 0) {
+                        result.push(ri);
+                    }
+                }
+                return result;
+            }
+
+            $scope.menu = convert(response.all || []);
+            $rootScope.menu = $scope.menu
+            //存储菜单信息
+            locals.setObject('menu',$rootScope.menu);
+            //  locals.setObject('menu',$scope.menu);
+
+
+            // 商品分类 图片等
+            $scope.hotGoods = [];
+            var send = function(obj) {
+                if (obj < $scope.menu.length) {
+                    $http.get('../webapi/shop/goods.ashx?act=getSpecialGoodsByCat&CatId=' + $scope.menu[obj].catId)
+                        .success(function(data) {
+                            if (data.list.length > 0) {
+                                $scope.hotGoods.push({
+                                    catId: $scope.menu[obj].catId,
+                                    catName: $scope.menu[obj].catName,
+                                    list: data.list
+                                });
+                            }
+                            obj++;
+                            send(obj);
+                            $scope.goCatName = function(){
+                                $location.hash($scope.menu[obj].catName);
+                                $anchorScroll();
+                            }
+
+                        });
+                }
+            }
+            send(0);
+        });
 
     }]);
     angular.bootstrap(document, ['webapp']);
