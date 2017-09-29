@@ -7,11 +7,11 @@ define(['angular', 'text!module/shop/menuList.html'], function(angular, tpl) {
             //angular不识别location 定义一个变量赋值应用
             $scope.url = location.href.split('#')[1].split('/')[2];
 
-            //读取default.js存储的菜单导航
+            //读取main.js存储的菜单导航
             $scope.menus = locals.getObject('menu','');
             console.log(locals.getObject('menu',''))
 
-            //定义变量接受 读取default.js存储的菜单导航
+            //定义变量接受 读取main.js存储的菜单导航
             $scope.menu = $scope.menus;
         }],
         tpl: tpl

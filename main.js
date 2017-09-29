@@ -102,7 +102,7 @@
   });
 
   require(['angular', 'app', 'service', 'directive', 'filter', 'factory', 'placeholder', 'jqueryzoom', 'ng.ueditor', 'slider', 'swiper', 'simplemodal'], function(angular, app) {
-
+//localStorage 本地存储
     app.factory('locals',['$window',function($window){
         return{        //存储单个属性
             set :function(key,value){
@@ -461,7 +461,7 @@
         };
 
       };
-        //左侧菜单
+        //左侧菜单 从default.js迁移 便于本地储存
         $http.post('webapi/shop/category.ashx?act=getTotal').success(function(response) {
 
             var convert = function(list) {
@@ -495,10 +495,8 @@
             }
 
             $scope.menu = convert(response.all || []);
-            $rootScope.menu = $scope.menu
             //存储菜单信息
-            locals.setObject('menu',$rootScope.menu);
-            //  locals.setObject('menu',$scope.menu);
+            locals.setObject('menu',$scope.menu);
 
 
             // 商品分类 图片等
