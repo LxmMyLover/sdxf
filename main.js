@@ -128,10 +128,10 @@
 
 
         // //协议供货的锚点跳转
-        // $scope.goHot = function(){
-        //     $location.hash('xygh');
-        //     $anchorScroll()
-        // }
+        $scope.goHot = function(){
+            $location.hash('xygh');
+            $anchorScroll()
+        }
 
 
       var defaultItem = [{

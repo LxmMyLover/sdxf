@@ -168,6 +168,163 @@ define(['angular', 'text!module/shop/reckoning.html'], function(angular, tpl) {
               loader: false,
               error: false
             };
+
+
+              //采购数量的加减函数
+              $scope.plus = function(i) {//添加数量
+                  var model = $scope.clist[i];
+                  $scope.money = $scope.clist[0].goodsNumber*$scope.clist[0].goodsPrice;
+                  var sm_loading = new SimpleModal({
+                      width: '20%',
+                      center: true,
+                      show: true,
+                      overlayOpacity: 0.1,
+                      clickBgClose: false,
+                      keyEsc: false,
+                      loading_icon: '/images/loading.gif',
+                      skinClassName: 'loading'
+                  });
+                  sm_loading.show({
+                      model: 'modal-loading'
+                  });
+
+                  var sm = new SimpleModal({
+                      width: 300,
+                      center: true,
+                      hideFooter: true
+                  });
+
+                  $http.post('webapi/shop/car.ashx?act=save', {
+                      recId: model.recId,
+                      goodsPrice: model.goodsPrice,
+                      goodsNumber: ++model.goodsNumber
+                  })
+                      .success(function(data) {
+                          if (data.result) {
+
+                          } else {
+                              sm.show({
+                                  title: '提示消息',
+                                  contents: data.msg
+                              });
+                          }
+                      })
+                      .error(function(data) {
+                          sm.show({
+                              title: '提示消息',
+                              contents: '更新数据失败了！'
+                          });
+                      })['finally'](function() { // .finally的写法在IE8报错
+                      sm_loading.hide();
+                  });
+              };
+              $scope.minus = function(i) {//减少数量
+
+                  var model = $scope.clist[i];
+                  $scope.money = $scope.clist[0].goodsNumber*$scope.clist[0].goodsPrice;
+                  if (model.goodsNumber > 1) {
+
+                      var sm_loading = new SimpleModal({
+                          width: '20%',
+                          center: true,
+                          show: true,
+                          overlayOpacity: 0.1,
+                          clickBgClose: false,
+                          keyEsc: false,
+                          loading_icon: '/images/loading.gif',
+                          skinClassName: 'loading'
+                      });
+                      sm_loading.show({
+                          model: 'modal-loading'
+                      });
+
+                      var sm = new SimpleModal({
+                          width: 300,
+                          center: true,
+                          hideFooter: true
+                      });
+
+                      $http.post('webapi/shop/car.ashx?act=save', {
+                          recId: model.recId,
+                          goodsPrice: model.goodsPrice,
+                          goodsNumber: --model.goodsNumber
+                      })
+                          .success(function(data) {
+                              if (data.result) {
+
+                              } else {
+                                  sm.show({
+                                      title: '提示消息',
+                                      contents: data.msg
+                                  });
+                              }
+                          })
+                          .error(function(data) {
+                              sm.show({
+                                  title: '提示消息',
+                                  contents: '更新数据失败了！'
+                              });
+                          })['finally'](function() { // .finally的写法在IE8报错
+                          sm_loading.hide();
+                      });
+                  }
+              };
+
+              $scope.update = function(i) {//数量的变化绑定
+
+                  var model = $scope.clist[i];
+
+                  if (!regexp.test(model.goodsNumber) || parseFloat(model.goodsNumber) < 1) {
+                      model.goodsNumber = 1;
+                  }
+                  // $scope.money = $scope.clist[0].goodsNumber*$scope.clist[0].goodsPrice;
+                  var sm_loading = new SimpleModal({
+                      width: '20%',
+                      center: true,
+                      show: true,
+                      overlayOpacity: 0.1,
+                      clickBgClose: false,
+                      keyEsc: false,
+                      loading_icon: '/images/loading.gif',
+                      skinClassName: 'loading'
+                  });
+                  sm_loading.show({
+                      model: 'modal-loading'
+                  });
+
+                  var sm = new SimpleModal({
+                      width: 300,
+                      center: true,
+                      hideFooter: true
+                  });
+
+                  $http.post('webapi/shop/car.ashx?act=save', {
+                      recId: model.recId,
+                      goodsPrice: model.goodsPrice,
+                      goodsNumber: model.goodsNumber
+                  })
+                      .success(function(data) {
+                          if (data.result) {
+
+                          } else {
+                              sm.show({
+                                  title: '提示消息',
+                                  contents: data.msg
+                              });
+                          }
+                      })
+                      .error(function(data) {
+                          sm.show({
+                              title: '提示消息',
+                              contents: '更新数据失败了！'
+                          });
+                      })['finally'](function() { // .finally的写法在IE8报错
+                      sm_loading.hide();
+                  });
+              };
+              $scope.money = $scope.clist[0].goodsNumber*$scope.clist[0].goodsPrice;
+              console.log($scope.clist)
+
           })
           .error(function(data) {
             $scope.status.cart = {
@@ -457,14 +614,14 @@ define(['angular', 'text!module/shop/reckoning.html'], function(angular, tpl) {
 
       $http.get('webapi/shop/users.ashx?act=checkLogin').success(function(response) {
         //检测是否登录
-        if (response.result != undefined && response.result == "9999") {
-          window.location.href = "/userlogin.aspx";
-          return false;
-        } else {
+        // if (response.result != undefined && response.result == "9999") {
+        //   window.location.href = "/userlogin.aspx";
+        //   return false;
+        // } else {
           $scope.ajaxUsers();
           $scope.ajaxAddress();
           $scope.ajaxCart();
-        }
+        // }
       });
 
     }],
