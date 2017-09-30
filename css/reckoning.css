@@ -115,7 +115,6 @@
 	text-overflow: ellipsis;
 }
 
-
 .reckoning .region ul:after{content:" ";clear:both;display:block;}
 .reckoning .region ul li{float:left;width:33.3333%;}
 .reckoning .region .sel-city {
