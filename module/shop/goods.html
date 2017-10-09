@@ -23,16 +23,16 @@
 		<div class="page-content">
 
 			<!-- 标题开始 -->
-			<div id="navbar-example" class="product-title-tab navbar navbar-default hidden-xs">
-				<h3 class="navbar-left" ng-bind="goods.entity.goodsName"></h3>
-				<!-- <ul class="nav navbar-nav navbar-right">
-					<li><a href="" ng-click="anchor.brief()">产品简介</a></li>
-					<li><a href="" ng-click="anchor.desc()">详细描述</a></li>
-					<li><a href="" ng-click="anchor.comment()">用户评论</a></li>
-					<li><a href="" ng-click="anchor.param()">规格参数</a></li>
-					<li><a href="" ng-click="anchor.service()">售后服务</a></li>
-				</ul> -->
-			</div>
+			<!--<div id="navbar-example" class="product-title-tab navbar navbar-default hidden-xs">-->
+				<!--<h3 class="navbar-left" ng-bind="goods.entity.goodsName"></h3>-->
+				<!--&lt;!&ndash; <ul class="nav navbar-nav navbar-right">-->
+					<!--<li><a href="" ng-click="anchor.brief()">产品简介</a></li>-->
+					<!--<li><a href="" ng-click="anchor.desc()">详细描述</a></li>-->
+					<!--<li><a href="" ng-click="anchor.comment()">用户评论</a></li>-->
+					<!--<li><a href="" ng-click="anchor.param()">规格参数</a></li>-->
+					<!--<li><a href="" ng-click="anchor.service()">售后服务</a></li>-->
+				<!--</ul> &ndash;&gt;-->
+			<!--</div>-->
 			<!-- 标题结束 -->
 
 			<div class="shop-main">
@@ -56,7 +56,7 @@
 					<div class="product-detail">
 						<div class="pro-title pro-title-icon">
 							<h3 ng-bind="goods.entity.goodsName"></h3>
-							<h4 ng-bind="goods.entity.goodsBrief"></h4>
+							<!--<h4 ng-bind="goods.entity.goodsBrief"></h4>-->
 						</div>
 						<style>
 							ul.pro-info-type.list-unstyled {
@@ -72,16 +72,23 @@
 								<span class="attr">{{item.text}}：</span>
 								<span class="sell-price">&yen;<em>{{item.value | number:2}}</em></span>
 							</li>
-							<li>
-								<span class="attr">评分：</span>
-								<span class="comments-star">
-									<i class="star star0" ng-class="{'star0':!comment.points}" ng-class="{{'star'+comment.points}}"></i>
-									（<a href="" ng-click="anchor.comment()">共有 <i class="comments-num" ng-bind="comment.items">0</i> 条评价</a>）
-								</span>
-							</li>
+							<!--评分-->
+							<!--<li>-->
+								<!--<span class="attr">评分：</span>-->
+								<!--<span class="comments-star">-->
+									<!--<i class="star star0" ng-class="{'star0':!comment.points}" ng-class="{{'star'+comment.points}}"></i>-->
+									<!--（<a href="" ng-click="anchor.comment()">共有 <i class="comments-num" ng-bind="comment.items">0</i> 条评价</a>）-->
+								<!--</span>-->
+							<!--</li>-->
 							<li ng-repeat="item in goods.showProInfo">
 								<span class="attr">{{item.text}}：</span>
 								<span>{{item.value}}</span>
+							</li>
+							<li>
+								<span class="goods-spec-attr attr">规格：</span>
+								<div class="goods-spec-items">
+									<span class="goods-spec-item" onselectstart="return false;" ng-repeat="item in spec" ng-class="{'goods-spec-item-native': (specIndex == $index)}" onfocus="this.blur()" ng-click="selectSpec(item.specId, $index, item)">{{item.name}}</span>
+								</div>
 							</li>
 						</ul>
 
@@ -97,7 +104,7 @@
 							</div>
 
 							<dl>
-								<dt>我要买：</dt>
+								<!--<dt>我要买：</dt>-->
 								<dd>
 									<ul class="form-group">
 										<button type="button" ng-click="minus()" class="btn btn-info">-</button>
@@ -108,9 +115,9 @@
 							</dl>
 
 							<div class="buy-btn hidden-xs">
-								<button type="button" ng-click="quickBuy()" ng-disabled="button" class="btn btn-danger" autocomplete="off">立即购买</button>
 								<button type="button" ng-click="addCart()" ng-disabled="button" class="btn btn-warning" autocomplete="off">加入购物车</button>
-								<button type="button" ng-click="shoucang()" ng-disabled="button" class="btn btn-default" autocomplete="off"><i class="icon-plus"></i> 收藏</button>
+								<button type="button" ng-click="quickBuy()" ng-disabled="button" class="btn btn-danger" autocomplete="off">立即购买</button>
+								<!--<button type="button" ng-click="shoucang()" ng-disabled="button" class="btn btn-default" autocomplete="off"><i class="icon-plus"></i> 收藏</button>-->
 							</div>
 						</div>
 					</div>
@@ -123,8 +130,10 @@
 						<div class="supplier-info">
 							<div class="supplier-name">{{goods.entity.suppliers.suppliersName}}</div>
 							<!-- <div class="supplier-item">交易次数：{{goods.entity.suppliers.suppliersDesc}}</div> -->
+							<div class="supplier-item">联 系 人：</div>
+							<div class="supplier-item">联 系Q Q：</div>
+							<div class="supplier-item">联系电话：</div>
 							<div class="supplier-item">商家地址：{{goods.entity.suppliers.suppliersAddr}}</div>
-							<div class="supplier-item">认证信息：山东消防总队认证</div>
 							<div class="supplier-item">商家描述：{{goods.entity.suppliers.suppliersDesc}}</div>
 						</div>
 						<div class="clearfix"></div>
@@ -177,11 +186,12 @@
 									暂无简介
 								</div>
 							</tab>
-							<tab heading="产品参数">
-
-							</tab>
-							<tab heading="产品证书">
-
+							<tab heading="认证证书">
+								<div>
+									<h3>3C认证</h3>
+									<img src="" alt="">
+								</div>
+								<div></div>
 							</tab>
 						</tabset>
 					</div>
@@ -380,24 +390,24 @@
 
 			<!--商品右侧部分-->
 			<!--<div class="shop-history">-->
-				<!--<div class="swiper-container">-->
-					<!--<div class="swiper-wrapper">-->
-						<!--<div class="swiper-slide" ng-repeat="item in history" repeat-finish="hSwiper()">-->
-							<!--<div class="thumbnail">-->
-								<!--<a ng-href="#/goods/{{item.goodsId}}">-->
-									<!--<img ng-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">-->
-									<!--<div class="caption">-->
-										<!--<h4>{{item.goodsName}}</h4>-->
-									<!--</div>-->
-								<!--</a>-->
-							<!--</div>-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-				<!--<div class="arrow-box">-->
-					<!--<div class="arrow arrow-up" ng-click="arrowU()"><i class="glyphicon glyphicon-menu-up"></i></div>-->
-					<!--<div class="arrow arrow-down" ng-click="arrowD()"><i class="glyphicon glyphicon-menu-down"></i></div>-->
-				<!--</div>-->
+			<!--<div class="swiper-container">-->
+			<!--<div class="swiper-wrapper">-->
+			<!--<div class="swiper-slide" ng-repeat="item in history" repeat-finish="hSwiper()">-->
+			<!--<div class="thumbnail">-->
+			<!--<a ng-href="#/goods/{{item.goodsId}}">-->
+			<!--<img ng-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">-->
+			<!--<div class="caption">-->
+			<!--<h4>{{item.goodsName}}</h4>-->
+			<!--</div>-->
+			<!--</a>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--<div class="arrow-box">-->
+			<!--<div class="arrow arrow-up" ng-click="arrowU()"><i class="glyphicon glyphicon-menu-up"></i></div>-->
+			<!--<div class="arrow arrow-down" ng-click="arrowD()"><i class="glyphicon glyphicon-menu-down"></i></div>-->
+			<!--</div>-->
 			</div>
 
 		</div>

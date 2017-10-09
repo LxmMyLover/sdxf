@@ -250,13 +250,33 @@
 .goods .pro-info-type li {
   width: 100%;
   line-height: 24px;
-  padding-left: 5px;
+  min-height: 34px;
+  padding: 5px;
 }
 
 .goods .pro-info-type .attr {
   color: #555555;
   float: left;
   width: 85px;
+  text-align: right;
+}
+.goods-spec-attr {
+  margin-top: 10px;
+}
+.goods-spec-items {
+  margin-left: 90px;
+}
+.goods-spec-item {
+  display: inline-block;
+  padding: 3px 6px;
+  cursor: pointer;
+  margin: 6px 6px;
+  user-select: none;
+  border: 1px solid #ccc;
+}
+.goods-spec-item-native {
+  border-color: blue!important;
+  color: blue;
 }
 
 .goods .pro-info-type .main-price {
@@ -280,10 +300,13 @@
   background: #eeeeee;
   border: 1px solid #e9e9e9;
   margin: 5px;
-  padding: 8px 15px;
+  padding: 8px 15px 8px 100px;
   position: relative;
 }
 
+.form-group {
+  padding-left: 20px;
+}
 .goods .pro-chooseBox .form-group .control-label {
   width: 75px;
   padding-top: 7px;
@@ -322,9 +345,9 @@
   width: 68px;
 }
 
-.goods .pro-chooseBox .buy-btn {
-  padding-left: 75px;
-}
+/*.goods .pro-chooseBox .buy-btn {*/
+  /*padding-left: 75px;*/
+/*}*/
 
 
 /*左侧商品*/

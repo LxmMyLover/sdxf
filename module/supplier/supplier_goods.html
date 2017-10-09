@@ -199,16 +199,16 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">商品名称</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="goodsName" ng-model="vm.entity.goodsName" required>
+                                            <input class="form-control" type="text" name="goodsName" ng-model="vm.entity.goodsName" required placeholder="请输入商品名称">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3">商品货号</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" ng-model="vm.entity.goodsSn">
-                                            <span class="help-block">如果您不输入商品货号，系统将自动生成一个唯一的货号</span>
-                                        </div>
-                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<label class="control-label col-sm-3">商品货号</label>-->
+                                        <!--<div class="col-sm-9">-->
+                                            <!--<input class="form-control" type="text" ng-model="vm.entity.goodsSn">-->
+                                            <!--<span class="help-block">如果您不输入商品货号，系统将自动生成一个唯一的货号</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">商品分类</label>
                                         <div class="col-sm-9">
@@ -218,7 +218,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">商品品牌</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" ng-model="vm.entity.brandId" ng-options="item.brandId as item.brandName for item in vm.blist"></select>
+                                            <input class="form-control" placeholder="请输入商品品牌"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -233,12 +233,13 @@
                                             <input class="form-control" type="text" name="originPlace" ng-model="vm.entity.originPlace" required>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label class="control-label col-sm-3">选择供货商</label>
+                                    <div class="form-group" ng-class="{'has-error':myForm.goodsNumber.$error.digits}">
+                                        <label class="control-label col-sm-3">库存数量</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" ng-model="vm.entity.suppliersId" ng-options="item.suppliersId as item.suppliersName for item in vm.slist"></select>
+                                            <input class="form-control" type="text" name="goodsNumber" ng-model="vm.entity.goodsNumber" ng-digits required>
+                                            <span class="help-block" ng-show="myForm.goodsNumber.$error.digits">商品库存必须是整数</span>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group" ng-class="{'has-error':myForm.shopPrice.$error.currency}">
                                         <label class="control-label col-sm-3">商品价格</label>
                                         <div class="col-sm-9">
@@ -251,7 +252,6 @@
                                             <span class="help-block" ng-show="myForm.shopPrice.$error.currency">本店售价必须是数字</span>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">商品缩略图</label>
                                         <div class="col-sm-9">
@@ -262,7 +262,7 @@
                                     <div class="form-group" ng-class="{'hide':!vm.entity.goodsThumb}">
                                         <label class="control-label col-sm-3"></label>
                                         <div class="col-sm-9">
-                                            <image ng-src="{{vm.entity.goodsThumb | rootPath}}" width="100px">
+                                            <img ng-src="{{vm.entity.goodsThumb | rootPath}}" width="100px">
                                         </div>
                                     </div>
                                     <div class="form-group" ng-class="{'hide':!vm.uploader[0].queue.length}">
@@ -292,11 +292,11 @@
                                                         </td>
                                                         <td nowrap>
                                                             <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                                                        <span class="glyphicon glyphicon-upload"></span> Upload
-                                                    </button>
+                                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                                            </button>
                                                             <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                                                        <span class="glyphicon glyphicon-trash"></span> Remove
-                                                    </button>
+                                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -327,13 +327,6 @@
                                             <span class="help-block">单位：克</span>
                                         </div>
                                     </div> -->
-                                    <div class="form-group" ng-class="{'has-error':myForm.goodsNumber.$error.digits}">
-                                        <label class="control-label col-sm-3">商品库存数量</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="goodsNumber" ng-model="vm.entity.goodsNumber" ng-digits required>
-                                            <span class="help-block" ng-show="myForm.goodsNumber.$error.digits">商品库存必须是整数</span>
-                                        </div>
-                                    </div>
                                     <!-- <div class="form-group" ng-class="{'has-error':myForm.warnNumber.$error.digits}">
                                         <label class="control-label col-sm-3">库存警告数量</label>
                                         <div class="col-sm-9">
@@ -391,18 +384,66 @@
                                             <textarea class="form-control" rows="3" ng-model="vm.entity.description"></textarea>
                                         </div>
                                     </div> -->
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3">商品简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <div class="col-sm-9">
-                                            <textarea class="form-control" rows="3" ng-model="vm.entity.goodsBrief"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3">商家备注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <div class="col-sm-9">
-                                            <textarea class="form-control" rows="3" ng-model="vm.entity.sellerNote"></textarea>
-                                        </div>
-                                    </div>
+
+                                    <!--<div class="form-group">-->
+                                        <!--<label class="control-label col-sm-3">商品简介&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>-->
+                                        <!--<div class="col-sm-9">-->
+                                            <!--<textarea class="form-control" rows="3" ng-model="vm.entity.goodsBrief"></textarea>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="form-group">-->
+                                        <!--<label class="control-label col-sm-3">商家备注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>-->
+                                        <!--<div class="col-sm-9">-->
+                                            <!--<textarea class="form-control" rows="3" ng-model="vm.entity.sellerNote"></textarea>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <tabset>
+                                        <tab heading="3C认证">
+                                            <div class="gallery row">
+                                                <div class="col-xs-6 col-sm-4">
+                                                    <div class="thumbnail">
+                                                        <div class="caption">
+                                                            <p>
+                                                            <div class="jumbotron">
+                                                                <div class="file-upload" uploader="vm.uploader[1]" nv-file-over="">
+                                                                    <strong>Drop image</strong>
+                                                                    <br> (or click)
+                                                                </div>
+                                                                <input type="file" multiple="multiple" accept="image/jpeg,image/gif,image/png,image/x-ms-bmp" nv-file-select="" uploader="vm.uploader[1]" style="position: relative;width: 100%;">
+                                                            </div>
+                                                            </p>
+                                                            <p ng-class="{'has-error':myForm.url.$error.url}"><input class="form-control" placeholder="或者外部链接" type="text" name="url" ng-model="vm.fileUrl" ng-url></p>
+                                                            <p class="text-right"><button class="btn btn-primary" type="button" ng-click="vm.fileUpload()" ng-disabled="!vm.uploader[1].getNotUploadedItems().length && !vm.fileUrl || myForm.url.$error.url">上传</button> <button class="btn btn-default"
+                                                                                                                                                                                                                                                                                  type="button" ng-click="vm.uploader[1].clearQueue()" ng-disabled="!vm.uploader[1].queue.length">重置</button></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+
+                                        <tab heading="其他材料">
+                                            <div class="gallery row">
+                                                <div class="col-xs-6 col-sm-4">
+                                                    <div class="thumbnail">
+                                                        <div class="caption">
+                                                            <p>
+                                                            <div class="jumbotron">
+                                                                <div class="file-upload" uploader="vm.uploader[1]" nv-file-over="">
+                                                                    <strong>Drop image</strong>
+                                                                    <br> (or click)
+                                                                </div>
+                                                                <input type="file" multiple="multiple" accept="image/jpeg,image/gif,image/png,image/x-ms-bmp" nv-file-select="" uploader="vm.uploader[1]" style="position: relative;width: 100%;">
+                                                            </div>
+                                                            </p>
+                                                            <p ng-class="{'has-error':myForm.url.$error.url}"><input class="form-control" placeholder="或者外部链接" type="text" name="url" ng-model="vm.fileUrl" ng-url></p>
+                                                            <p class="text-right"><button class="btn btn-primary" type="button" ng-click="vm.fileUpload()" ng-disabled="!vm.uploader[1].getNotUploadedItems().length && !vm.fileUrl || myForm.url.$error.url">上传</button> <button class="btn btn-default"
+                                                                                                                                                                                                                                                                                  type="button" ng-click="vm.uploader[1].clearQueue()" ng-disabled="!vm.uploader[1].queue.length">重置</button></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+                                    </tabset>
                                 </div>
                             </tab>
                             <!-- <tab heading="商品属性">
