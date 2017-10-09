@@ -1,83 +1,88 @@
 define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
-
   //angular会自动根据controller函数的参数名，导入相应的服务
   return {
-    controller: ['$scope','$rootScope', '$routeParams', '$http', '$location','$anchorScroll','$filter', function($scope, $rootScope, $routeParams, $http, $location, $anchorScroll, $filter) {
+    controller: ['$scope','$rootScope', '$routeParams', '$http', '$location','$anchorScroll','$filter','locals', function($scope, $rootScope, $routeParams, $http, $location, $anchorScroll, $filter, locals) {
       $scope.$parent.isShopUser = true;
       $scope.$parent.setTitle();
 
-      //协议供货的锚点跳转
-      $scope.goHot = function(){
-          $location.hash('hot');
-          $anchorScroll()
-      }
+        //协议供货的锚点跳转
+        $scope.goHot = function(){
+            $location.hash('xygh');
+            $anchorScroll()
+        }
+
+
       //导航栏的商品分类
       // $http.get('webapi/shop/category.ashx?act=nav').success(function(data) {
       //   $scope.category_list = data.list || [];
       // });
       $('#slider').nivoSlider();
-      //左侧菜单
-      $http.post('webapi/shop/category.ashx?act=getTotal').success(function(response) {
-
-        var convert = function(list) {
-          var result = [];
-          for (var i = 0; i < list.length; i++) {
-            var ri = list[i];
-            for (var j = 0; j < list.length; j++) {
-              for (var k = 0; k < list.length; k++) {
-                if (list[k].parentId == list[j].catId) {
-                  break;
-                }
-              }
-            }
-
-            if (ri.parentId != null && ri.parentId != 'null') {
-              for (var j = 0; j < list.length; j++) {
-                var rj = list[j];
-                if (rj.catId == ri.parentId) {
-                  rj.children = !rj.children ? [] : rj.children;
-                  rj.children.push(ri);
-                  break;
-                }
-              }
-            }
-
-            if (ri.parentId == 0) {
-              result.push(ri);
-            }
-          }
-          return result;
-        }
-
-        $scope.menu = convert(response.all || []);
-        //定义全局 接收三级菜单名称
-        $rootScope.menus = $scope.menu
-        // 商品分类 图片等
-        $scope.hotGoods = [];
-        var send = function(obj) {
-          if (obj < $scope.menu.length) {
-            $http.get('../webapi/shop/goods.ashx?act=getSpecialGoodsByCat&CatId=' + $scope.menu[obj].catId)
-              .success(function(data) {
-                if (data.list.length > 0) {
-                  $scope.hotGoods.push({
-                    catId: $scope.menu[obj].catId,
-                    catName: $scope.menu[obj].catName,
-                    list: data.list
-                  });
-                }
-                obj++;
-                send(obj);
-                $scope.goCatName = function(){
-                    $location.hash($scope.menu[obj].catName);
-                    $anchorScroll();
-                }
-
-              });
-          }
-        }
-        send(0);
-
-      });
+      //移至main.js  让它任何时刻都能调用
+      // //左侧菜单
+      // $http.post('webapi/shop/category.ashx?act=getTotal').success(function(response) {
+      //
+      //   var convert = function(list) {
+      //     var result = [];
+      //     for (var i = 0; i < list.length; i++) {
+      //       var ri = list[i];
+      //       for (var j = 0; j < list.length; j++) {
+      //         for (var k = 0; k < list.length; k++) {
+      //           if (list[k].parentId == list[j].catId) {
+      //             break;
+      //           }
+      //         }
+      //       }
+      //
+      //       if (ri.parentId != null && ri.parentId != 'null') {
+      //         for (var j = 0; j < list.length; j++) {
+      //           var rj = list[j];
+      //           if (rj.catId == ri.parentId) {
+      //             rj.children = !rj.children ? [] : rj.children;
+      //             rj.children.push(ri);
+      //             break;
+      //           }
+      //         }
+      //       }
+      //
+      //       if (ri.parentId == 0) {
+      //         result.push(ri);
+      //       }
+      //     }
+      //     return result;
+      //   }
+      //
+      //   $scope.menu = convert(response.all || []);
+      //   $rootScope.menu = $scope.menu
+      //  //存储菜单信息
+      //     locals.setObject('menu',$rootScope.menu);
+      //  //  locals.setObject('menu',$scope.menu);
+      //
+      //
+      //   // 商品分类 图片等
+      //   $scope.hotGoods = [];
+      //   var send = function(obj) {
+      //     if (obj < $scope.menu.length) {
+      //       $http.get('../webapi/shop/goods.ashx?act=getSpecialGoodsByCat&CatId=' + $scope.menu[obj].catId)
+      //         .success(function(data) {
+      //           if (data.list.length > 0) {
+      //             $scope.hotGoods.push({
+      //               catId: $scope.menu[obj].catId,
+      //               catName: $scope.menu[obj].catName,
+      //               list: data.list
+      //             });
+      //           }
+      //           obj++;
+      //           send(obj);
+      //           $scope.goCatName = function(){
+      //               $location.hash($scope.menu[obj].catName);
+      //               $anchorScroll();
+      //           }
+      //
+      //         });
+      //     }
+      //   }
+      //   send(0);
+      // });
 
       // 搜索框搜索功能移至
         $http.get('webapi/shop/car.ashx?act=count').success(function(data) {
