@@ -8,12 +8,55 @@ define(['angular', 'text!module/shop/goods.html'], function(angular, tpl) {
         $scope.$parent.setTitle();
         $scope.$parent.isShopUser = $cookieStore.get('sdxfshoporgcat') == '1';
       }
+
+      //规格选择和数据
+      $scope.specIndex = -1;  //规格选中
+      $scope.spec = [
+        {
+          specId: '01',
+          name: '黑色',
+          price: '20.34'
+        },
+        {
+          specId: '02',
+          name: '白色',
+          price: '20.34'
+        },
+        {
+          specId: '03',
+          name: '红棕色',
+          price: '20.34'
+        },
+        {
+          specId: '04',
+          name: '橙黄带绿条纹色',
+          price: '20.34'
+        },
+        {
+          specId: '05',
+          name: '呵呵了个呵呵色',
+          price: '20.34'
+        },
+        {
+          specId: '06',
+          name: '666色',
+          price: '20.34'
+        },
+        {
+          specId: '07',
+          name: '彩色花格',
+          price: '20.34'
+        },
+      ];  //规格模拟数据
+        //规格选择方法
+      $scope.selectSpec = function (id, index, item) {
+        $scope.specIndex = index;
+      }
       var goodsId = $routeParams.id || 0;
 
       var regexp = /^([1-9][0-9]*)$/;
 
       var iSwiper, zSwiper, hSwiper;
-
       //定时器
       var timer = null;
 

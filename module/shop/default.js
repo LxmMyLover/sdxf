@@ -6,11 +6,6 @@ define(['angular', 'text!module/shop/default.html'], function(angular, tpl) {
       $scope.$parent.isShopUser = true;
       $scope.$parent.setTitle();
 
-      //协议供货的锚点跳转
-      $scope.goHot = function(){
-          $location.hash('hot');
-          $anchorScroll()
-      }
       //导航栏的商品分类
       // $http.get('webapi/shop/category.ashx?act=nav').success(function(data) {
       //   $scope.category_list = data.list || [];
