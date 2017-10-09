@@ -1,0 +1,93 @@
+﻿.member td,
+.member th {padding:10px;}
+.member .bb-dc{border-bottom:1px solid #dcdcdc;}
+
+.member .nav-tabs > li.active > a,
+.member .page-content .nav-tabs > li.active > a:focus,
+.member .page-content .nav-tabs > li.active > a:hover {
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom:2px solid #f0ad4e;
+    color:#f0ad4e;
+}
+.member .nav-tabs > li > a{text-align:center;}
+.member .nav-tabs > li{display:table-cell;width:1%;}
+.member .nav-tabs > li{float:none;}
+
+.member .form-horizontal{margin:0;padding:20px;}
+.member .form-group .control-label{width:100px;}
+.member .form-group .control-input .navbar-nav{float:none;border-bottom:1px #e0e0e0 solid;margin-left:0;margin-right:0;margin-bottom:0;}
+.member .form-group .control-input .navbar-text{margin-top:7px;margin-bottom:7px;}
+.member .page-header{margin-top:0;border-width:5px;}
+
+.member .member-list td,
+.member .member-list th {padding:4px 10px;}
+.member .member-list td h4{line-height:34px;}
+.member .member-list .list-unstyled{border-bottom:1px solid #e0e0e0;}
+.member .member-list .list-unstyled li{margin:8px 0;}
+
+.member .order-list td,
+.member .order-list th {padding:2px 10px;}
+
+.member .comment-list dl{margin:0;}
+.member .comment-list dt{width:40px;}
+
+.member .page-content .list-group{padding:0;margin:0;}
+.member .page-content .current .couponinfo{background:#5cb85c;}
+.member .page-content .history .couponinfo{background:#777777;}
+.member .page-content .couponinfo{color:#ffffff;}
+.member .page-content .couponinfo .coupontitle{margin-right:0;padding-top:10px;}
+.member .page-content .couponinfo .couponcontent{padding-top:10px;padding-bottom:10px;}
+.member .page-content .couponitem_btn{background:#ececec;}
+.member .page-content .list-item{background:#ececec;overflow:hidden;margin:10px;}
+.member .page-content .couponitem_btn p{font-size:16px;height:75px;line-height:90px;margin:0;}
+
+.member .page-content .region ul:after{content:" ";clear:both;display:block;}
+.member .page-content .region ul li{float:left;width:33.3333%;}
+.member .page-content .region .sel-city {
+	border-radius:0;
+	-ms-border-radius:0;
+	-webkit-border-radius:0;
+	-o-border-radius:0;
+	-moz-border-radius:0;
+}
+.member .page-content .region .sel-province {
+	border-bottom-right-radius:0;
+	-ms-border-bottom-right-radius:0;
+	-webkit-border-bottom-right-radius:0;
+	-o-border-bottom-right-radius:0;
+	-moz-border-bottom-right-radius:0;
+
+	border-top-right-radius:0;
+	-ms-border-top-right-radius:0;
+	-webkit-border-top-right-radius:0;
+	-o-border-top-right-radius:0;
+	-moz-border-top-right-radius:0;
+
+	border-right:none;
+}
+.member .page-content .region .sel-district {
+	border-bottom-left-radius:0;
+	-ms-border-bottom-left-radius:0;
+	-webkit-border-bottom-left-radius:0;
+	-o-border-bottom-left-radius:0;
+	-moz-border-bottom-left-radius:0;
+
+	border-top-left-radius:0;
+	-ms-border-top-left-radius:0;
+	-webkit-border-top-left-radius:0;
+	-o-border-top-left-radius:0;
+	-moz-border-top-left-radius:0;
+
+	border-left:none;
+}
+
+@media (min-width:768px) {
+	.member .form-group .control-input{margin-left:120px;}
+
+	.member .comment-list dd{margin-left:60px;}
+
+	.member .page-content-wrapper{/*float:left;*/width:100%;}
+	.member .page-content-wrapper .page-content{margin-left:200px;}
+}

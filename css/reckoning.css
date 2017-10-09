@@ -1,0 +1,164 @@
+﻿.reckoning .form-horizontal{margin:0;padding:10px 10px 60px;}
+/*内容区域*/
+.form-group{
+	width:100%;
+	margin-top: 10px;
+}
+/*内容头部*/
+.form-group-title{
+	width:100%;
+	height:40px;
+	background:#88abda;
+	color:#fff;
+}
+.form-group-title .control-label{
+	width:100px;
+	height:100%;
+	line-height: 40px;
+	float: left;
+	margin-left:15px;
+	padding:0;
+}
+.form-group-title a{
+	display: inline-block;
+	height:100%;
+	line-height: 40px;
+	float: right;
+	padding-right: 30px;
+	color:#fff;
+}
+/*收货地址代码区*/
+.form-group .btn-eidt{
+	display: inline-block;
+	width:100%;
+}
+.form-group .btn-eidt .navbar-text{
+	height:30px;
+	line-height: 30px;
+	border:1px solid #f00;
+	background: #dccee0;
+	color:#000;
+}
+.form-group .btn-eidt .navbar-text span{
+	padding:0 210px 0 7px;
+}
+.form-group .control-input #j_upload_file_btn{
+	width:130px;
+	height:40px;
+	background:#dccee0;
+	border:1px solid #ef0d0d;
+	color:#fff;
+	margin: 20px 0 5px;
+	font-size: 20px;
+}
+/*确认供货信息代码区*/
+.parameter{
+	width:90%;
+	height:40px;
+	margin:0 auto;
+	border-bottom: 1px solid #88abda;
+}
+.parameter li{
+	display: inline-block;
+	line-height: 40px;
+}
+.navbar-nav{
+	width: 90%;
+	margin: 0 5%;
+	border-bottom: 1px solid #88abda;
+}
+.navbar-nav li{
+	display: inline-block;
+	height:60px;
+	line-height: 60px;
+	text-align: center;
+}
+.navbar-nav .goods-img{
+	width:100px;
+	height:100px;
+	border:1px solid #000;
+	overflow: hidden;
+}
+.navbar-nav .goods-name a{
+	display: inline-block;
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding: 0 !important;
+}
+.navbar-nav .specification{
+	width:100px;
+}
+.navbar-nav .unitPrice{
+	width:100px;
+}
+.navbar-nav .number{
+	width:180px;
+}
+.navbar-nav .number .btn{
+	width: 40px;
+	height:40px;
+	background:#bce5f9;
+	color:#fff;
+	margin: 10px 0 5px;
+	font-size: 20px;
+	float: left;
+}
+.navbar-nav .merchant{
+	width:196px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.reckoning .region ul:after{content:" ";clear:both;display:block;}
+.reckoning .region ul li{float:left;width:33.3333%;}
+.reckoning .region .sel-city {
+	border-radius:0;
+	-ms-border-radius:0;
+	-webkit-border-radius:0;
+	-o-border-radius:0;
+	-moz-border-radius:0;
+}
+.reckoning .region .sel-province {
+	border-bottom-right-radius:0;
+	-ms-border-bottom-right-radius:0;
+	-webkit-border-bottom-right-radius:0;
+	-o-border-bottom-right-radius:0;
+	-moz-border-bottom-right-radius:0;
+
+	border-top-right-radius:0;
+	-ms-border-top-right-radius:0;
+	-webkit-border-top-right-radius:0;
+	-o-border-top-right-radius:0;
+	-moz-border-top-right-radius:0;
+
+	border-right:none;
+}
+.reckoning .region .sel-district {
+	border-bottom-left-radius:0;
+	-ms-border-bottom-left-radius:0;
+	-webkit-border-bottom-left-radius:0;
+	-o-border-bottom-left-radius:0;
+	-moz-border-bottom-left-radius:0;
+
+	border-top-left-radius:0;
+	-ms-border-top-left-radius:0;
+	-webkit-border-top-left-radius:0;
+	-o-border-top-left-radius:0;
+	-moz-border-top-left-radius:0;
+
+	border-left:none;
+}
+
+
+@media (min-width:768px) {
+	/*.reckoning .form-group .control-input{margin-left:120px;}*/
+	.reckoning .consignee-info .btn-eidt .navbar-text{margin-left:5px;margin-top:5px;}
+	.reckoning .goods-name a{padding:15px !important;}
+	.reckoning .goods-attr p{margin:5px 15px;}
+}

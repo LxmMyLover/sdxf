@@ -1,0 +1,55 @@
+<div class="page-container" ng-init="bind()">
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<table width="100%" border="0" align="center" class="hide" ng-class="{'hide':status.loader || status.error}">
+				<tbody ng-repeat="item in list">
+					<tr>
+						<td class="hidden-xs" width="100" rowspan="2" align="left" valign="top">
+							<a ng-href="#/goods/{{item.goodsId}}"><img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}"></a>
+						</td>
+						<td width="50%" align="left"><a ng-href="#/goods/{{item.goodsId}}">{{item.goodsName}}</a></td>
+						<td width="50%" align="right" valign="top"><strong class="text-danger">{{item.goodsPrice | currency:'￥'}}</strong></td>
+					</tr>
+					<tr class="bb-dc">
+						<!-- <td align="left" ng-bind-html="item.goodsAttr | replace:',':'<br>'"></td> -->
+						<td align="left">
+							品牌：&nbsp;&nbsp;&nbsp;&nbsp;{{item.brandName}}<br>
+							生产商：{{item.producer}}
+						</td>
+						<td align="right">
+							<form class="form-inline">
+								<a class="ui-del" ng-click="del($index)" href="">删除</a>
+								<div class="form-group">
+									<button type="button" class="btn btn-info" ng-click="minus($index)">-</button>
+									<input type="text" onclick="this.select()" ng-change="update($index)" ng-model="item.goodsNumber" autocomplete="off" class="form-control">
+									<button type="button" class="btn btn-info" ng-click="plus($index)">+</button>
+								</div>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="alert alert-info" ng-class="{'hide':!status.loader}" role="alert">
+				<p class="text-center">正在努力加载中...</p>
+			</div>
+			<div class="alert alert-danger hide" ng-class="{'show':status.error}" role="alert">
+				<p class="text-center">数据加载失败了，请<a href="" ng-click="bind()" class="alert-link"> 点击刷新 </a>重试！</p>
+			</div>
+			<div class="alert alert-warning hide" ng-class="{'show':!list.length && !status.loader && !status.error}" role="alert">
+				<p class="text-center">购物车空空，去选几件<a href="#/default" class="alert-link"> 中意的商品 </a>吧 ~</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-footer navbar navbar-fixed-bottom" style="position:relative;">
+	<a href="#/reckoning" class="row center-block link">
+		<div class="col-xs-7 l-text priceinfo">
+			<p>您共选择了<span ng-bind="list.length">0</span>件商品&nbsp;&nbsp;&nbsp;&nbsp; 订单总额:
+				<b style="font-size:20px;" ng-bind="totalMoney|currency:'￥'">￥0.00</b></p>
+		</div>
+		<div class="col-xs-5 r-text clearing">
+			<p>结算(<span ng-bind="list.length">0</span>)</p>
+		</div>
+	</a>
+</div>

@@ -3,6 +3,7 @@
 <html>
 
 <head>
+	<base target="_blank">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-sacle=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
@@ -30,42 +31,17 @@
 
 	<div class="clearfix"></div>
 	<div class="shop-index">
-		<!--<div class="title">-->
-			<!--&lt;!&ndash;名字&ndash;&gt;-->
-			<!--<div class="left-title">-->
-				<!--<span>欢迎来到{{navText}}</span>-->
-			<!--</div>-->
-			<!--&lt;!&ndash;登录 购物车&ndash;&gt;-->
-			<!--<div class="right-title">-->
-				<!--<span ng-show="isShopUser" ng-click="goCart()"><img src="./images/car.png"> ( {{goodsNumber}} ) </span>-->
-				<!--<span ng-repeat="item in user" ng-click="item.click()">{{item.text}}</span>-->
-
-			<!--</div>-->
-		<!--</div>-->
 		<!--logo图-->
 		<div class="logo-title">
 			<div class="badge-logo" ng-click="goIndex()"></div>
-			<!--<div class="attention">-->
-				<!--<a href="#"></a>-->
-				<!--微信公众号-->
-			<!--</div>-->
-			<!-- 警徽 -->
-			<!--<div class="badge-logo" ng-click="goIndex()"></div>-->
-			<!-- 搜索框 -->
-			<!--<div class="title-search" ng-show="isShopUser">-->
-				<!--<div class="search-input">-->
-					<!--<input type="text" class="goods-search" ng-model="keywords" ng-keyup="search_keyup($event)">-->
-				<!--</div>-->
-				<!--<div class="search-goods" ng-click="search()">搜索</div>-->
-			<!--</div>-->
 		</div>
 		<style>
 			.content-nav {
 				display: block;
 				height: 36px;
 				width: 100%;
-				padding-left: 200px;
-				background: #aa5500;
+				padding-left: 100px;
+				background:#2d82dc;
 			}
 			.nav-items {
 				float: left;
@@ -79,12 +55,12 @@
 				color: #fff;
 				line-height: 36px;
 				text-align: center;
-				background: #aa5500;
+				background: #2d82dc;
 				text-decoration: none;
 			}
 			.nav-items a:hover {
 				color: #000;
-				background: #994400;
+				background: #fff;
 			}
 		</style>
 		<!--导航条-->
@@ -118,22 +94,47 @@
 		<div class="">Copyright © 2017 山东省公安消防总队</div>
 		<div class="">主办：山东省公安消防总队 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ICP备案编号：鲁 ICP 备</div>
 	</div>
-    <!--右侧边栏-->
-    <div id="login_sea" ng-cloak>
+	<!--右侧边栏-->
+	<div id="login_sea">
         <span class="car login_left" ng-show="isShopUser" ng-click="goCart()" style="text-decoration: none;cursor: pointer;">
-			<img style="width:45%;height:45%;margin-right: -5px;" src="./images/car.png">
+			<i class="glyphicon glyphicon-shopping-cart" style="color: #fff;font-size: 18px;"></i>
 			<i style="font-size: 12px;width: 18px;background: red; border-radius: 50%;padding: 2px;line-height: .8;vertical-align: top;text-decoration: none;">{{goodsNumber}}</i>
 		</span>
-        <a class="login_log login_left" href="" style="text-decoration: none" ng-click="user[0].click()">
-            <i class="glyphicon glyphicon-user" style="color: #fff;font-size: 18px;"></i>
-        </a>
-        <div class="title login_left" style=";border:0;">
-            <div ng-mouseenter="noShow=true" ng-mouseleave="noShow=false" class="left_btn">
+		<a class="login_log login_left" href="" style="text-decoration: none" ng-repeat="item in user" ng-click="item.click()">
+			<i class="glyphicon glyphicon-user" style="color: #fff;font-size: 18px;"></i>
+		</a>
+		<div class="title login_left" >
+			<div ng-mouseenter="noShow=true" ng-mouseleave="noShow=false">
 				<i class="glyphicon glyphicon-indent-right" style="color: #fff;font-size: 18px;"></i>
 			</div>
-            <div class="gh_name" ng-show="noShow" ng-cloak style="width:260px;height:42px;border-radius: 4px;"><span>欢迎来到{{navText}}</span></div>
-        </div>
-    </div>
+			<div class="gh_name" ng-show="noShow"><span>欢迎来到{{navText}}</span></div>
+		</div>
+		<div class="goUp login_left" style=";border:0;margin-top:25px;display: none">
+			<div ng-mouseenter="goUp=true" ng-mouseleave="goUp=false">
+				<i class="glyphicon glyphicon-hand-up" style="color: #fff;font-size: 18px;"></i>
+			</div>
+			<div class="gogogo" ng-show="goUp">返回顶部</div>
+		</div>
+		<script>
+//			原生实现页面返回顶部
+            var goUp = document.getElementsByClassName("goUp")[0];
+            window.onscroll =  function(){
+                var top = document.documentElement.scrollTop || document.body.scrollTop;
+                if(top > 50){
+                    goUp.style.display = "";
+                }
+                if(top == 50){
+                    goUp.style.display = "none";
+                }else if(top == 0){
+                    goUp.style.display = "none";
+                }
+            };
+            goUp.onclick = function(){
+                goUp.style.display = "none";
+                scroll(0,0);
+            };
+		</script>
+	</div>
 	<!--[if lt IE 9]>
   <script src="libs/html5shiv.min.js"></script>
   <script src="libs/respond.min.js"></script>

@@ -1,0 +1,314 @@
+<div class="page-container">
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<form name="myForm" class="form-horizontal" ng-submit="save()" autocomplete="off">
+				<div class="form-body">
+					<!--<div class="form-group">-->
+						<!--<label class="control-label">收货人信息</label>-->
+						<!--<div class="consignee-info control-input">-->
+							<!--<a class="btn-eidt hide" ng-class="{'show':!status.address.loader && !status.address.error}" ng-click="isCollapsed=!isCollapsed" href="">-->
+								<!--<p class="navbar-text">-->
+									<!--<span ng-bind="userAddress.consignee">请选择收货人</span>-->
+									<!--<span ng-bind="userAddress.province.regionName+','+userAddress.city.regionName+','+userAddress.district.regionName+userAddress.address">请选择省,市,区/县详细地址</span>-->
+									<!--<span ng-bind="userAddress.mobile">请选择手机号</span>-->
+									<!--<span class="arrow" ng-class="{'open':!isCollapsed}"></span>-->
+								<!--</p>-->
+							<!--</a>-->
+							<!--<div class="alert alert-info" ng-class="{'alert-info':status.address.loader,'alert-danger':status.address.error,'hide':!status.address.loader && !status.address.error}" role="alert"><p class="text-center" ng-bind-html="status.address.html">正在努力加载中...</p></div>-->
+							<!--<div class="edit-info" collapse="isCollapsed">-->
+								<!--<input type="text" name="consignee" class="form-control" placeholder="姓名" ng-model="userAddress.consignee" required>-->
+								<!--<input type="text" name="mobile" class="form-control" placeholder="手机" ng-class="{'has-error':myForm.mobile.$error.mobile}" ng-model="userAddress.mobile" ng-mobile required>-->
+								<!--<span class="help-block" ng-show="myForm.mobile.$error.mobile">手机号由13,15,17,18和14开头，共11位</span>-->
+								<!--<input type="text" name="tel" class="form-control" placeholder="电话" ng-class="{'has-error':myForm.tel.$error.tel}" ng-model="userAddress.tel" ng-tel>-->
+								<!--<span class="help-block" ng-show="myForm.tel.$error.tel">区号+号码，区号以0开头，3位或4位，号码由7位或8位数字组成</span>-->
+								<!--<input type="text" name="zip" class="form-control" placeholder="邮编" ng-class="{'has-error':myForm.zip.$error.zip}" ng-model="userAddress.zipCode" ng-zip>-->
+								<!--<span class="help-block" ng-show="myForm.zip.$error.zip">邮编开头不能为0，共6位</span>-->
+								<!--<div class="region" ng-if="selectReady">-->
+									<!--<ul class="list-unstyled">-->
+										<!--<li>-->
+											<!--<select name="country" empty-text="国家" ng-model="userAddress.country.regionId" class="sel-province form-control hide">-->
+											<!--</select>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<select multi-level-select class="sel-province form-control" source="getProvinces" name="province" ng-model="userAddress.province.regionId" empty="省" required></select>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<select multi-level-select class="sel-city form-control" source="getCities" name="city" ng-model="userAddress.city.regionId" empty="市" dependents="province" required></select>-->
+										<!--</li>-->
+										<!--<li>-->
+											<!--<select multi-level-select class="sel-district form-control" source="getDistricts" name="district" ng-model="userAddress.district.regionId" empty="区" dependents="city"></select>-->
+										<!--</li>-->
+									<!--</ul>-->
+								<!--</div>-->
+								<!--<input type="text" name="address" class="form-control" placeholder="详细地址" ng-model="userAddress.address" required>-->
+								<!--<button type="submit" class="btn btn-success btn-block" ng-disabled="myForm.$invalid" autocomplete="off">保存</button>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+
+					<div class="form-group">
+						<div class="form-group-title">
+							<label class="control-label">确认收货地址</label>
+							<a href="" ng-click="isCollapsed=!isCollapsed"><span class="arrow" ng-class="{'open':!isCollapsed}">修改</span></a>
+						</div>
+						<a class="btn-eidt hide" ng-class="{'show':!status.address.loader && !status.address.error}"  ng-click="isCollapsed=!isCollapsed" href="">
+							<p class="navbar-text">
+								收货地址:<span ng-bind="userAddress.province.regionName+','+userAddress.city.regionName+','+userAddress.district.regionName+userAddress.address">请选择省,市,区/县详细地址</span>
+								<span ng-bind="userAddress.consignee">请选择收货人</span>
+								<span ng-bind="userAddress.mobile">请选择手机号</span>
+								<!--<span class="arrow" ng-class="{'open':!isCollapsed}"></span>-->
+							</p>
+						</a>
+						<div class="alert alert-info" ng-class="{'alert-info':status.address.loader,'alert-danger':status.address.error,'hide':!status.address.loader && !status.address.error}" role="alert"><p class="text-center" ng-bind-html="status.address.html">正在努力加载中...</p></div>
+						<div class="edit-info" collapse="isCollapsed">
+							收货人:<input type="text" name="consignee" class="form-control" placeholder="姓名" ng-model="userAddress.consignee" required>
+							手机号:<input type="text" name="mobile" class="form-control" placeholder="手机" ng-class="{'has-error':myForm.mobile.$error.mobile}" ng-model="userAddress.mobile" ng-mobile required>
+							<span class="help-block" ng-show="myForm.mobile.$error.mobile">手机号由13,15,17,18和14开头，共11位</span>
+							电话:<input type="text" name="tel" class="form-control" placeholder="电话" ng-class="{'has-error':myForm.tel.$error.tel}" ng-model="userAddress.tel" ng-tel>
+							<span class="help-block" ng-show="myForm.tel.$error.tel">区号+号码，区号以0开头，3位或4位，号码由7位或8位数字组成</span>
+							邮编地址:<input type="text" name="zip" class="form-control" placeholder="邮编" ng-class="{'has-error':myForm.zip.$error.zip}" ng-model="userAddress.zipCode" ng-zip>
+							<span class="help-block" ng-show="myForm.zip.$error.zip">邮编开头不能为0，共6位</span>
+							收货地址:
+                            <div class="region" ng-if="selectReady">
+								<ul class="list-unstyled">
+									<li>
+										<select name="country" empty-text="国家" ng-model="userAddress.country.regionId" class="sel-province form-control hide"></select>
+									</li>
+									<li>
+										<select multi-level-select class="sel-province form-control" source="getProvinces" name="province" ng-model="userAddress.province.regionId" empty="省" required></select>
+									</li>
+									<li>
+										<select multi-level-select class="sel-city form-control" source="getCities" name="city" ng-model="userAddress.city.regionId" empty="市" dependents="province" required></select>
+									</li>
+									<li>
+										<select multi-level-select class="sel-district form-control" source="getDistricts" name="district" ng-model="userAddress.district.regionId" empty="区" dependents="city"></select>
+									</li>
+								</ul>
+							</div>
+							<input type="text" name="address" class="form-control" placeholder="详细地址" ng-model="userAddress.address" required>
+							<button type="submit" class="btn btn-success btn-block" ng-disabled="myForm.$invalid" autocomplete="off">保存</button>
+						</div>
+					</div>
+                    <!--订单留言-->
+                    <div class="form-group">
+                        <div class="form-group-title">
+                            <label class="control-label">订单附言</label>
+                        </div>
+                        <div class="control-input">
+                          <textarea class="form-control" rows="3" ng-model="postScript"></textarea>
+                        </div>
+                    </div>
+                    <!--附件上传-->
+					<div class="form-group">
+						<div class="form-group-title">
+							<label class="control-label">附件材料上传</label>
+						</div>
+						<div class="control-input" style="margin-left:60px;}">
+							<button type="button" id="j_upload_file_btn" ng-click="upload_file()">选择附件</button>
+							<style>
+								#upload_file_wrap {
+									display: inline-block;
+									width: 100%;
+									margin: 0;
+									padding: 0;
+								}
+
+								#upload_file_wrap li {
+									list-style-type: none;
+									margin: 5px;
+									padding: 0;
+								}
+							</style>
+							<ul id="upload_file_wrap">附件预览</ul>
+							<textarea id="uploadEditor" style="display: none;"></textarea>
+						</div>
+					</div>
+                    <!--确认供货-->
+					<div class="form-group">
+						<div class="form-group-title">
+							<label class="control-label">确认订单信息</label>
+						</div>
+						<div class="control-input">
+                            <ul class="parameter" style="list-style: none">
+                                <li style="padding-left:160px;">产品名称</li>
+                                <li style="padding-left:110px;">规格</li>
+                                <li style="padding-left:75px;">单价</li>
+                                <li style="padding-left:75px;">数量</li>
+                                <li style="padding-left:102px;">总金额</li>
+                                <li style="padding-left:55px;">是否议价</li>
+                            </ul>
+                            <ul class="nav navbar-nav hide" ng-class="{'show':!status.cart.loader && !status.cart.error}" ng-repeat="item in clist">
+                                <li class="goods-img"><a ng-href="#/goods/{{item.goodsId}}"><img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}"></a></a></li>
+                                <li class="goods-name"><a ng-href="#/goods/{{item.goodsId}}">{{item.goodsName}}</a></li>
+                                <li class="specification">灭火器加手套</li>
+                                <li class="unitPrice" ng-bind="item.goodsPrice|currency:'￥'">￥0.00</li>
+                                <li class="number">
+                                    <button type="button" class="btn btn-info" ng-click="minus($index)">-</button>
+                                    <input style="width:25%;float: left;margin-top:12px;height:36px;" type="text" onclick="this.select()" ng-change="update($index)" ng-model="item.goodsNumber" autocomplete="off" class="form-control">
+                                    <button type="button" class="btn btn-info" ng-click="plus($index)">+</button>
+                                </li>
+                                <li class="totalPrice" style="width:40px;">
+                                    {{money}}
+                                </li>
+                                <li class="bargaining" style="margin-left: 80px">
+                                    <input type="checkbox" value="" />
+                                </li>
+                                <li class="merchant">{{item.producer}}</li>
+                            </ul>
+                            <!--<ul class="nav navbar-nav hide" ng-class="{'show':!status.cart.loader && !status.cart.error}" ng-repeat="item in clist">-->
+								<!--<li class="goods-name"><a ng-href="#/goods/{{item.goodsId}}"><img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}"></a></li>-->
+								<!--<li class="goods-name"><a ng-href="#/goods/{{item.goodsId}}">{{item.goodsName}}</a></li>-->
+								<!--<li class="goods-price navbar-right">-->
+									<!--<p class="navbar-text">-->
+										<!--<span class="text-danger" ng-bind="item.goodsPrice|currency:'￥'">￥0.00</span>-->
+										<!--<span>x</span>-->
+										<!--<span ng-bind="item.goodsNumber">0</span>-->
+									<!--</p>-->
+								<!--</li>-->
+								<!--<li class="goods-attr navbar-right">-->
+									<!--&lt;!&ndash; <p class="navbar-text" ng-bind-html="item.goodsAttr|replace:',':'<br>'"></p> &ndash;&gt;-->
+									<!--<p class="navbar-text" >-->
+										<!--品牌：&nbsp;&nbsp;&nbsp;&nbsp;{{item.brandName}}<br>-->
+										<!--生产商：{{item.producer}}-->
+									<!--</p>-->
+								<!--</li>-->
+							<!--</ul>-->
+							<div class="alert alert-info" ng-class="{'alert-info':status.cart.loader,'alert-danger':status.cart.error,'hide':!status.cart.loader && !status.cart.error}" role="alert"><p class="text-center" ng-bind-html="status.cart.html">正在努力加载中...</p></div>
+						</div>
+					</div>
+
+
+
+
+					<!--<div class="form-group">
+						<label class="control-label">使用余额</label>
+						<div class="control-input">
+							<input type="text" class="form-control" ng-disabled="status.users.error" ng-model-limit="surplus" data-model-min="0" ng-data-model-max="maxSurplus()" onclick="this.select()">
+							<p class="help-block hide" ng-class="{'show':!status.users.loader && !status.users.error}">余额:<span ng-bind="users.userMoney-users.frozenMoney|currency:'￥'">￥0.00</span></p>
+							<p class="help-block" ng-class="{'has-error':status.users.error,'hide':!status.users.loader && !status.users.error}" ng-bind-html="status.users.html">正在努力加载中...</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">使用积分</label>
+						<div class="control-input">
+							<input type="text" class="form-control" ng-disabled="status.users.error" ng-model-limit="integralMoney" data-model-min="0" ng-data-model-max="maxIntegralMoney()" onclick="this.select()">
+							<p class="help-block hide" ng-class="{'show':!status.users.loader && !status.users.error}">您当前的可用积分为 <span ng-bind="users.payPoints">0</span> 积分，本订单最多可以使用 <span ng-bind="integral">0</span> 积分</p>
+							<p class="help-block" ng-class="{'has-error':status.users.error,'hide':!status.users.loader && !status.users.error}" ng-bind-html="status.users.html">正在努力加载中...</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">使用消费礼券</label>
+						<div class="control-input">
+							<div class="input-group">
+								<div class="input-group-btn">
+									<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+										选择礼券
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+									</ul>
+								</div>
+								<input class="form-control" type="text" placeholder="或输入礼券号">
+								<div class="input-group-btn">
+									<button class="btn btn-info" type="button">验证礼券</button>
+								</div>
+							</div>
+						</div>
+					</div>-->
+
+
+
+					<!--<div class="form-group">-->
+						<!--<label class="control-label">订单附言</label>-->
+						<!--<div class="control-input">-->
+							<!--<textarea class="form-control" rows="3" ng-model="postScript"></textarea>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<div class="form-group">-->
+						<!--<label class="control-label">订单附件</label>-->
+						<!--<div class="control-input">-->
+							<!--&lt;!&ndash; <input type="file"  accept="*.zip" style="display:inline-block;"/> &ndash;&gt;-->
+							<!--<button type="button" id="j_upload_file_btn" ng-click="upload_file()">附件上传</button>-->
+							<!--<style>-->
+								<!--#upload_file_wrap {-->
+									<!--display: inline-block;-->
+									<!--width: 100%;-->
+									<!--margin: 0;-->
+									<!--padding: 0;-->
+								<!--}-->
+
+								<!--#upload_file_wrap li {-->
+									<!--list-style-type: none;-->
+									<!--margin: 5px;-->
+									<!--padding: 0;-->
+								<!--}-->
+							<!--</style>-->
+							<!--<ul id="upload_file_wrap"></ul>-->
+							<!--<textarea id="uploadEditor" style="display: none;"></textarea>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<div class="form-group">-->
+						<!--<label class="control-label">商品清单</label>-->
+						<!--<div class="control-input">-->
+							<!--<ul class="nav navbar-nav hide" ng-class="{'show':!status.cart.loader && !status.cart.error}" ng-repeat="item in clist">-->
+								<!--<li class="goods-name"><a ng-href="#/goods/{{item.goodsId}}"><img lazy-src="{{item.goodsThumb}}" alt="{{item.goodsName}}"></a></li>-->
+								<!--<li class="goods-name"><a ng-href="#/goods/{{item.goodsId}}">{{item.goodsName}}</a></li>-->
+								<!--<li class="goods-price navbar-right">-->
+									<!--<p class="navbar-text">-->
+										<!--<span class="text-danger" ng-bind="item.goodsPrice|currency:'￥'">￥0.00</span>-->
+										<!--<span>x</span>-->
+										<!--<span ng-bind="item.goodsNumber">0</span>-->
+									<!--</p>-->
+								<!--</li>-->
+								<!--<li class="goods-attr navbar-right">-->
+									<!--&lt;!&ndash; <p class="navbar-text" ng-bind-html="item.goodsAttr|replace:',':'<br>'"></p> &ndash;&gt;-->
+									<!--<p class="navbar-text" >-->
+										<!--品牌：&nbsp;&nbsp;&nbsp;&nbsp;{{item.brandName}}<br>-->
+										<!--生产商：{{item.producer}}-->
+									<!--</p>-->
+								<!--</li>-->
+							<!--</ul>-->
+							<!--<div class="alert alert-info" ng-class="{'alert-info':status.cart.loader,'alert-danger':status.cart.error,'hide':!status.cart.loader && !status.cart.error}" role="alert"><p class="text-center" ng-bind-html="status.cart.html">正在努力加载中...</p></div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!-- <div class="form-group hide" ng-class="{'hide':discount<1}">
+						<div class="alert alert-danger" role="alert">
+						    <strong>Oh surprise!</strong>
+                                根据优惠活动，您可以享受折扣 ￥<span ng-bind="discount">0</span>元
+                        </div>
+					</div> -->
+					<!--<div class="form-group">-->
+						<!--<label class="control-label">费用总计</label>-->
+						<!--<div class="control-input">-->
+							<!--<ul class="nav navbar-nav">-->
+								<!--<li><p class="navbar-text" style="font-size: 20px;">商品总价：<span class="pull-right text-danger" ng-bind="goodsAmount|currency:'￥'">￥0.00</span></p></li>-->
+								<!--&lt;!&ndash; <li><p class="navbar-text">运费：<span class="pull-right" ng-bind="shippingFee|currency:'￥'">￥0.00</span></p></li> &ndash;&gt;-->
+							<!--</ul>-->
+							<!--&lt;!&ndash; <ul class="nav navbar-nav">-->
+								<!--<li><p class="navbar-text">折扣：<span class="pull-right">-<i ng-bind="discount|currency:'￥'">￥0.00</i></span></p></li>-->
+								<!--<li><p class="navbar-text">使用余额：<span class="pull-right">-<i ng-bind="surplus|currency:'￥'">￥0.00</i></span></p></li>-->
+								<!--<li><p class="navbar-text">使用积分：<span class="pull-right">-<i ng-bind="integralMoney*integralScale|currency:'￥'">￥0.00</i></span></p></li>-->
+								<!--<li><p class="navbar-text">使用红包：<span class="pull-right">-<i ng-bind="bonus|currency:'￥'">￥0.00</i></span></p></li>-->
+							<!--</ul> &ndash;&gt;-->
+						<!--</div>-->
+					<!--</div>-->
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<style>
+	.page-footer{
+		width:76%;
+		margin:0 auto;
+	}
+</style>
+<div class="page-footer navbar">
+	<a href="" class="row center-block link" ng-click="postReckoning()">
+		<strong class="col-xs-6 l-text">订单总额：<i style="font-size:20px;" ng-bind="goodsAmount+shippingFee-discount-surplus-integralMoney*integralScale-bonus|currency:'￥'">￥0.00</i></strong>
+		<span class="col-xs-6 r-text">提交订单</span>
+	</a>
+</div>

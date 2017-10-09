@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="css/slider.css">
+<div class="index-content">
+    <!--轮播左侧区域-->
+    <style>
+        .content-login-box {
+            width: 100%;
+            height: 140px;
+        }
+        .content-login-btn {
+            margin-left: 60px;
+            background:#00a0e9
+        }
+        .wechat-image {
+            width: 180px;
+            height: 180px;
+            border:1px solid #000;
+            padding:3px;
+            margin:3px;
+        }
+        .content--left-text-title {
+            padding:0 16px;
+            margin-right: 7px;
+            margin-left:3px;
+            background: #2d82dc;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .content-left-text{
+            margin-left:3px;
+        }
+        .content-left-text ul {
+            list-style: none;
+            padding: 10px 0 0 10px;
+            margin-right: 7px;
+            border: 1px solid #2d82dc;
+        }
+        .content-left-text-items a {
+            display: inline-block;
+            font-size: 12px;
+            width: 140px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .content-left-text-items a i {
+            vertical-align:middle;
+            font-weight: 900;
+            color:#000;
+        }
+    </style>
+    <!--左侧： 登录 二维码 公告列表-->
+    <div class="content-left">
+        <div class="content-login-box">
+            <img src="../images/title-logo.png" style="width:91%;padding:5px 40px;" alt="">
+            <button class="btn btn-primary content-login-btn" ng-click="user[0].click()">登陆</button>
+        </div>
+        <div>
+            <img class="wechat-image" src="/images/erweima.jpg" alt="微信公众号">
+        </div>
+        <div class="content--left-text-title" ng-click="goArticleList()">
+            <span>公告列表</span>
+        </div>
+        <div class="content-left-text">
+            <ul>
+                <li class="content-left-text-items" ng-repeat="notice in news_list track by $index"  ng-click="goArticle(notice.articleId)" ng-show="$index>=0&&$index<5">
+                    <a href=""><i>·</i> {{notice.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--轮播  公告-->
+    <div class="content-right">
+        <!-- 消防图片 轮播 -->
+        <div class="main-image">
+            <div class="slider">
+                <div class="slider-wrapper theme-default">
+                    <div id="slider" class="main-image nivoSlider" style="text-align: center;">
+                        <img src="images/main-img1.jpg" style="width:100%" />
+                        <img src="images/main-img2.jpg" style="width:100%" />
+                        <img src="images/main-img3.jpg" style="width:100%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--公告-->
+        <div class="content-main">
+            <div class="notice-title">公告</div>
+            <div class="notice-content" ng-click="goArticle(notice.articleId)">
+                <div class="notice-content-title">{{notice.title}}</div>
+                <div class="notice-content-main">{{notice.content}}</div>
+            </div>
+        </div>
+    </div>
+    <!--清除浮动-->
+    <div class="clearfix"></div>
+
+
+    <!--搜索框-->
+    <div class="modal-con">
+        <div class="GG"></div>
+        <div class="title-search" ng-show="isShopUser">
+            <div class="search-input">
+                <input type="text" class="goods-search" ng-model="keywords" ng-keyup="search_keyup($event)">
+            </div>
+            <div class="search-goods" ng-click="search()">搜索</div>
+        </div>
+    </div>
+
+    <!--导航菜单-->
+    <style>
+        .category-item-list{
+            margin-top:25px;
+        }
+        .category-item-list .menu-box{
+            width:100%;
+            min-height:200px;
+            background:#d3e1ec;
+        }
+        .category-item-list .menu-box .category-item-list-name{
+            width:200px;
+            height:100%;
+            float: left;
+        }
+        .category-item-list .menu-box .category-item-list-name span{
+            display: block;
+            width:100%;
+            height:200px;
+            line-height: 200px;
+            font-size: 28px;
+            color:#000;
+            text-align: center;
+        }
+        .category-item-list .menu-box .category-item-list-name span i{
+            font-size: 32px;
+            margin-right:5px;
+            color:#1999db;
+        }
+        .category-item-list .menu-box ul{
+            width:935px;
+            height:190px;
+            margin-top:5px;
+            float: left;
+            background:#fff;
+            list-style: none;
+            overflow: hidden;
+        }
+        .category-item-list .menu-box ul li{
+            width:300px;
+            height:50px;
+            float: left;
+            margin:7px 5px;
+            background:#ccc;
+        }
+        .category-item-list .menu-box ul li a{
+            display: block;
+            width:100%;
+            height:100%;
+            text-align: center;
+            line-height: 50px;
+            color:#fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+    </style>
+    <!--协议供货板块-->
+    <div class="category-item-list">
+        <div id="xygh" class="menu-box">
+            <div class="category-item-list-name">
+                <span><i class="glyphicon glyphicon-th-list"></i>协议供货</span>
+            </div>
+            <ul>
+                <li ng-repeat="item in menu track by $index" ng-style="{background:sklssb[$index%3]}" ng-class="{'active':breadcrumblist.indexOf(item.catId)>=0,'on':item.catId==entity.catId}">
+                    <a href="#/menuList/{{item.catId}}">{{item.catName}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

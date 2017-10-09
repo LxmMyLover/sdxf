@@ -1,0 +1,41 @@
+<div class="page-container">
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<form name="myForm" ng-submit="save()" class="form-horizontal" autocomplete="off">
+				<div class="form-body">
+					<div class="form-group" ng-class="{'has-error':myForm.userName.$error.username || myForm.userName.$error.remote}">
+						<label class="control-label">用户名</label>
+						<div class="control-input">
+							<input type="text" name="userName" class="form-control" placeholder="请输入用户名" ng-model="userName" ng-username ng-remote="'shopapi/users.ashx?act=check'" required>
+							<span class="help-block" ng-show="myForm.userName.$error.username">用户名大小写英文字母、数字、下划线组成，字母开头，6-12个字符</span>
+							<span class="help-block" ng-show="myForm.userName.$error.remote">用户名已存在</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.email.$error.email || myForm.email.$error.remote}">
+						<label class="control-label">邮箱</label>
+						<div class="control-input">
+							<input type="text" name="email" class="form-control" placeholder="请输入邮箱" ng-model="email" ng-email ng-remote="'shopapi/users.ashx?act=check'" required>
+							<span class="help-block" ng-show="myForm.email.$error.email">邮箱格式不正确</span>
+							<span class="help-block" ng-show="myForm.email.$error.remote">邮箱已存在</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.password.$error.password}">
+						<label class="control-label">设置密码</label>
+						<div class="control-input">
+							<input type="password" name="password" class="form-control" placeholder="请输入6-20位字符" ng-model="password" ng-password required>
+							<span class="help-block" ng-show="myForm.password.$error.password">密码大小写英文字母、数字、下划线组成，长度6-20个字符</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error':myForm.confirmpwd.$error.equal}">
+						<label class="control-label">确认密码</label>
+						<div class="control-input">
+							<input type="password" name="confirmpwd" class="form-control" placeholder="请再次输入登录密码" ng-model="confirmpwd" ng-equal="password" required>
+							<span class="help-block" ng-show="myForm.confirmpwd.$error.equal">密码与确认密码不相同</span>
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-warning btn-block" autocomplete="off" ng-disabled="myForm.$invalid">完成注册</button>
+			</form>
+		</div>
+	</div>
+</div>

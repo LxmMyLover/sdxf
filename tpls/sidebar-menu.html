@@ -1,0 +1,113 @@
+<style>
+    .menu-box {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 14px;
+        color: #FFF;
+        padding: 0px;
+    }
+
+    .menu-box ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        border: 0;
+    }
+
+    .menu-box ul li {
+        margin: 0;
+        padding: 0;
+        width: 185px;
+        height: 40px;
+        display: block;
+        border-radius: 0px;
+        border: 0;
+        background-color: #fff8f0;
+    }
+
+    .menu-box ul li:hover{
+        background: #ff6a05;
+    }
+    .menu-box ul li:hover #has-arrow{
+        color:#fff;
+    }
+
+    .menu-box ul li:hover ul {
+        display: block;
+    }
+
+    .menu-box ul li a {
+        text-align: center;
+        width: 185px;
+        height: 40px;
+        color: #a35f16;
+        font-weight: bold;
+        line-height: 40px;
+        display: block;
+        border-bottom: 1px solid #fce6d1;
+        text-decoration: none;
+    }
+
+    .menu-box ul li ul {
+        display: none;
+        position: relative;
+        z-index: 99;
+        top: -40px;
+        left: 188px;
+        border-left: 1px solid #5c5c5c;
+    }
+
+    .menu-box ul li ul li {
+        margin: 0;
+        padding: 0;
+        background-color: #fff8f0;
+    }
+
+    .menu-box ul li ul li:hover {
+        background: #ff6a05;
+    }
+    .menu-box ul li ul li:hover .has-arrow{
+        color:#fff;
+    }
+
+
+    .menu-box ul li ul li:hover ul {
+        visibility: visible;
+    }
+
+    .menu-box ul li ul li ul {
+        visibility: hidden;
+        position: relative;
+        top: -40px;
+        left: 188px;
+    }
+
+    .menu-box ul li ul li ul li {
+        background: #fff8f0;
+    }
+
+    .menu-box ul li ul li ul li:hover {
+        background: #ff6a05;
+    }
+    .menu-box ul li ul li ul li:hover a{
+        color:#fff;
+    }
+</style>
+
+<div class="box">
+    <ul>
+        <li ng-repeat="item in menu track by $index" ng-class="{'active':breadcrumblist.indexOf(item.catId)>=0,'on':item.catId==entity.catId}">
+            <a id="has-arrow" href="#/category/{{item.catId}}" aria-expanded="false">{{item.catName}}</a>
+            <ul aria-expanded="false" ng-if="item.children.length>0">
+                <li ng-repeat="item2 in item.children" ng-class="{'active':breadcrumblist.indexOf(item2.catId)>=0,'on':item2.catId==entity.catId}">
+                    <a class="has-arrow" href="#/category/{{item2.catId}}" aria-expanded="false">{{item2.catName}}</a>
+                    <ul aria-expanded="false" ng-if="item2.children.length>0">
+                        <li ng-repeat="item3 in item2.children" ng-class="{'on':item3.catId==entity.catId}">
+                            <a href="#/category/{{item3.catId}}">{{item3.catName}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>

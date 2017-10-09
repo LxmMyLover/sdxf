@@ -1,0 +1,111 @@
+.category .page-content {
+  display: inline-block;
+  /*min-width: 768px;*/
+  /*max-width: 935px;*/
+  min-width:100%;
+  max-width:100%;
+  /*vertical-align: top;*/
+}
+.category .page-breadcrumb {
+  padding: 10px;
+  margin: 0;
+}
+
+/*列表*/
+.category .page-product-list {
+  padding: 0 10px;
+  margin: 20px 0 0;
+}
+
+.category .page-product-list .col-xs-6, .category .page-product-list .col-sm-4, .category .page-product-list .col-md-3 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.category .page-product-list .thumbnail {
+  margin-bottom: 15px;
+  padding:16px 28px 16px 18px;
+}
+.category .page-product-list .thumbnail img {
+  min-width: 202px;
+  max-width: 202px;
+  min-height: 202px;
+  max-height: 202px;
+  border:1px solid #ccc;
+  float: left;
+}
+.category .page-product-list .thumbnail .page-product-content{
+  float: right;
+  width:740px;
+  padding:0 15px;
+}
+.category .page-product-list .thumbnail .page-product-content p{
+  height:38px;
+  line-height:38px;
+  font-size: 16px;
+}
+.category .page-product-list .thumbnail .page-product-content p a{
+  diaplay:inline-block;
+  width:80px;
+  hieght:40px;
+  line-height: 40px;
+  text-align: center;
+  background:#2d82dc;
+  font-size: 20px;
+  color:#fff;
+  text-decoration: none;
+  float: right;
+  border-radius: 5px;
+}
+
+.category .page-product-list .thumbnail .symbol {
+  color: #999999;
+}
+
+.category .load-msg {
+  margin: 0 15px;
+}
+
+.category .js-page-content-wrapper.of-h {
+  overflow: hidden;
+}
+
+.category .js-page-footer {
+  width: 100%;
+  left: 100%;
+  z-index: 1501;
+  transition: left 0.5s ease-out;
+  -moz-transition: left 0.5s ease-out;
+  -webkit-transition: left 0.5s ease-out;
+  -o-transition: left 0.5s ease-out;
+}
+
+@media (min-width:768px) {
+  .category .page-product ul li {
+    width: auto;
+  }
+  .category .page-product-list {
+    margin: 0 50px;
+  }
+  .category .load-msg {
+    color: #999;
+    margin: 0 20px;
+  }
+  .category .js-page-content-wrapper.of-h {
+    overflow: visible;
+  }
+  .category .page-content-wrapper {
+    /*float: left;*/
+    width: 100%;
+  }
+  .category .page-content-wrapper .page-content {
+    margin-left: 200px;
+  }
+}
+
+.nothing-here .nothing-title {
+  text-align: center;
+  font-size: 20px;
+  padding: 30px 0;
+  color: #999;
+}

@@ -1,0 +1,197 @@
+<div class="page-container">
+	<div ng-include="'tpls/sidebar-user.html'"></div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<form name="myForm" class="form-horizontal" autocomplete="off">
+				<div class="form-body">
+					<div class="form-group">
+						<label class="control-label">订单详情</label>
+						<div class="control-input">
+							<ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										订单编号：
+										<span ng-bind="orderInfo.orderSn">正在加载中...</span>
+									</p>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										订单状态：
+										<span ng-bind="orderStatus[orderInfo.orderStatus]">正在加载中...</span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										下单时间：
+										<span ng-bind="orderInfo.addTime | date:'yyyy-MM-dd HH:mm'">00-00-00 00:00</span>
+									</p>
+								</li>
+							</ul>
+							<!-- <ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										付款状态：
+										<span ng-bind="payStatus[orderInfo.payStatus]">正在加载中...</span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										付款时间：
+										<span class="hide" ng-class="{'hide':orderInfo.payTime}">N/A</span>
+										<span ng-class="{'hide':!orderInfo.payTime}" ng-bind="orderInfo.payTime | date:'yyyy-MM-dd HH:mm'">00-00-00 00:00</span>
+									</p>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										配送状态：
+										<span ng-bind="shippingStatus[orderInfo.shippingStatus]">正在加载中...</span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										发货时间：
+										<span class="hide" ng-class="{'hide':orderInfo.shippingTime}">N/A</span>
+										<span ng-class="{'hide':!orderInfo.shippingTime}" ng-bind="orderInfo.shippingTime | date:'yyyy-MM-dd HH:mm'">00-00-00 00:00</span>
+									</p>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav">
+							    <li>
+							        <p class="navbar-text">
+										配送公司：
+										<span ng-repeat="item in deliveryOrder">{{item.shippingCompany}} , </span>
+									</p>
+								</li>
+								<li>
+								    <p class="navbar-text">
+										发货单号：
+										<span ng-repeat="item in deliveryOrder">{{item.invoiceNo}} , </span>
+									</p>
+								</li>
+							</ul> -->
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">收货人信息</label>
+						<div class="control-input">
+							<ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										姓名：
+										<span ng-bind="orderInfo.consignee">正在加载中...</span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										手机：
+										<span ng-bind="orderInfo.mobile">正在加载中...</span>
+									</p>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										电话：
+										<span ng-bind="orderInfo.tel">正在加载中...</span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										邮编：
+										<span ng-bind="orderInfo.zipCode">正在加载中...</span>
+									</p>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										地址：
+										<span ng-bind="orderInfo.province.regionName">正在加载中...</span>,
+										<span ng-bind="orderInfo.city.regionName">正在加载中...</span>,
+										<span ng-bind="orderInfo.district.regionName + orderInfo.address">正在加载中...</span>
+									</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">订单附言</label>
+						<div class="control-input">
+							<p class="navbar-text" ng-bind="orderInfo.postScript">正在加载中...</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">商品清单</label>
+						<div class="control-input">
+							<ul class="nav navbar-nav" ng-repeat="item in orderGoods">
+								<li>
+									<p class="navbar-text" ng-bind="item.goodsName"></p>
+								</li>
+								<li class="navbar-right">
+									<p class="navbar-text">
+										{{item.goodsPrice | currency:'￥'}}
+										x
+										{{item.goodsNumber}}
+									</p>
+								</li>
+								<li class="navbar-right">
+									<p class="navbar-text" ng-bind-html="item.goodsAttr | replace:',':'<br>'"></p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">费用总计</label>
+						<div class="control-input">
+							<ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										商品总价：
+										<span class="pull-right" ng-bind="orderInfo.goodsAmount | currency:'￥'">￥0.00</span>
+									</p>
+								</li>
+								<!-- <li>
+									<p class="navbar-text">
+										运费：
+										<span class="pull-right" ng-bind="orderInfo.shippingFee | currency:'￥'">￥0.00</span>
+									</p>
+								</li> -->
+							</ul>
+							<!-- <ul class="nav navbar-nav">
+								<li>
+									<p class="navbar-text">
+										折扣：
+										<span class="pull-right">-<i ng-bind="orderInfo.discount | currency:'￥'">￥0.00</i></span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										使用余额：
+										<span class="pull-right">-<i ng-bind="orderInfo.surplus | currency:'￥'">￥0.00</i></span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										使用积分：
+										<span class="pull-right">-<i ng-bind="orderInfo.integralMoney | currency:'￥'">￥0.00</i></span>
+									</p>
+								</li>
+								<li>
+									<p class="navbar-text">
+										使用红包：
+										<span class="pull-right">-<i ng-bind="orderInfo.bonus | currency:'￥'">￥0.00</i></span>
+									</p>
+								</li>
+							</ul> -->
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

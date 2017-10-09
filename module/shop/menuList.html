@@ -1,0 +1,110 @@
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<style>
+    .menu-box{
+        width:100%;
+        min-height:1000px;
+    }
+    .menu-box-title{
+        width:100%;
+        height:40px;
+        background:#b4ebf6;
+        font-size: 18px;
+        line-height: 40px;
+    }
+    /*一级菜单*/
+    .menu-box-title i{
+        margin:0 10px;
+        color:#b51c1c;
+    }
+    .menu-two-box {
+        list-style: none;
+        margin-left: 40px;
+    }
+    /*二级菜单*/
+    .menu-two-title{
+        display: inline-block;
+        width: 75%;
+        color:  #555;
+        font-size: 18px;
+        border-bottom:1px solid #00a2d4;
+        margin:5px 0px 3px;
+        padding:5px 5px 5px 20px;
+        text-align: left;
+    }
+    .menu-three-item{
+        list-style: none;
+        margin: 10px 0 10px 60px;
+    }
+    /*三级菜单*/
+    .menu-three-title{
+        width:35%;
+    }
+    .menu-three-title,
+    .menu-three-item-false{
+        font-size: 16px;
+    }
+    /*第四层*/
+    .menu-four-box{
+        display: inline-block;
+    }
+    .menu-four-item {
+        padding: 0 20px;
+        border-right: 1px solid #ccc;
+        display: inline-block;
+    }
+</style>
+<div class="menu-box" ng-repeat="item in menu" ng-show="item.catId == url">
+    <!--一级菜单标题-->
+    <div class="menu-box-title"><i class="glyphicon glyphicon-align-justify"></i>{{item.catName}}</div>
+    <!--子菜单-->
+    <ul class="menu-two-box">
+        <li ng-repeat="item2 in item.children">
+            <!--如果存在三级菜单-->
+            <div class="menu-two-box-true" ng-if="item2.children.length>0">
+                <!--三级菜单头部-->
+                <span class="menu-two-title">{{item2.catName}}</span>
+                <ol class="menu-three-box">
+                    <li class="menu-three-item" ng-repeat="item3 in item2.children">
+                        <!--如果存在四级菜单-->
+                        <div class="menu-three-box-ture" ng-if="item3.children.length>0">
+                            <!--四级菜单-->
+                            <span class="menu-three-title">{{item3.catName}} ：</span>
+                            <ul class="menu-four-box">
+                                <li ng-repeat="item4 in item3.children" class="menu-four-item">
+                                    <a class="catNameA-four" href="#/category/{{item4.catId}}">{{item4.catName}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--如果三级菜单没有四级 实现跳转-->
+                        <a class="menu-three-item-false" ng-if="item3.children.length==null" href="#/category/{{item3.catId}}">{{item3.catName}}</a>
+                    </li>
+                </ol>
+            </div>
+            <!--如果二级菜单没有三级 实现跳转-->
+            <a class="menu-two-item-false" ng-if="item2.children.length==null" href="#/category/{{item2.catId}}">{{item2.catName}}</a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

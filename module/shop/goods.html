@@ -1,0 +1,415 @@
+<style>
+	.supplier-info {
+		margin-top: 20px;
+		padding: 20px 15px;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		line-height: 30px;
+		padding: 20px 15px;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+	}
+
+	.supplier-info .supplier-name {
+		border-bottom: 1px solid #ccc;
+	}
+
+	.goods-desc img {
+		max-width: 670px;
+	}
+</style>
+<div class="page-container">
+	<div class="page-content-wrapper">
+		<div class="page-content">
+
+			<!-- 标题开始 -->
+			<!--<div id="navbar-example" class="product-title-tab navbar navbar-default hidden-xs">-->
+				<!--<h3 class="navbar-left" ng-bind="goods.entity.goodsName"></h3>-->
+				<!--&lt;!&ndash; <ul class="nav navbar-nav navbar-right">-->
+					<!--<li><a href="" ng-click="anchor.brief()">产品简介</a></li>-->
+					<!--<li><a href="" ng-click="anchor.desc()">详细描述</a></li>-->
+					<!--<li><a href="" ng-click="anchor.comment()">用户评论</a></li>-->
+					<!--<li><a href="" ng-click="anchor.param()">规格参数</a></li>-->
+					<!--<li><a href="" ng-click="anchor.service()">售后服务</a></li>-->
+				<!--</ul> &ndash;&gt;-->
+			<!--</div>-->
+			<!-- 标题结束 -->
+
+			<div class="shop-main">
+				<div class="">
+					<!-- 图片 -->
+					<div class="shop-zoombox hidden-xs">
+						<div class="zoompic jqzoom" zoom-picture="{xzoom:408,yzoom:408}"><img ng-src="{{zoomPic}}" rel="{{zoomPic}}"></div>
+						<div class="clearfix"></div>
+						<div class="sliderbox" onselectstart="return false">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" ng-class="{'current':current[$index]}" ng-repeat="item in gallery" repeat-finish="zSwiper()" ng-click="changeImg($index)"><img ng-src="{{item.imgOriginal}}"></div>
+								</div>
+							</div>
+							<div class="arrow arrow-left" ng-click="arrowL()"><i class="glyphicon glyphicon-menu-left"></i></div>
+							<div class="arrow arrow-right" ng-click="arrowR()"><i class="glyphicon glyphicon-menu-right"></i></div>
+						</div>
+					</div>
+
+					<!-- 价格 -->
+					<div class="product-detail">
+						<div class="pro-title pro-title-icon">
+							<h3 ng-bind="goods.entity.goodsName"></h3>
+							<!--<h4 ng-bind="goods.entity.goodsBrief"></h4>-->
+						</div>
+						<style>
+							ul.pro-info-type.list-unstyled {
+								margin: 20px 0;
+							}
+						</style>
+						<ul class="pro-info-type list-unstyled">
+							<!-- <li ng-repeat="item in goods.marketPrice">
+								<span class="attr">{{item.text}}：</span>
+								<span class="market-price">&yen;<em>{{item.value | number:2}}</em></span>
+							</li> -->
+							<li class="main-price" ng-repeat="item in goods.shopPrice">
+								<span class="attr">{{item.text}}：</span>
+								<span class="sell-price">&yen;<em>{{item.value | number:2}}</em></span>
+							</li>
+							<!--评分-->
+							<!--<li>-->
+								<!--<span class="attr">评分：</span>-->
+								<!--<span class="comments-star">-->
+									<!--<i class="star star0" ng-class="{'star0':!comment.points}" ng-class="{{'star'+comment.points}}"></i>-->
+									<!--（<a href="" ng-click="anchor.comment()">共有 <i class="comments-num" ng-bind="comment.items">0</i> 条评价</a>）-->
+								<!--</span>-->
+							<!--</li>-->
+							<li ng-repeat="item in goods.showProInfo">
+								<span class="attr">{{item.text}}：</span>
+								<span>{{item.value}}</span>
+							</li>
+							<li>
+								<span class="goods-spec-attr attr">规格：</span>
+								<div class="goods-spec-items">
+									<span class="goods-spec-item" onselectstart="return false;" ng-repeat="item in spec" ng-class="{'goods-spec-item-native': (specIndex == $index)}" onfocus="this.blur()" ng-click="selectSpec(item.specId, $index, item)">{{item.name}}</span>
+								</div>
+							</li>
+						</ul>
+
+						<div id="pro-chooseBox" class="pro-chooseBox">
+
+							<div class="form-group" ng-repeat="item in goods.entity.attribute" ng-init="outerIndex=$index;">
+								<label class="control-label">{{item.attrName}}</label>
+								<div class="control-input">
+									<select class="form-control" ng-if="item.attrType==0" ng-model="goods.params.gaids[outerIndex]" ng-options="item2.goodsAttrId as item2.attrValue for item2 in item.goodsAttr"></select>
+									<label class="btn btn-default" ng-if="item.attrType==1" ng-class="{'active':goods.params.gaids[outerIndex]==item2.goodsAttrId}" ng-repeat="item2 in item.goodsAttr" ng-model="goods.params.gaids[outerIndex]" btn-radio="{{item2.goodsAttrId}}">{{item2.attrValue}}</label>
+									<label class="btn btn-default" ng-if="item.attrType==2" ng-class="{'active':goods.params.gaids[outerIndex][$index]==item2.goodsAttrId}" ng-repeat="item2 in item.goodsAttr" ng-model="goods.params.gaids[outerIndex][$index]" btn-checkbox="{{item2.goodsAttrId}}">{{item2.attrValue}}</label>
+								</div>
+							</div>
+
+							<dl>
+								<!--<dt>我要买：</dt>-->
+								<dd>
+									<ul class="form-group">
+										<button type="button" ng-click="minus()" class="btn btn-info">-</button>
+										<input type="text" class="goods-number form-control" onclick="this.select()" ng-change="limit()" ng-model="goods.params.goodsNumber" autocomplete="off">
+										<button type="button" ng-click="plus()" class="btn btn-info">+</button>
+									</ul>
+								</dd>
+							</dl>
+
+							<div class="buy-btn hidden-xs">
+								<button type="button" ng-click="addCart()" ng-disabled="button" class="btn btn-warning" autocomplete="off">加入购物车</button>
+								<button type="button" ng-click="quickBuy()" ng-disabled="button" class="btn btn-danger" autocomplete="off">立即购买</button>
+								<!--<button type="button" ng-click="shoucang()" ng-disabled="button" class="btn btn-default" autocomplete="off"><i class="icon-plus"></i> 收藏</button>-->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="">
+					<!-- 销售量、浏览数 -->
+					<div class="shop-side hidden-xs">
+						<!-- 商家信息 -->
+						<div class="supplier-info">
+							<div class="supplier-name">{{goods.entity.suppliers.suppliersName}}</div>
+							<!-- <div class="supplier-item">交易次数：{{goods.entity.suppliers.suppliersDesc}}</div> -->
+							<div class="supplier-item">联 系 人：</div>
+							<div class="supplier-item">联 系Q Q：</div>
+							<div class="supplier-item">联系电话：</div>
+							<div class="supplier-item">商家地址：{{goods.entity.suppliers.suppliersAddr}}</div>
+							<div class="supplier-item">商家描述：{{goods.entity.suppliers.suppliersDesc}}</div>
+						</div>
+						<div class="clearfix"></div>
+						<!--<tabset>-->
+							<!--<tab heading="销售量">-->
+								<!--<ul class="side-product list-unstyled">-->
+									<!--<li ng-class="{'last':$last}" ng-repeat="item in sale">-->
+										<!--<div class="pro-img">-->
+											<!--<a title="{{item.goodsName}}" ng-href="#/goods/{{item.goodsId}}">-->
+											<!--<img alt="{{el.goodsName}}" ng-src="{{item.goodsThumb}}" />-->
+										<!--</a>-->
+										<!--</div>-->
+										<!--<div class="pro-name">-->
+											<!--<a title="{{item.goodsName}}" ng-href="#/goods/{{item.goodsId}}">{{item.goodsName}}</a>-->
+										<!--</div>-->
+										<!--<div class="pro-price">-->
+											<!--<span class="symbol">&yen;</span>-->
+											<!--<span class="price" ng-bind="item.shopPrice|number:2">0</span>-->
+										<!--</div>-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</tab>-->
+							<!--<tab heading="浏览数">-->
+								<!--<ul class="side-product list-unstyled">-->
+									<!--<li ng-class="{'last':$last}" ng-repeat="item in visit">-->
+										<!--<div class="pro-img">-->
+											<!--<a title="{{item.goodsName}}" ng-href="#/goods/{{item.goodsId}}">-->
+											<!--<img alt="{{item.goodsName}}" ng-src="{{item.goodsThumb}}" />-->
+										<!--</a>-->
+										<!--</div>-->
+										<!--<div class="pro-name">-->
+											<!--<a title="{{item.goodsName}}" ng-href="#/goods/{{item.goodsId}}">{{item.goodsName}}</a>-->
+										<!--</div>-->
+										<!--<div class="pro-price">-->
+											<!--<span class="symbol">&yen;</span>-->
+											<!--<span class="price" ng-bind="item.shopPrice|number:2">0</span>-->
+										<!--</div>-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</tab>-->
+						<!--</tabset>-->
+					</div>
+
+					<div class="goods-desc">
+						<tabset>
+							<tab heading="产品详情">
+								<!--<div class="goods-desc-title">产品详情</div>-->
+								<div class="" ng-bind-html="goods.entity.goodsDesc"></div>
+								<div class="" style="padding-top:5px;" ng-show="goods.entity.goodsDesc==''">
+									暂无简介
+								</div>
+							</tab>
+							<tab heading="认证证书">
+								<div>
+									<h3>3C认证</h3>
+									<img src="" alt="">
+								</div>
+								<div></div>
+							</tab>
+						</tabset>
+					</div>
+<!--商家信息下边-->
+					<!-- <tabset type="tabs visible-xs" class="goods-desc">
+						<tab heading="简介">
+							<span id="span-brief"></span>
+							<div class="shop-infor">
+								<div class="shop-gallery visible-xs">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide" ng-repeat="item in gallery" repeat-finish="iSwiper()"><img class="img-responsive" ng-src="{{item.imgOriginal}}"></div>
+										</div>
+										<div class="swiper-pagination"></div>
+									</div>
+								</div>
+
+							</div>
+						</tab>
+						<tab heading="详情">
+							<span id="span-desc"></span>
+							<div class="good-detail" ng-bind-html="goods.entity.goodsDesc"></div>
+						</tab>
+						<tab heading="评论">
+							<span id="span-comment"></span>
+							<div class="convention-tab" ng-init="$parent.isCollapsed=true">
+								<ul class="convention-inner">
+									<p class="complex-title">该商品综合评分 <strong class="text-success" ng-bind="comment.points|number:1">0</strong>（总分：5分）</p>
+									<p class="text-right"><a class="btn btn-warning" href="" ng-click="$parent.isCollapsed=false">我要评价</a></p>
+								</ul>
+								<form name="commentForm" class="form-horizontal" ng-submit="save()" collapse="$parent.isCollapsed" autocomplete="off">
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label">商品评级</label>
+											<div class="comment-rank control-input">
+												<p class="form-control-static">
+													<rating ng-model="comment.entity.commentRank" max="comment.rating.max" readonly="comment.rating.isReadonly" on-hover="comment.rating.hoveringOver(value)" on-leave="comment.rating.overStar=null"></rating>
+													<span class="label" ng-class="{'label-warning': comment.rating.percent<30, 'label-info': comment.rating.percent>=30 && comment.rating.percent<70, 'label-success': comment.rating.percent>=70}" ng-show="comment.rating.overStar && !comment.rating.isReadonly">{{comment.rating.percent}}%</span>
+												</p>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label">评语内容</label>
+											<div class="control-input">
+												<textarea name="content" class="form-control" ng-model="comment.entity.content" rows="5" required></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label">上传照片</label>
+											<div class="control-input">
+												<input type="file" nv-file-select="" accept="image/jpeg,image/gif,image/png,image/x-ms-bmp" uploader="comment.uploader" ng-click="comment.uploader.clearQueue()" />
+												<span class="help-block">图片应小于300k，允许上传的格式为jpg、gif、png、bmp</span>
+											</div>
+										</div>
+										<div class="form-group" ng-class="{'hide':!comment.entity.picture}">
+											<label class="control-label"></label>
+											<div class="col-sm-9">
+												<image ng-src="{{comment.entity.picture | rootPath}}" width="100px" />
+											</div>
+										</div>
+										<div class="form-group" ng-class="{'hide':!comment.uploader.queue.length}">
+											<label class="control-label col-sm-3"></label>
+											<div class="control-input">
+												<table class="table">
+													<thead>
+														<tr>
+															<th ng-show="comment.uploader.isHTML5">Size</th>
+															<th ng-show="comment.uploader.isHTML5">Progress</th>
+															<th>Status</th>
+															<th>Actions</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="item in comment.uploader.queue">
+															<td ng-show="comment.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+															<td ng-show="comment.uploader.isHTML5">
+																<div class="progress" style="margin-bottom: 0;">
+																	<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+																</div>
+															</td>
+															<td class="text-center">
+																<span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+																<span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+																<span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+															</td>
+															<td nowrap>
+																<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+						                                        <span class="glyphicon glyphicon-upload"></span> Upload
+						                                    </button>
+																<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+						                                        <span class="glyphicon glyphicon-trash"></span> Remove
+						                                    </button>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<alert ng-repeat="alert in comment.alerts" type="{{alert.type}}" ng-bind-html="alert.msg" close="alert.close($index)" dismiss-on-timeout="3000"></alert>
+										<div class="form-group">
+											<div class="control-input">
+												<button type="submit" class="btn btn-success" ng-disabled="commentForm.$invalid || button">
+												<i class="icon-ok"></i>
+												提交
+											</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="comment-container">
+								<div class="comment-inner" ng-show="!comment.list.length">沙发空缺中，发表评论赢积分</div>
+								<div class="comment-inner" ng-repeat="item in comment.list">
+									<ul class="comment-info">
+										<p class="pull-left"><span>{{item.userName}}</span><span class="hidden-xs"> 评价：<i class="star" ng-class="star{{item.commentRank}}"></i></span></p>
+										<p class="text-right" ng-bind="item.addTime | date:'yyyy-MM-dd HH:mm:ss'">0000-00-00 00:00:00</p>
+									</ul>
+									<p class="comment-rank visible-xs"><i class="star" ng-class="star{{item.commentRank}}"></i></p>
+									<p class="comment-content">{{item.content}}</p>
+									<p data-lazyload="ready" class="comment-pic" ng-show="item.picture"><img data-original="item.picture"></p>
+									<ul class="comment-answer" ng-show="item.replyContent">
+										<p class="pull-left">客服回复：</p>
+										<p class="text-right" ng-bind="item.replyTime | date:'yyyy-MM-dd HH:mm:ss'">0000-00-00 00:00:00</p>
+									</ul>
+									<p class="comment-content" ng-show="item.replyContent">{{item.replyContent}}</p>
+								</div>
+								<div class="comment-page text-center">
+									<button type="button" class="btn btn-default hidden-xs" ng-click="commentMore()" ng-show="comment.list.length">加载更多...</button>
+									<ul class="load-msg visible-xs">
+										<p class="no-more hide" ng-class="{'hide':noMore}">没有更多了</p>
+										<p class="load-more hide" ng-class="{'hide':loadMore}">正在加载中...</p>
+									</ul>
+									<ul class="pagination"></ul>
+								</div>
+							</div>
+						</tab>
+						<tab class="hide" heading="参数">
+							<span id="span-param"></span>
+							<table class="pro_para_table" id="pro_para_table" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<th colspan="3">分组1</th>
+									</tr>
+									<tr>
+										<td width="19%" class="a1">
+											<div class="Imgpip"><span>周期</span></div>
+										</td>
+										<td>年抛</td>
+									</tr>
+									<tr>
+										<td width="19%" class="a1">
+											<div class="Imgpip"><span>含水量</span></div>
+										</td>
+										<td>59</td>
+									</tr>
+									<tr>
+										<td width="19%" class="a1">
+											<div class="Imgpip"><span>直径</span></div>
+										</td>
+										<td>14.2</td>
+									</tr>
+									<tr>
+										<td width="19%" class="a1">
+											<div class="Imgpip"><span>基弧</span></div>
+										</td>
+										<td>8.6</td>
+									</tr>
+									<tr>
+										<td width="19%" class="a1">
+											<div class="Imgpip"><span>颜色</span></div>
+										</td>
+										<td>棕色</td>
+									</tr>
+								</tbody>
+							</table>
+						</tab>
+						<tab class="hide" heading="售后">
+							<span id="span-service"></span>
+							<div class="service-detail">
+								<h3>随心退换 服务保障</h3>
+								<p>UCON售后服务全面升级，承诺所售商品均提供30天随心退换货售后保障服务， 且行业首家推出定制框架眼镜同样享有30天随心退换货服务，全面超越国家三包服务规定，开创网上购物体验新理念。
+								</p>
+								<h4>商品退换货政策：</h4>
+								<p>自商品签收之日起30天内，在您保持商品未拆封使用及外包装未受污损的前提下，UCON为您提供随心退换服务，包括：隐形眼镜（普通）、彩色隐形眼镜、隐形眼镜周边产品（护理液、润眼液、伴侣盒、清洗器）。</p>
+								<p>注意事项：</p>
+								1、一张订单只提供一次退换货服务。<br> 2、请确保商品未拆封使用不影响二次销售，商品赠品、包装及购买凭证完整。
+								<br> 3、已拆封非质量问题产品及人为污损或非正常使用、保管导致出现质量问题的商品不享受退换货服务。
+								<br> 4、目前只支持商品一换一服务，换货时无法加订商品。
+								<br> 5、如顾客因非质量问题办理退换货，来回运费需顾客自行承担；订单发出的运费金额会在您的实际退款中扣除。
+							</div>
+						</tab>
+					</tabset> -->
+				</div>
+
+			</div>
+
+			<!--商品右侧部分-->
+			<!--<div class="shop-history">-->
+			<!--<div class="swiper-container">-->
+			<!--<div class="swiper-wrapper">-->
+			<!--<div class="swiper-slide" ng-repeat="item in history" repeat-finish="hSwiper()">-->
+			<!--<div class="thumbnail">-->
+			<!--<a ng-href="#/goods/{{item.goodsId}}">-->
+			<!--<img ng-src="{{item.goodsThumb}}" alt="{{item.goodsName}}">-->
+			<!--<div class="caption">-->
+			<!--<h4>{{item.goodsName}}</h4>-->
+			<!--</div>-->
+			<!--</a>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--<div class="arrow-box">-->
+			<!--<div class="arrow arrow-up" ng-click="arrowU()"><i class="glyphicon glyphicon-menu-up"></i></div>-->
+			<!--<div class="arrow arrow-down" ng-click="arrowD()"><i class="glyphicon glyphicon-menu-down"></i></div>-->
+			<!--</div>-->
+			</div>
+
+		</div>
+	</div>
+</div>

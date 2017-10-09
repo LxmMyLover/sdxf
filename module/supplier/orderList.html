@@ -1,0 +1,63 @@
+<style type="text/css">
+    .form-group .control-label {
+        width: auto;
+    }
+
+    .page-content-wrapper .page-content {
+        margin-left: 200px;
+    }
+
+    .order-item-bottom {
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+<div class="page-container">
+    <div ng-include="'tpls/sidebar-supplier.html'"></div>
+    <div class="page-content-wrapper">
+        <ul class="list-inline pull-right">
+            <li>
+                <a class="btn btn-primary btn-sm" href="" role="button" ng-click="bind()">刷新数据<i class="icon-refresh"></i></a>
+            </li>
+        </ul>
+        <div class="page-content">
+            <div class="form-body" style="padding:10px 20px;">
+                <div class="form-group">
+                    <table class="order-list" width="100%" border="0" align="center" ng-show="list.length>0">
+                        <tbody ng-repeat="item in list">
+                            <tr>
+                                <td width="80%" align="left" height="40">
+                                    <a ng-href="#/supplier_orderdetail/{{item.orderId}}">订单号：{{item.orderSn}}</a>
+                                </td>
+                                <td width="20%" align="right" height="40">
+                                    <a ng-href="#/supplier_orderdetail/{{item.orderId}}">
+                            <span ng-bind="orderStatus(item.orderStatus,item.payStatus,item.shippingStatus)">正在加载中...</span>
+                            <i class="glyphicon glyphicon-menu-right"></i>
+                          </a>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="item2 in item.orderGoods">
+                                <td align="left">
+                                    <span class="text-muted" ng-bind="item2.goodsName">正在加载中...</span>
+                                </td>
+                                <td align="right">
+                                    <span class="text-muted">
+                            x
+                            <i ng-bind="item2.goodsNumber">0</i>
+                          </span>
+                                </td>
+                            </tr>
+                            <tr class="order-item-bottom">
+                                <td align="left" height="40">共<span ng-bind="item.orderGoods.length">0</span>件，实付款：<span class="text-danger" ng-bind="item.orderAmount | currency:'￥'">￥0.00</span></td>
+                                <td align="right" height="40" ng-bind="item.addTime | date:'yy-MM-dd HH:mm'">00-00-00 00:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center;margin-top: 50px;font-size: 26px;color: #aaa;" ng-show="list.length<=0">
+                      暂无订单信息
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
